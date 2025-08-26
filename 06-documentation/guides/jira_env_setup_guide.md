@@ -48,7 +48,7 @@ JIRA_MCP_TOKEN=ATATT3xFfGF0...your_long_token_here
     "jira": {
       "command": "C:\\Program Files\\Git\\bin\\bash.exe",
       "args": ["./jira-mcp-wrapper.sh"],
-      "cwd": "C:\\Users\\user\\cursor\\testing cup"
+      "cwd": "C:\\Users\\user\\cursor\\QA-Manual-Framework"
     }
   }
 }

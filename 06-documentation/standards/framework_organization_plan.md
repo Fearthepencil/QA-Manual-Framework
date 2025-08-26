@@ -1,9 +1,9 @@
-# Testing Framework Organization Plan
+# Manual QA Framework Organization Plan
 
 ## 📁 Proposed Folder Structure
 
 ```
-testing-cup/
+qa-manual-framework/
 ├── .cursor/
 │   └── rules/                    # Cursor-specific rules (keep as-is)
 │       ├── cursor_rules.mdc

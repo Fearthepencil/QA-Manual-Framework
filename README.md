@@ -1,4 +1,4 @@
-# 🧪 Testing Cup - Professional Testing Framework
+# 🧪 Manual QA Framework - Professional Testing Framework
 
 A comprehensive, enterprise-grade testing framework designed for modern software development teams. Built with best practices, automation-ready, and JIRA-integrated.
 
@@ -9,7 +9,7 @@ A comprehensive, enterprise-grade testing framework designed for modern software
 
 ## 🎯 Overview
 
-**Testing Cup** is a structured testing framework that provides:
+**Manual QA Framework** is a structured testing framework that provides:
 - **Standardized bug reporting** with JIRA integration
 - **Comprehensive test planning** templates
 - **Performance testing** tools and reports
@@ -19,7 +19,7 @@ A comprehensive, enterprise-grade testing framework designed for modern software
 ## 📁 Framework Structure
 
 ```
-testing-cup/
+qa-manual-framework/
 ├── 01-jira-integration/          # JIRA setup, templates, examples
 │   ├── config/                   # MCP configuration, field references
 │   └── commands/                 # JIRA API commands and examples
@@ -43,8 +43,8 @@ testing-cup/
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/yourusername/testing-cup.git
-cd testing-cup
+git clone https://github.com/yourusername/qa-manual-framework.git
+cd qa-manual-framework
 ```
 
 ### 2. Set Up JIRA Integration
@@ -214,4 +214,4 @@ For questions, issues, or contributions:
 
 **Built with ❤️ for the testing community**
 
-*Testing Cup - Where Quality Meets Efficiency*
+*Manual QA Framework - Where Quality Meets Efficiency*

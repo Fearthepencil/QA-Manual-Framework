@@ -1,20 +1,66 @@
----
-description: 
-globs: 
-alwaysApply: false
----
-# Project: Ownership Entity Testing & Kafka Events
+# Project: Manual QA Framework
 
 ## Current Task
-Testing ownership entity functionality including:
-- New attribute fields for entities (Blackstone, Prologis, Simon Property Group, etc.)
-- Automatic Kafka event creation 
-- Manual API endpoints for testing
-- Data synchronization between Neo4J, Kafka, and Elasticsearch
+Creating a private repository for the Manual QA Framework and preparing for company integration:
+- Setting up private GitHub repository
+- Preparing framework for company database integration
+- Planning migration to company repository for team collaboration
+- Maintaining framework structure for enterprise use
+
+## Framework Overview
+**Manual QA Framework** is a structured testing framework that provides:
+- Standardized bug reporting templates
+- JIRA integration for seamless ticket management
+- Test plan templates and execution guides
+- API testing utilities and documentation
+- Data validation and synchronization testing tools
+
+## Repository Setup Plan
+
+### Phase 1: Private Repository Creation
+- Create private GitHub repository: `qa-manual-framework`
+- Push current framework code
+- Set up proper .gitignore for sensitive files
+- Configure repository settings for private access
+
+### Phase 2: Company Integration Preparation
+- Prepare framework for database integration
+- Document integration points for company systems
+- Create migration plan for company repository
+- Prepare team onboarding documentation
+
+### Phase 3: Company Repository Migration
+- Get manager approval for company integration
+- Migrate to company repository structure
+- Set up team access and permissions
+- Deploy framework for colleague use
 
 ## Key Components
 
-### New Attribute Fields
+### JIRA Integration
+- **MCP Server**: @timbreeding/jira-mcp-server configured
+- **Field Mapping**: Comprehensive mapping for "All Tech Projects" (AP) + "Bug (t)" issue type
+- **ADF Format**: Atlassian Document Format for descriptions/comments
+- **Ticket Management**: Automated creation and updates via API
+
+### Bug Reporting System
+- **Templates**: Standardized bug report templates
+- **Metadata**: JIRA-specific metadata for AP projects
+- **Metrics**: Bug metrics reference and tracking
+- **Quick Guide**: Streamlined reporting process
+
+### Test Planning
+- **Templates**: Comprehensive test plan templates
+- **Demo Examples**: Real-world test plan demonstrations
+- **Standards**: ISTQB CTFL Syllabus v4.0.1 compliance
+
+### API Testing
+- **Ownership Entity Testing**: New attribute fields validation
+- **Kafka Events**: Event creation and validation
+- **Data Synchronization**: Neo4J, Kafka, Elasticsearch flow verification
+- **Manual Endpoints**: API endpoint testing utilities
+
+### New Attribute Fields (Ownership Entity)
 - **Entity Name**: String (Blackstone, Prologis, Simon Property Group)
 - **Ticker/Exchange**: Array of objects with ticker, exchange, country
 - **Country of Ownership**: String single select (US, Singapore, UAE)
@@ -62,6 +108,7 @@ Testing ownership entity functionality including:
 ## Current Status
 ✅ **JIRA MCP Integration**: Successfully configured and tested
 ✅ **Bug Report Created**: AP-20715 for Stage Enterprise buyer/seller field issue
+✅ **Framework Refactoring**: Successfully pivoted from Testing Cup to Manual QA Framework
 
 **OES Testing Discovery**: Important edge case with deleted owners:
 - /landlords/find-or-create endpoint behavior with deleted owners
@@ -95,6 +142,11 @@ Testing ownership entity functionality including:
 ✅ **Field Mapping Created**: Comprehensive mapping for "All Tech Projects" (AP) + "Bug (t)" issue type
 ✅ **ADF Format Identified**: Atlassian Document Format required for descriptions/comments
 ✅ **Ticket Creation Tested**: Successfully created and updated JIRA tickets via API
+
+
+
+
+
 
 
 
