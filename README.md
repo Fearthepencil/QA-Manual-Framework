@@ -132,10 +132,12 @@ See the [Contributing](#-contributing) section for guidelines on adding new comm
 ## 🛠️ Key Features
 
 ### 🔗 JIRA Integration
-- Automated ticket creation with standardized formats
-- Field mapping for all JIRA project types
-- ADF formatting support for rich descriptions
-- MCP-based integration for seamless automation
+- **Ticket Creation**: Automated bug report → JIRA ticket creation with MCP server
+- **Ticket Reading**: Comprehensive ticket information extraction and JQL searching
+- **Field Mapping**: Standardized formats for all JIRA project types
+- **ADF Formatting**: Rich descriptions with environment tracking
+- **QA Workload Management**: Track assignments and workload distribution
+- **Enhanced Scripts**: Shell-based integration with JSON output
 
 ### 📊 Bug Reporting System
 - Enhanced templates with environment context and traceability
@@ -160,6 +162,7 @@ See the [Contributing](#-contributing) section for guidelines on adding new comm
 ### 🎓 Guides
 - [Quick Start Guide](06-documentation/guides/quick_start_guide.md)
 - [JIRA Environment Setup](06-documentation/guides/jira_env_setup_guide.md)
+- [Enhanced JIRA Integration](01-jira-integration/README.md)
 - [Bug Report Quality Standards](02-bug-reports/templates/bug_metrics_reference.md)
 - [Test Plan Creation](03-test-plans/template/test_plan_template.md)
 
