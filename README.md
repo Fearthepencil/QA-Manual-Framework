@@ -47,6 +47,84 @@ Follow the [JIRA Environment Setup Guide](06-documentation/guides/jira_env_setup
 - **Test Planning**: Start with `03-test-plans/template/test_plan_template.md`
 - **Project Testing**: Check `04-projects/ownership-entity/project rules/`
 
+## 🖥️ Available Commands
+
+The framework includes cross-platform command-line tools for JIRA integration and QA workflow automation.
+
+### 📋 Show My Tickets
+
+Display all JIRA tickets assigned to you as QA Assignee.
+
+**Windows (PowerShell):**
+```powershell
+powershell -ExecutionPolicy Bypass -File "01-jira-integration/commands/show_my_tickets.ps1"
+```
+
+**Mac/Linux (Bash):**
+```bash
+bash "01-jira-integration/commands/show_my_tickets.sh"
+```
+
+**Features:**
+- ✅ Cross-platform compatibility (Windows, Mac, Linux)
+- ✅ Real-time JIRA API integration
+- ✅ Color-coded status display
+- ✅ Formatted table output
+- ✅ Error handling and user feedback
+
+**Output Example:**
+```
+Show My Tickets - QA Engineer Dashboard
+================================================
+Current User: Pavle Stefanovic (712020:016ad54d-5387-4067-b5c5-6bd187f523d2)
+Found 26 tickets assigned to you as QA Assignee
+
+===============================================================================================================
+Ticket Key  | Summary                                                     | Status      | Priority    | Last Updated        
+===============================================================================================================
+AP-20715    | [BE] Buyer/Seller Fields Missing from Enterprise S...   | To Do       | Major       | 2025-08-25 15:27
+AP-20344    | Missing Buyer and Seller Information in New Sales ...   | Ready for QA | Normal      | 2025-08-22 10:18
+...
+```
+
+**Prerequisites:**
+- JIRA API credentials configured
+- Network access to JIRA instance
+- PowerShell (Windows) or Bash (Mac/Linux)
+
+**Troubleshooting:**
+- **Authentication Error**: Verify your JIRA API token in the script
+- **No Tickets Found**: Check if you're assigned as QA Assignee in JIRA
+- **Permission Denied**: Ensure script execution is allowed on your system
+
+### 🔧 Command Configuration
+
+All commands use the same JIRA configuration:
+- **JIRA URL**: `https://compstak.atlassian.net`
+- **Authentication**: Basic Auth with email and API token
+- **API Version**: JIRA REST API v3
+
+### 📚 Command Documentation
+
+For detailed command documentation and advanced usage:
+- [JIRA Integration Guide](01-jira-integration/)
+- [Command Configuration](01-jira-integration/config/)
+- [Field Reference](01-jira-integration/config/jira_field_reference.md)
+
+### 🚧 Upcoming Commands
+
+The framework is actively being developed with additional commands:
+
+**Planned Commands:**
+- `show-ticket [KEY]` - Display detailed ticket information
+- `update-status [KEY] [STATUS]` - Update ticket status
+- `add-comment [KEY]` - Add comments to tickets
+- `create-bug-report` - Generate standardized bug reports
+- `test-plan-generator` - Create test plans from templates
+
+**Contributing New Commands:**
+See the [Contributing](#-contributing) section for guidelines on adding new commands to the framework.
+
 ## 🛠️ Key Features
 
 ### 🔗 JIRA Integration

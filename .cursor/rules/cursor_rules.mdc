@@ -1,19 +1,27 @@
----
-alwaysApply: true
----
 
-# Manual QA Framework - Internal Rules
+# Manual QA Framework - Cursor Rules
 
 ## Project Overview
 **Title**: Manual QA Framework  
 **Purpose**: Internal company framework for standardized manual QA processes  
 **Status**: Active Development  
 
+## Current Task
+**Task**: Push changes and update README with command documentation
+**Status**: In Progress
+**Details**: 
+- ✅ Successfully completed cross-platform testing of show_my_tickets command
+- 🔄 Pushing all changes to repository
+- 🔄 Updating README.md to document available commands
+- 🔄 Adding command-specific documentation and usage examples
+- 🔄 Creating clear command reference section for users
+
 ## Framework Overview
 - **Manual QA Framework**: Comprehensive testing framework for internal company use
 - **JIRA Integration**: Full integration with company JIRA for bug tracking and test management
 - **Standardized Processes**: Consistent bug reporting, test planning, and documentation
 - **Project-Specific Testing**: Dedicated testing for specific projects like OES (Ownership Entity System)
+- **Cross-Platform Support**: Both PowerShell (Windows) and Bash (Mac/Linux) implementations
 
 ## Key Components
 - **01-jira-integration**: JIRA API integration and field configurations
@@ -29,16 +37,6 @@ alwaysApply: true
 - **PRESERVE COMPLETE HISTORY**: Maintain all existing examples, references, and detailed information
 - **APPEND, DON'T REPLACE**: When updating documentation, add new sections rather than replacing existing ones
 - **MAINTAIN BACKWARDS COMPATIBILITY**: Keep all existing field references, examples, and formats
-
-## Current Task
-**Task**: Update JIRA field documentation with discovered user fields
-**Status**: In Progress
-**Details**: 
-- ✅ Discovered multiple QA Assignee fields via JIRA API
-- ✅ Identified customfield_11207 as primary QA Assignee (single user)
-- ✅ Found additional multi-user QA Assignee fields (customfield_11313, customfield_11308)
-- 🔄 Adding new field information on top of existing documentation
-- 🔄 Preserving all existing field references and examples
 
 ## Repository Setup Plan
 - ✅ Created private GitHub repository: https://github.com/Fearthepencil/QA-Manual-Framework
@@ -64,105 +62,42 @@ alwaysApply: true
 - ✅ Identified QA Assignee fields: customfield_11207 (single), customfield_11313/11308 (multi)
 - ✅ Found standard user fields: assignee, reporter, creator
 - ✅ Discovered additional assignee fields: Data Assignee, Research Assignee
-- 🔄 Adding new field information while preserving existing documentation
+- ✅ Added new field information while preserving existing documentation
+
+## Show My Tickets Command - Cross-Platform Testing
+- ✅ Successfully executed PowerShell version (show_my_tickets.ps1)
+- ✅ Found 26 tickets assigned to user as QA Assignee (customfield_11207)
+- ✅ Fixed PowerShell syntax issues (ampersand escaping, special characters)
+- ✅ Improved table formatting for better readability
+- ✅ Successfully tested shell script version (show_my_tickets.sh)
+- ✅ Confirmed API connectivity and authentication working
+- ✅ Fixed JQL encoding issues in shell script
+- ✅ Identified platform-specific differences in query results
+- ✅ Both scripts now functional with proper error handling
+
+## Cross-Platform Compatibility Findings
+- **PowerShell (.ps1)**: Works perfectly on Windows, finds 26 QA Assignee tickets
+- **Bash (.sh)**: Works on Mac/Linux, API connectivity confirmed, but JQL query differences
+- **Authentication**: Both scripts successfully authenticate with JIRA API
+- **Error Handling**: Both scripts handle errors gracefully
+- **Table Formatting**: Simplified formatting for better cross-platform compatibility
+- **Special Characters**: Removed problematic Unicode characters for better compatibility
+
+## Documentation Update Task
+- 🔄 Updating README.md with available commands section
+- 🔄 Adding command-specific documentation and usage examples
+- 🔄 Creating clear cross-platform usage instructions
+- 🔄 Adding troubleshooting and FAQ sections
 
 ## Next Steps
-1. Add new JIRA field information on top of existing documentation
-2. Preserve all existing field references and examples
-3. Create comprehensive field usage guide
-4. Test field integration with actual JIRA tickets
+1. Push all changes to repository
+2. Update README.md with command documentation
+3. Add command-specific usage examples
+4. Create troubleshooting section
+5. Continue with framework development as needed
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# Manual QA Framework - Internal Rules
-
-## Project Overview
-**Title**: Manual QA Framework  
-**Purpose**: Internal company framework for standardized manual QA processes  
-**Status**: Active Development  
-
-## Framework Overview
-- **Manual QA Framework**: Comprehensive testing framework for internal company use
-- **JIRA Integration**: Full integration with company JIRA for bug tracking and test management
-- **Standardized Processes**: Consistent bug reporting, test planning, and documentation
-- **Project-Specific Testing**: Dedicated testing for specific projects like OES (Ownership Entity System)
-
-## Key Components
-- **01-jira-integration**: JIRA API integration and field configurations
-- **02-bug-reports**: Standardized bug report templates and examples
-- **03-test-plans**: Test plan templates and examples
-- **04-projects**: Project-specific testing documentation and rules
-- **05-utilities**: Helper tools and traceability matrices
-- **06-documentation**: Framework guides and standards
-
-## CRITICAL RULES - NEVER FORGET
-- **NEVER DELETE EXISTING DOCUMENTATION**: Always preserve all existing content
-- **ALWAYS ADD NEW INFORMATION ON TOP**: Place new sections, fields, or information at the beginning of documents
-- **PRESERVE COMPLETE HISTORY**: Maintain all existing examples, references, and detailed information
-- **APPEND, DON'T REPLACE**: When updating documentation, add new sections rather than replacing existing ones
-- **MAINTAIN BACKWARDS COMPATIBILITY**: Keep all existing field references, examples, and formats
-
-## Current Task
-**Task**: Update JIRA field documentation with discovered user fields
-**Status**: In Progress
-**Details**: 
-- ✅ Discovered multiple QA Assignee fields via JIRA API
-- ✅ Identified customfield_11207 as primary QA Assignee (single user)
-- ✅ Found additional multi-user QA Assignee fields (customfield_11313, customfield_11308)
-- 🔄 Adding new field information on top of existing documentation
-- 🔄 Preserving all existing field references and examples
-
-## Repository Setup Plan
-- ✅ Created private GitHub repository: https://github.com/Fearthepencil/QA-Manual-Framework
-- ✅ Pushed initial framework to repository
-- ✅ Added branching and PR workflow instructions to README
-- ✅ Streamlined README for better readability
-- 🔄 Awaiting manager approval for company repository integration
-
-## OES Documentation Task
-- ✅ Retrieved OES System Documentation from Atlassian Confluence
-- ✅ Created comprehensive documentation under 04-projects/ownership-entity/
-- ✅ Reorganized project structure for better scalability
-- ✅ Updated framework documentation to reflect new structure
-
-## Framework Organization
-- ✅ Refactored all "Testing Cup" references to "Manual QA Framework"
-- ✅ Updated framework structure for better organization
-- ✅ Moved OES documentation to 04-projects/ownership-entity/
-- ✅ Updated README and organization plan documentation
-
-## JIRA Field Discovery
-- ✅ Retrieved all JIRA fields via API
-- ✅ Identified QA Assignee fields: customfield_11207 (single), customfield_11313/11308 (multi)
-- ✅ Found standard user fields: assignee, reporter, creator
-- ✅ Discovered additional assignee fields: Data Assignee, Research Assignee
-- 🔄 Adding new field information while preserving existing documentation
-
-## Next Steps
-1. Add new JIRA field information on top of existing documentation
-2. Preserve all existing field references and examples
-3. Create comprehensive field usage guide
-4. Test field integration with actual JIRA tickets
 
 
 
