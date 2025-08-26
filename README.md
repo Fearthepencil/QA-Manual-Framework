@@ -22,7 +22,10 @@ qa-manual-framework/
 ├── 01-jira-integration/          # JIRA setup, templates, examples
 ├── 02-bug-reports/               # Bug reporting system
 ├── 03-test-plans/                # Test planning and execution
-├── 04-oes-project-testing/       # Project-specific testing
+├── 04-projects/                  # Project-specific testing
+│   └── ownership-entity/         # Ownership Entity System (OES)
+│       ├── project documentation/ # OES system documentation
+│       └── project rules/        # OES testing guidelines
 ├── 05-utilities/                 # Testing tools and scripts
 ├── 06-documentation/             # Guides, standards, references
 └── .cursor/                      # Cursor IDE configuration
@@ -42,7 +45,7 @@ Follow the [JIRA Environment Setup Guide](06-documentation/guides/jira_env_setup
 ### 3. Choose Your Workflow
 - **Bug Reporting**: Use templates in `02-bug-reports/templates/`
 - **Test Planning**: Start with `03-test-plans/template/test_plan_template.md`
-- **Project Testing**: Check `04-oes-project-testing/project rules/`
+- **Project Testing**: Check `04-projects/ownership-entity/project rules/`
 
 ## 🛠️ Key Features
 

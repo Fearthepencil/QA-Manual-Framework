@@ -53,12 +53,12 @@ qa-manual-framework/
 │       ├── test_plan_build2.md
 │       └── summary_test_report_build1_build2.md
 │
-├── 04-oes-testing/               # Ownership Entity Service specific
-│   ├── checklists/
-│   │   ├── oes_landlord_batch_creation_checklist.md
-│   │   └── oes_landlord_full_test_checklist.md
-│   └── scenarios/
-│       └── bdd_test_cases_gherkin.txt
+├── 04-projects/                  # Project-specific testing
+│   └── ownership-entity/         # Ownership Entity System (OES)
+│       ├── project documentation/ # OES system documentation
+│       │   └── OES_System_Documentation.md
+│       └── project rules/        # OES testing guidelines
+│           └── .rules
 │
 ├── 05-utilities/
 │   ├── traceability_matrix.txt
@@ -115,9 +115,9 @@ qa-manual-framework/
 - perf_test_concurrent.py
 - performance_test_report_*.md
 
-### **04-oes-testing/ (3 files)**
-- oes_landlord_*_checklist.md
-- bdd_test_cases_gherkin.txt
+### **04-projects/ownership-entity/ (2 files)**
+- **project documentation/OES_System_Documentation.md** - Comprehensive OES system documentation
+- **project rules/.rules** - OES testing guidelines and rules
 
 ### **05-utilities/ (2 files)**
 - traceability_matrix.txt
@@ -134,7 +134,7 @@ qa-manual-framework/
 4. **Scalability**: Easy to add new categories or subcategories
 5. **JIRA Integration**: Centralized JIRA setup and examples
 6. **Bug Report Quality**: Standardized templates with examples by category
-7. **Project-Specific**: OES testing has dedicated space
+7. **Project-Specific**: OES testing has dedicated space with organized documentation and rules
 
 ## 🔧 Next Steps
 
