@@ -4,10 +4,39 @@
 # Purpose: Show tickets assigned to the current QA Engineer
 # Usage: ./show_my_tickets.sh
 
-# Configuration
+# Get the directory where this script is located
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# Find project root by looking for .env file (should be in project using qa_core)
+PROJECT_ROOT="$(cd "$SCRIPT_DIR" && while [[ "$PWD" != "/" && ! -f "01-jira-integration/config/.env" ]]; do cd ..; done && pwd)"
+ENV_FILE="$PROJECT_ROOT/01-jira-integration/config/.env"
+
+# Load .env file if it exists
+if [ -f "$ENV_FILE" ]; then
+    echo "Loading environment from $ENV_FILE"
+    # Load only specific variables we need to avoid JSON parsing issues
+    export JIRA_MCP_LOGIN=$(grep '^JIRA_MCP_LOGIN=' "$ENV_FILE" | cut -d'=' -f2-)
+    export JIRA_MCP_TOKEN=$(grep '^JIRA_MCP_TOKEN=' "$ENV_FILE" | cut -d'=' -f2-)
+else
+    echo "Warning: .env file not found at $ENV_FILE"
+    echo "Please create .env file with JIRA_MCP_LOGIN and JIRA_MCP_TOKEN"
+    exit 1
+fi
+
+# Check if required credentials are available
+if [ -z "$JIRA_MCP_LOGIN" ]; then
+    echo "Error: JIRA_MCP_LOGIN not available (check .env file)"
+    exit 1
+fi
+
+if [ -z "$JIRA_MCP_TOKEN" ]; then
+    echo "Error: JIRA_MCP_TOKEN not available (check .env file)"
+    exit 1
+fi
+
+# Configuration from environment variables
 JIRA_URL="https://compstak.atlassian.net"
-EMAIL="pavle.stefanovic@compstak.com"
-API_TOKEN="ATATT3xFfGF0WoOP7XmgRbjig08sBPpatf0t6uHmOD4wCvsEYmvT7ghM7mpqUqLbXp15KXwP5UxY05uZ1UB4qIk6Y7GASxgHyFcG1sspSVrkGyh0JYZ7xcUfQpwPlSN0uxbJGljjB11Kv596K9QNLc4fQOC2SbYqo3sdjATSjla0wySte4AWi9g=E96B7070"
+EMAIL="$JIRA_MCP_LOGIN"
+API_TOKEN="$JIRA_MCP_TOKEN"
 
 # Colors for output
 RED='\033[0;31m'

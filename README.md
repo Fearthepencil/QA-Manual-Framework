@@ -77,9 +77,11 @@ bash "01-jira-integration/commands/show_my_tickets.sh"
 - ✅ Error handling and user feedback
 
 **Prerequisites:**
-- JIRA API credentials configured in `.env` file
+- JIRA API credentials configured in `.env` file (see Configuration section)
 - Network access to JIRA instance
 - PowerShell (Windows) or Bash (Mac/Linux)
+
+**Security Note:** Credentials are now loaded from `.env` file instead of being hardcoded in scripts.
 
 ### 🔧 Command Configuration
 
@@ -152,11 +154,17 @@ Additional commands available:
 
 ## 🔧 Configuration
 
-Create a `.env` file in the project root:
+Create a `.env` file in `01-jira-integration/config/.env`:
 ```env
 JIRA_MCP_LOGIN=your.email@compstak.com
 JIRA_MCP_TOKEN=your_api_token_here
 ```
+
+**Security Features:**
+- All scripts automatically load credentials from `.env` file
+- No hardcoded credentials in any scripts
+- Environment file excluded from version control
+- Proper error handling for missing credentials
 
 ## 🤝 Contributing
 
