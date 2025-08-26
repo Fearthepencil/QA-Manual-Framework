@@ -1,14 +1,83 @@
 # JIRA Field Reference - All Tech Projects (AP) Bug(t) Creation
 
+## 🆕 NEW: User-Related Fields (Discovered via JIRA API)
+
+### QA Assignee Fields
+| Field | Field ID | Type | Description | Format |
+|-------|----------|------|-------------|--------|
+| QA Assignee (Single) | `customfield_11207` | User Picker | Primary QA assignee (single user) | `{"accountId": "USER_ACCOUNT_ID"}` |
+| QA Assignee (Multi - Project 12382) | `customfield_11313` | People Picker | QA assignees (multiple users) | `[{"accountId": "USER1"}, {"accountId": "USER2"}]` |
+| QA Assignee (Multi - Project 12366) | `customfield_11308` | People Picker | QA assignees (multiple users) | `[{"accountId": "USER1"}, {"accountId": "USER2"}]` |
+
+### Standard User Fields
+| Field | Field ID | Type | Description | Format |
+|-------|----------|------|-------------|--------|
+| Assignee | `assignee` | System | Issue assignee | `{"accountId": "USER_ACCOUNT_ID"}` |
+| Reporter | `reporter` | System | Issue reporter | `{"accountId": "USER_ACCOUNT_ID"}` |
+| Creator | `creator` | System | Issue creator | `{"accountId": "USER_ACCOUNT_ID"}` |
+
+### Additional Assignee Fields
+| Field | Field ID | Type | Description | Format |
+|-------|----------|------|-------------|--------|
+| Data Assignee | `customfield_11244` | People Picker | Data team assignee | `[{"accountId": "USER_ACCOUNT_ID"}]` |
+| Research Assignee | `customfield_11245` | People Picker | Research team assignee | `[{"accountId": "USER_ACCOUNT_ID"}]` |
+| Exchange Team Contact(s) | `customfield_11259` | People Picker | Exchange team contacts | `[{"accountId": "USER_ACCOUNT_ID"}]` |
+
+### Field Usage Examples for User Fields
+
+#### Creating a Bug with QA Assignee
+```json
+{
+  "fields": {
+    "project": {"key": "AP"},
+    "issuetype": {"name": "Bug"},
+    "summary": "Login button not working on mobile",
+    "customfield_11332": {"value": "Production"},
+    "customfield_11207": {"accountId": "5f7b5c8d9e0f1a2b3c4d5e6f"},
+    "assignee": {"accountId": "5f7b5c8d9e0f1a2b3c4d5e6f"},
+    "reporter": {"accountId": "5f7b5c8d9e0f1a2b3c4d5e6f"},
+    "priority": {"name": "High"},
+    "customfield_11311": {"value": "Critical"}
+  }
+}
+```
+
+#### Creating a Bug with Multiple QA Assignees
+```json
+{
+  "fields": {
+    "project": {"key": "AP"},
+    "issuetype": {"name": "Bug"},
+    "summary": "Database connection timeout",
+    "customfield_11332": {"value": "Staging"},
+    "customfield_11313": [
+      {"accountId": "5f7b5c8d9e0f1a2b3c4d5e6f"},
+      {"accountId": "6f8c6d9e0f1a2b3c4d5e6f7g"}
+    ],
+    "assignee": {"accountId": "5f7b5c8d9e0f1a2b3c4d5e6f"},
+    "priority": {"name": "Medium"}
+  }
+}
+```
+
+### Field Discovery Notes
+- **Primary QA Assignee**: Use `customfield_11207` for single QA assignee
+- **Multi QA Assignee**: Use `customfield_11313` or `customfield_11308` based on project
+- **User Account IDs**: Required format is `{"accountId": "USER_ACCOUNT_ID"}`
+- **Multi-user Fields**: Use array format for people picker fields
+- **Project Scope**: Some fields are project-specific (e.g., customfield_11313 for project 12382)
+
+---
+
 ## Project Information
 - **Project Key**: AP
 - **Project Name**: All Tech Projects  
 - **Issue Type**: Bug (t)
 - **Issue Type ID**: 1
-
+  
 ## Required Fields
 These fields MUST be included in every Bug(t) ticket:
-
+  
 | Field | Field Name | Type | Format |
 |-------|------------|------|--------|
 | `project` | Project | project | `{"key": "AP"}` |
