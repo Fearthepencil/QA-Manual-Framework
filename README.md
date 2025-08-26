@@ -150,6 +150,7 @@ See the [Contributing](#-contributing) section for guidelines on adding new comm
 - Performance testing integration
 - Comprehensive traceability matrix support
 - AI-assisted test case generation
+- Project-specific test plans and rules
 
 ### 🤖 AI Assistant (Igor)
 - AI-powered test case and bug report generation
@@ -171,6 +172,10 @@ See the [Contributing](#-contributing) section for guidelines on adding new comm
 - [Framework Rules](.cursor/rules/cursor_rules.mdc)
 - [AI Assistant Rules](.cursor/rules/ai_assistant_rules.mdc)
 - [ISTQB Knowledge Base](.cursor/Additional context/)
+
+### 🏗️ Projects
+- [Folders Project](04-projects/folders/) - Folder management functionality (Phase 1)
+- [Ownership Entity](04-projects/ownership-entity/) - OES system documentation
 
 ## 🔧 Configuration
 
