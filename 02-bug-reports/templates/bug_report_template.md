@@ -1,5 +1,31 @@
 # Bug Report Template (Following Established Standards)
 
+## 🆕 NEW: JIRA Field Mapping
+When creating this bug in JIRA, use the following field mappings:
+
+```json
+{
+  "fields": {
+    "project": {"key": "AP"},
+    "issuetype": {"name": "Bug"},
+    "summary": "[Bug title]",
+    "customfield_11332": {"value": "[Environment]"},
+    "customfield_11207": {"accountId": "[QA_ASSIGNEE_ACCOUNT_ID]"},
+    "assignee": {"accountId": "[ASSIGNEE_ACCOUNT_ID]"},
+    "reporter": {"accountId": "[REPORTER_ACCOUNT_ID]"},
+    "priority": {"name": "[Priority]"},
+    "customfield_11311": {"value": "[Severity]"},
+    "labels": ["[label1]", "[label2]"],
+    "customfield_11287": {"value": "[Engineering Team]"},
+    "customfield_11330": [{"value": "[Stack1]"}, {"value": "[Stack2]"}]
+  }
+}
+```
+
+**Note**: Replace `[QA_ASSIGNEE_ACCOUNT_ID]` with the actual JIRA account ID of the QA assignee. The QA Assignee field ID is `customfield_11207` for single user assignment.
+
+---
+
 ## Bug Report Header
 **[READY] [<MODULE OR PAGE>] <Short, clear bug title>**
 
