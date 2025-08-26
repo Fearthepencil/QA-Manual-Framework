@@ -1,0 +1,77 @@
+Bug Report: 404 Error on Product Page Reload
+
+Title
+Product page returns 404 error when reloading after navigation from category
+
+Description
+When navigating from the home page to a specific book product page through category navigation, and then reloading the page (F5 or browser refresh), the application returns a 404 error. This affects the user experience by preventing direct access to product pages and breaking browser bookmark functionality. The issue appears to be related to URL routing or session handling after category-based navigation.
+
+Expected Behaviour
+- Product page should load successfully when reloaded after navigation
+- Direct URL access to product pages should work consistently
+- Browser refresh should maintain the product page state
+- Product pages should be bookmarkable and shareable
+
+Actual Behaviour
+- Product page loads correctly when navigated from category
+- After reloading the page (F5 or browser refresh), a 404 error is displayed
+- Direct URL access to product pages fails with 404 error
+- Browser back/forward navigation may also be affected
+
+Steps to Reproduce
+1. Navigate to https://sut.testingcup.rs/build1/
+2. Click on a book category (e.g., Fiction, Non-Fiction, etc.)
+3. Click on a specific book product to view its details
+4. Verify the product page loads correctly
+5. Press F5 or click the browser refresh button
+6. Observe that a 404 error is displayed instead of the product page
+
+Alternative Reproduction Path:
+1. Navigate to https://sut.testingcup.rs/build1/
+2. Click on a book category
+3. Click on a specific book product
+4. Copy the URL from the address bar
+5. Open a new browser tab/window
+6. Paste the URL directly
+7. Observe 404 error
+
+Evidence
+Screenshots:
+- Screenshot 1: Product page loading correctly after category navigation
+- Screenshot 2: 404 error page after reloading the product page
+- Screenshot 3: Browser address bar showing the failing URL
+
+Technical Details:
+- URL Pattern: https://sut.testingcup.rs/build1/product/book/{product-id}
+- Example failing URL: https://sut.testingcup.rs/build1/product/book/68416959002333d64133
+- Error Type: 404 Not Found
+- Browser: [To be specified]
+- OS: [To be specified]
+
+Impact Assessment
+- Severity: High - Affects core product browsing functionality
+- User Impact: Users cannot reload product pages or access them directly via URL
+- Business Impact: Reduced user experience, potential loss of sales due to broken navigation
+- Traceability: Affects Req-1-7 (Full product description display) and Req-1-4 (Product categorization)
+
+Reproducibility
+- Frequency: 100% (happens every time)
+- Conditions: Any browser, any product page accessed through category navigation
+- Dependencies: Requires initial navigation through category structure
+
+Suggested Fix
+1. Review URL routing configuration for product pages
+2. Ensure product page URLs are properly handled on direct access
+3. Check session handling and state management for product navigation
+4. Implement proper URL rewriting or routing rules
+5. Test URL persistence across page reloads
+
+Bug Report Metadata
+- Reported By: [Your Name]
+- Date Reported: [YYYY-MM-DD HH:MM:SS]
+- Bug ID: [Auto-generated or assigned]
+- Status: New
+- Assigned To: [Developer/Team]
+- Evidence Location: [Link to screenshots when uploaded]
+- Linked Test Case: Product navigation and URL persistence testing
+- Requirement Reference: Req-1-7 (Full product description display) 

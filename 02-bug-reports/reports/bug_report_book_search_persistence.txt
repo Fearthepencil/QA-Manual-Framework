@@ -1,0 +1,116 @@
+---
+
+[READY] [BOOK CATEGORY SEARCH] Search filter persists across categories and causes empty results (Build 1)
+
+---
+
+### Description
+
+In Build 1, when searching for books in any category (e.g., 'Fiction', 'Science') using a search term such as 'A', the system displays an empty category error message ("There are no products in this category"). This error message is not interactive. If the user then navigates to a different book category using the left sidebar, the search filter persists, causing the new category to also display empty results, even if products exist in that category. The user must manually clear the search filter to see products in other categories. This issue is specific to Build 1 and does not occur in Build 2.
+
+---
+
+### Expected Behaviour
+
+- Entering a search term in one book category should only filter results within that category
+- Navigating to a new book category should reset or clear the previous search filter, displaying all products in the new category by default
+- If no products match the search, the user should be able to easily clear the filter or be prompted to do so
+- Error messages should be clear and, if appropriate, provide a way to reset the search
+
+---
+
+### Actual Behaviour
+
+- Searching for 'A' in any book category shows a non-clickable empty category error
+- Navigating to another book category keeps the search filter active, resulting in empty results even if products exist
+- The user must manually clear the search field to see products in the new category
+- No prompt or automatic reset of the search filter occurs when changing categories
+- Issue is present in Build 1 only
+
+---
+
+### Steps to Reproduce
+
+1. Navigate to https://sut.testingcup.rs/build1/
+2. Click on "Books" in the main navigation
+3. Select any book category from the left sidebar (e.g., "Fiction")
+4. Enter 'A' in the search field
+5. Observe the empty category error message
+6. Without clearing the search, select a different book category (e.g., "Science") from the sidebar
+7. Observe that the new category also shows empty results due to the persistent search filter
+
+---
+
+### Evidence
+
+- Screenshot showing empty category error in 'Fiction' after searching 'A' (Filename: fiction_search_empty_build1.png)
+- Screenshot showing empty results in 'Science' after switching categories with search still active (Filename: science_search_empty_build1.png)
+
+---
+
+### Technical Details
+
+- URL: https://sut.testingcup.rs/build1/books
+- Browsers: Chrome 120.0.6099.109, Firefox 121.0, Edge 120.0.2210.91
+- OS: Windows 10, macOS 14.2
+- Console: No JavaScript errors observed
+- Network: All assets load normally, no failed requests detected
+- **Build:** 1 (https://sut.testingcup.rs/build1/)
+
+---
+
+### Impact Assessment
+
+- **Severity:** Major
+- **User Impact:** Users may believe there are no books in multiple categories, leading to confusion and poor shopping experience
+- **Business Impact:** Potential loss of sales due to users not seeing available products, increased support requests, negative perception of site usability
+
+---
+
+### Requirement Coverage
+
+- [ ] Req-1-1: E-commerce Platform
+- [x] Req-1-2: Book Properties  
+- [x] Req-1-4: Product Categorization
+- [x] Req-1-5: Category Product Summaries
+- [x] Req-1-6: Category Search
+- [ ] Req-1-7: Product Description
+- [ ] Req-1-8: High-Resolution Covers
+- [ ] Req-1-9: Favorite Products
+- [ ] Req-1-10: Add to Shopping Basket
+- [ ] Req-1-11: Shopping Basket Functions
+- [ ] Req-1-12: Registered User Checkout
+- [ ] Req-1-13: Login Functionality
+- [ ] Req-1-14: Global Product Search
+- [ ] Req-1-15: Customer Registration
+- [ ] Req-1-16: Payment Process
+
+---
+
+### Test Plan Traceability
+
+- ✅ Test Case ID: TC-1-6-1 – Test product search within current category
+- ✅ Test Type: Functional
+- ✅ Risk Level: High
+
+---
+
+### Reproducibility
+
+- Frequency: Always
+- Conditions: Requires use of book category search and navigation between categories in Build 1
+
+---
+
+### Bug Report Metadata
+
+- Reported By: QA Team
+- Date Reported: 2024-12-19 15:50:00
+- Bug ID: BUG-019
+- Status: Found
+- Assigned To: Development Team
+- Evidence Location: Screenshots stored in project evidence folder
+- Linked Test Case: TC-1-6-1
+- Requirement Reference: Req-1-2, Req-1-4, Req-1-5, Req-1-6
+
+--- 

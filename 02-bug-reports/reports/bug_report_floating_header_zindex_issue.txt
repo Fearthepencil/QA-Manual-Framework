@@ -1,0 +1,71 @@
+Bug Report Template - ACME E-commerce Testing
+
+Title
+Floating Header "REQUEST DEMO" Button Z-Index Issue on Guides/Press Page (Production)
+
+Description
+On the guides and press page with source_page=floating-header-press/guides, when users scroll down and attempt to click the floating header "REQUEST DEMO" button, they are instead navigated to underlying press release links. This appears to be a z-index layering issue where press release content is rendered above the floating header button, making it unclickable when positioned over press release elements. The issue occurs specifically when scrolling to the press release section on the production environment.
+
+Expected Behaviour
+Clicking the floating header "REQUEST DEMO" button should trigger the demo request action regardless of scroll position or underlying page content. The floating header should remain the topmost interactive element on the page.
+
+Actual Behaviour
+- When attempting to click the floating header "REQUEST DEMO" button while scrolled to the press release section, users are navigated to underlying press release links
+- The floating header button appears to be rendered underneath other page elements
+- Click events are captured by press release links instead of the intended demo button
+- The button appears visually present but is not functionally accessible
+
+Steps to Reproduce
+1. Navigate to the guides and press page with URL parameter source_page=floating-header-press/guides
+2. Scroll down to the press release section of the page
+3. Attempt to click the floating header "REQUEST DEMO" button
+4. Observe that instead of triggering demo request, user is navigated to press release link
+5. Example redirect: https://compstak.com/blog/century21-commercial-and-compstak-partnership
+
+Evidence
+- URL with issue: Page with source_page=floating-header-press/guides
+- Incorrect navigation example: https://compstak.com/blog/century21-commercial-and-compstak-partnership
+- Issue occurs when floating header overlaps press release content
+- Visual inspection shows button appears present but click events don't register
+
+Technical Details
+- Issue Type: CSS z-index layering problem
+- Affected Component: Floating header "REQUEST DEMO" button
+- Underlying Cause: Press release content has higher z-index than floating header
+- Browser: Affects all browsers on production
+- Page Section: Press release section specifically
+- Environment: Production
+
+Impact Assessment
+- Severity: Medium - Affects user conversion path but has workarounds
+- User Impact: Users cannot access demo request from guides/press pages when scrolled
+- Business Impact: Potential loss of demo requests and lead generation from these pages
+- Conversion Impact: Reduces effectiveness of floating header call-to-action
+
+Reproducibility
+- Frequency: Always when scrolled to press release section
+- Conditions: Specific to guides/press page with floating header enabled
+- Dependencies: Requires scrolling to press release content area
+- Environment: Production environment confirmed
+
+Suggested Fix
+1. Increase z-index value for floating header component to ensure it appears above all other page content
+2. Review CSS hierarchy for press release section and floating header elements
+3. Implement consistent z-index strategy across page components
+4. Test z-index layering across different page sections and content types
+5. Add CSS specificity to ensure floating header maintains highest layer priority
+6. Consider using CSS isolation or containment for press release content
+
+Bug Report Metadata
+- Reported By: [Your Name]
+- Date Reported: [YYYY-MM-DD HH:MM:SS]
+- Bug ID: [To be assigned]
+- Status: New
+- Assigned To: [Frontend Developer/Team]
+- Evidence Location: Production guides/press page
+- Environment: Production
+- Component: Floating header, Press release section
+- Linked Test Case: [Reference if available]
+- Requirement Reference: [Req-X-X if available]
+
+--- 

@@ -1,0 +1,106 @@
+Bug Report Template - ACME E-commerce Testing
+
+Title
+OES Owner Attributes Not Imported from kg_owners Table to ES Indices and Sales Comps DB (Dev Environment)
+
+Description
+Owner attributes that are successfully imported into the kg_owners table from Neo4j are not being propagated to downstream systems including Elasticsearch indices (new-salesmaster, sales-comps-version/master-v020) and sales comps database (sales.participant_groups and masters.participant_groups). This is a separate issue from the existing known bug where some Neo4j attributes (ticker_exchanges, investment_strategies) are not imported into the kg_owners table. The problem occurs at the data propagation stage from kg_owners to other systems, affecting data consistency across the OES ecosystem.
+
+Expected Behaviour
+Owner attributes that exist in the kg_owners table should be automatically propagated to all downstream systems:
+- Elasticsearch indices (new-salesmaster, sales-comps-version/master-v020) should contain owner attribute data
+- Sales comps database tables (sales.participant_groups, masters.participant_groups) should include owner attributes
+- Data should be consistent across all systems that reference owner information
+
+Actual Behaviour
+- Owner attributes remain isolated in the kg_owners table only
+- Elasticsearch indices lack owner attribute data despite the data existing in kg_owners
+- Sales comps database tables do not contain owner attribute information
+- Only basic attributes (capital_type, website, country_of_ownership) are propagated to downstream systems
+- Advanced attributes (ticker_exchanges, investment_strategies) are missing from all downstream systems
+
+Steps to Reproduce
+1. Verify that owner attributes exist in kg_owners table:
+   ```sql
+   SELECT id, ticker_exchanges, investment_strategies, capital_type, website, country_of_ownership
+   FROM public.kg_owners 
+   WHERE id BETWEEN 1 AND 10;
+   ```
+2. Check new-salesmaster Elasticsearch index for the same owner data
+3. Query sales-comps-version/master-v020 indices for owner attributes
+4. Check sales.participant_groups for owner attribute data
+5. Query masters.participant_groups for owner attribute data
+6. Observe that owner attributes are missing from all downstream systems while present in kg_owners
+
+Evidence
+Data Flow Analysis:
+- ✅ Neo4j: Contains ticker_exchanges and investment_strategies data
+- ❌ kg_owners table: Missing ticker_exchanges and investment_strategies (existing known bug)
+- ✅ kg_owners table: Contains capital_type, website, country_of_ownership
+- ❌ Elasticsearch indices: Missing ALL owner attributes from kg_owners (new bug)
+- ❌ Sales comps DB: Missing ALL owner attributes from kg_owners (new bug)
+
+Test Query Results:
+```sql
+-- kg_owners table query shows no data for new attributes
+SELECT id, ticker_exchanges, investment_strategies
+FROM public.kg_owners WHERE id BETWEEN 1 AND 10;
+-- Result: No data for ticker_exchanges and investment_strategies columns
+```
+
+Affected Systems:
+- new-salesmaster Elasticsearch index
+- sales-comps-version Elasticsearch index  
+- sales-comps-master-v020 Elasticsearch index
+- sales.participant_groups table
+- masters.participant_groups table
+
+Technical Details
+- Issue Type: Data propagation failure between kg_owners and downstream systems
+- Root Cause: Missing or incomplete data sync processes
+- Affected Attributes: All kg_owners attributes (capital_type, website, country_of_ownership, ticker_exchanges, investment_strategies)
+- Environment: Dev environment
+- Data Source: kg_owners table in OES database
+- Affected Targets: Elasticsearch indices and sales comps database tables
+
+Impact Assessment
+- Severity: Medium - Affects data completeness across multiple systems
+- Data Consistency Impact: Owner information inconsistent between systems
+- Search Impact: Elasticsearch queries lack complete owner attribute data
+- Analytics Impact: Incomplete owner data affects reporting and analysis
+- User Impact: Users cannot access complete owner information from search or sales data
+
+Reproducibility
+- Frequency: Always - affects all owner records
+- Conditions: Occurs for all owners with attributes in kg_owners table
+- Dependencies: Requires data sync processes between kg_owners and downstream systems
+- Environment: Dev environment confirmed
+
+Related Issues
+- Existing Bug: Neo4j attributes (ticker_exchanges, investment_strategies) not imported to kg_owners table
+- This Bug: kg_owners attributes not propagated to Elasticsearch indices and sales comps DB
+
+Suggested Fix
+1. Investigate data sync processes from kg_owners table to Elasticsearch indices
+2. Review data propagation logic for sales comps database updates
+3. Ensure owner attributes are included in all data transfer and indexing processes
+4. Add data consistency validation across kg_owners, Elasticsearch indices, and sales comps DB
+5. Implement automated sync jobs to keep owner data consistent across all systems
+6. Add monitoring to detect data propagation failures
+7. Create comprehensive tests for owner data flow from kg_owners to all downstream systems
+8. Document the complete data flow pipeline for owner attributes
+
+Bug Report Metadata
+- Reported By: [Your Name]
+- Date Reported: [YYYY-MM-DD HH:MM:SS]
+- Bug ID: [To be assigned]
+- Status: New
+- Assigned To: [Backend Developer/OES Team]
+- Evidence Location: kg_owners table, Elasticsearch indices, sales comps database
+- Environment: Dev
+- Component: OES data propagation, Elasticsearch indexing, Sales comps database sync
+- Related Bug: Neo4j to kg_owners import issue (existing)
+- Linked Test Case: [Reference if available]
+- Requirement Reference: [Req-X-X if available]
+
+--- 

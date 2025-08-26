@@ -1,0 +1,150 @@
+Traceability Matrix - ACME E-commerce Testing
+
+REQUIREMENT | TEST CASE ID | TEST CASE DESCRIPTION | BUG ID | BUG DESCRIPTION | STATUS
+------------|--------------|----------------------|--------|-----------------|--------
+
+Req-1-1: E-commerce Platform | TC-1-1-1 | Verify platform sells books and CDs | BUG-001 | 404 Error on Product Page Reload | Found
+Req-1-1: E-commerce Platform | TC-1-1-2 | Test basic e-commerce functionality | BUG-002 | Add to Cart Failure on Homepage | Found
+Req-1-1: E-commerce Platform | TC-1-1-3 | Verify product portfolio is limited to books and CDs | | | Pending
+
+Req-1-2: Book Properties | TC-1-2-1 | Verify all book properties displayed | | | Pending
+Req-1-2: Book Properties | TC-1-2-2 | Test book property accuracy | | | Pending
+Req-1-2: Book Properties | TC-1-2-3 | Verify book cover image quality | | | Pending
+
+Req-1-3: CD Properties | TC-1-3-1 | Verify all CD properties displayed | | | Pending
+Req-1-3: CD Properties | TC-1-3-2 | Test CD property accuracy | | | Pending
+Req-1-3: CD Properties | TC-1-3-3 | Verify CD cover image quality | | | Pending
+
+Req-1-4: Product Categorization | TC-1-4-1 | Test category-based product location | BUG-001 | 404 Error on Product Page Reload | Found
+Req-1-4: Product Categorization | TC-1-4-2 | Verify all products are categorized | | | Pending
+Req-1-4: Product Categorization | TC-1-4-3 | Test category navigation functionality | | | Pending
+
+Req-1-5: Category Product Summaries | TC-1-5-1 | Verify book summaries show required fields | | | Pending
+Req-1-5: Category Product Summaries | TC-1-5-2 | Verify CD summaries show required fields | | | Pending
+Req-1-5: Category Product Summaries | TC-1-5-3 | Test summary accuracy and completeness | | | Pending
+
+Req-1-6: Category Search | TC-1-6-1 | Test product search within current category | | | Pending
+Req-1-6: Category Search | TC-1-6-2 | Verify search results limited to category | | | Pending
+Req-1-6: Category Search | TC-1-6-3 | Test search functionality and accuracy | | | Pending
+
+Req-1-7: Product Description | TC-1-7-1 | Test product selection and full description display | BUG-001 | 404 Error on Product Page Reload | Found
+Req-1-7: Product Description | TC-1-7-2 | Verify all product properties shown in full description | | | Pending
+Req-1-7: Product Description | TC-1-7-3 | Test description accuracy and completeness | | | Pending
+
+Req-1-8: High-Resolution Covers | TC-1-8-1 | Verify product covers are high resolution | BUG-004 | Images are low resolution on the homepage | Found
+Req-1-8: High-Resolution Covers | TC-1-8-2 | Test cover image loading and display | | | Pending
+Req-1-8: High-Resolution Covers | TC-1-8-3 | Verify cover image quality and clarity | | | Pending
+
+Req-1-9: Favorite Products | TC-1-9-1 | Test adding products to favorites list | BUG-016 | User is unable to add products to favorites | Found
+Req-1-9: Favorite Products | TC-1-9-2 | Verify favorites functionality works correctly | | | Pending
+Req-1-9: Favorite Products | TC-1-9-3 | Test favorites list management | | | Pending
+
+Req-1-10: Add to Shopping Basket | TC-1-10-1 | Test adding books to shopping basket | BUG-002 | Add to Cart Failure on Homepage | Found
+Req-1-10: Add to Shopping Basket | TC-1-10-2 | Test adding CDs to shopping basket | | | Pending
+Req-1-10: Add to Shopping Basket | TC-1-10-3 | Verify basket functionality works correctly | | | Pending
+
+Req-1-11: Shopping Basket Functions | TC-1-11-1 | Test removing items from basket | | | Pending
+Req-1-11: Shopping Basket Functions | TC-1-11-2 | Test changing item quantities in basket | | | Pending
+Req-1-11: Shopping Basket Functions | TC-1-11-3 | Test checkout initiation from basket | BUG-002 | Add to Cart Failure on Homepage | Found
+
+Req-1-12: Registered User Checkout | TC-1-12-1 | Test checkout access for registered users | BUG-007 | User is unable to complete checkout | Found
+Req-1-12: Registered User Checkout | TC-1-12-2 | Test checkout access for non-registered users | | | Pending
+Req-1-12: Registered User Checkout | TC-1-12-3 | Verify access control works correctly | | | Pending
+
+Req-1-13: Login Functionality | TC-1-13-1 | Test login with valid username and password | | | Testing
+Req-1-13: Login Functionality | TC-1-13-2 | Test login with invalid credentials | | | Pending
+Req-1-13: Login Functionality | TC-1-13-3 | Test login input validation (empty, special chars, SQLi, XSS) | | | Pending
+Req-1-13: Login Functionality | TC-1-13-4 | Test login security and session management | | | Pending
+
+Req-1-14: Global Product Search | TC-1-14-1 | Test search across entire webshop | | | Pending
+Req-1-14: Global Product Search | TC-1-14-2 | Verify search includes all products | | | Pending
+Req-1-14: Global Product Search | TC-1-14-3 | Test search accuracy and relevance | | | Pending
+
+Req-1-15: Customer Registration | TC-1-15-1 | Test registration with valid data | | | Testing
+Req-1-15: Customer Registration | TC-1-15-2 | Test registration with invalid data formats (empty, special chars, SQLi, XSS) | | | Pending
+Req-1-15: Customer Registration | TC-1-15-3 | Test registration with duplicate usernames | | | Pending
+Req-1-15: Customer Registration | TC-1-15-4 | Test registration input validation | | | Pending
+
+Req-1-16: Payment Process | TC-1-16-1 | Test complete payment process | | | Pending
+Req-1-16: Payment Process | TC-1-16-2 | Test successful purchase completion | | | Pending
+Req-1-16: Payment Process | TC-1-16-3 | Test payment data handling and security | | | Pending
+
+# New and Edge/Negative/Non-Functional Test Cases
+
+Req-1-7: Product Description | TC-1-7-4 | Test direct URL access to product page (deep link) | BUG-002 | Product page returns 404 error when reloading after navigation from category | Found
+Req-1-8: High-Resolution Covers | TC-1-8-4 | Test cover image accessibility (alt text, screen reader) | | | Pending
+Req-1-9: Favorite Products | TC-1-9-4 | Test removing products from favorites | | | Pending
+Req-1-9: Favorite Products | TC-1-9-5 | Test favorites persistence across sessions | | | Pending
+Req-1-11: Shopping Basket Functions | TC-1-11-4 | Test basket persistence across sessions | | | Pending
+Req-1-12: Registered User Checkout | TC-1-12-4 | Test checkout with invalid/expired session | | | Pending
+Req-1-13: Login Functionality | TC-1-13-5 | Test login performance (response time) | | | Pending
+Req-1-13: Login Functionality | TC-1-13-6 | Test login in multiple browsers/devices simultaneously | | | Pending
+Req-1-15: Customer Registration | TC-1-15-5 | Test registration performance (response time) | | | Pending
+Req-1-16: Payment Process | TC-1-16-4 | Test payment process interruption (network loss, cancel) | | | Pending
+Req-1-16: Payment Process | TC-1-16-5 | Test payment security (data encryption, privacy) | | | Pending
+
+# Non-Functional and Cross-Browser
+ALL | TC-NF-1 | Test site performance under load (Lighthouse, k6) | | | Pending
+ALL | TC-NF-2 | Test accessibility (axe DevTools, keyboard navigation) | | | Pending
+ALL | TC-NF-3 | Test cross-browser compatibility (Chrome, Firefox, Edge, Safari) | BUG-003 | [IPHONE14] Homepage and header is not rendered properly | Found
+ALL | TC-NF-4 | Test mobile responsiveness | BUG-003 | [IPHONE14] Homepage and header is not rendered properly | Found
+ALL | TC-NF-5 | Test security (input validation, XSS, SQLi, session management) | BUG-010 | Documents request returns all users from the database | Found
+
+---
+
+BUG TRACKING SUMMARY:
+BUG-001: 404 Error on Product Page Reload
+- Affects: Req-1-4, Req-1-7
+- Test Cases: TC-1-4-1, TC-1-7-1
+- Status: Found
+
+BUG-002: Add to Cart Failure on Homepage
+- Affects: Req-1-10, Req-1-11
+- Test Cases: TC-1-10-1, TC-1-11-3
+- Status: Found
+
+BUG-003: [IPHONE14] Homepage and header is not rendered properly
+- Affects: ALL (cross-browser, mobile)
+- Test Cases: TC-NF-3, TC-NF-4
+- Status: Found
+
+BUG-004: Images are low resolution on the homepage
+- Affects: Req-1-8
+- Test Cases: TC-1-8-1
+- Status: Found
+
+BUG-007: User is unable to complete checkout
+- Affects: Req-1-12, Req-1-16
+- Test Cases: TC-1-12-1, TC-1-16-1
+- Status: Found
+
+BUG-010: Documents request returns all users from the database
+- Affects: ALL (security/privacy)
+- Test Cases: TC-NF-5
+- Status: Found
+
+BUG-012: Search field and category dropdown overlap on category subpages
+- Affects: Req-1-6, Req-1-14
+- Test Cases: TC-1-6-1, TC-1-14-1
+- Status: Found
+
+BUG-016: User is unable to add products to favorites
+- Affects: Req-1-9
+- Test Cases: TC-1-9-1
+- Status: Found
+
+---
+
+TESTING STATUS:
+- Completed: 2 bugs found, 6 test cases executed
+- In Progress: Login (Req-1-13), Registration (Req-1-15)
+- Pending: 50+ test cases remaining
+
+---
+
+JIRA INTEGRATION NOTES:
+- Use this matrix to create Jira test cases and link bugs
+- Each test case should be a separate Jira issue
+- Link bugs to affected test cases and requirements
+- Update status as testing progresses
+- Include evidence and screenshots in Jira attachments 
