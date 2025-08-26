@@ -1,6 +1,6 @@
 # 🧪 Manual QA Framework
 
-A comprehensive testing framework for modern QA teams with JIRA integration, standardized bug reporting, and test planning templates.
+A comprehensive testing framework for QA teams with JIRA integration, standardized bug reporting, and test planning templates aligned with company standards.
 
 ![Testing Framework](https://img.shields.io/badge/Testing-Framework-blue)
 ![JIRA Integration](https://img.shields.io/badge/JIRA-Integration-green)
@@ -9,11 +9,11 @@ A comprehensive testing framework for modern QA teams with JIRA integration, sta
 
 ## 🎯 Overview
 
-**Manual QA Framework** provides:
-- **Standardized bug reporting** with JIRA integration
-- **Test planning templates** and execution guides
-- **Project-specific testing** workflows
-- **Quality metrics** and best practices
+**Manual QA Framework** provides company-standardized:
+- **Bug reporting templates** with Confluence alignment and JIRA integration
+- **Test planning workflows** and execution guides
+- **Project-specific testing** documentation and rules
+- **Quality metrics** and best practices for consistent QA processes
 
 ## 📁 Framework Structure
 
@@ -35,7 +35,7 @@ qa-manual-framework/
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/Fearthepencil/QA-Manual-Framework.git
+git clone https://github.com/compstak/QA-Manual-Framework.git
 cd QA-Manual-Framework
 ```
 
@@ -76,30 +76,10 @@ bash "01-jira-integration/commands/show_my_tickets.sh"
 - ✅ Formatted table output
 - ✅ Error handling and user feedback
 
-**Output Example:**
-```
-Show My Tickets - QA Engineer Dashboard
-================================================
-Current User: Pavle Stefanovic (712020:016ad54d-5387-4067-b5c5-6bd187f523d2)
-Found 26 tickets assigned to you as QA Assignee
-
-===============================================================================================================
-Ticket Key  | Summary                                                     | Status      | Priority    | Last Updated        
-===============================================================================================================
-AP-20715    | [BE] Buyer/Seller Fields Missing from Enterprise S...   | To Do       | Major       | 2025-08-25 15:27
-AP-20344    | Missing Buyer and Seller Information in New Sales ...   | Ready for QA | Normal      | 2025-08-22 10:18
-...
-```
-
 **Prerequisites:**
-- JIRA API credentials configured
+- JIRA API credentials configured in `.env` file
 - Network access to JIRA instance
 - PowerShell (Windows) or Bash (Mac/Linux)
-
-**Troubleshooting:**
-- **Authentication Error**: Verify your JIRA API token in the script
-- **No Tickets Found**: Check if you're assigned as QA Assignee in JIRA
-- **Permission Denied**: Ensure script execution is allowed on your system
 
 ### 🔧 Command Configuration
 
@@ -115,19 +95,12 @@ For detailed command documentation and advanced usage:
 - [Command Configuration](01-jira-integration/config/)
 - [Field Reference](01-jira-integration/config/jira_field_reference.md)
 
-### 🚧 Upcoming Commands
+### 🚧 Additional Commands
 
-The framework is actively being developed with additional commands:
-
-**Planned Commands:**
-- `show-ticket [KEY]` - Display detailed ticket information
-- `update-status [KEY] [STATUS]` - Update ticket status
-- `add-comment [KEY]` - Add comments to tickets
-- `create-bug-report` - Generate standardized bug reports
-- `test-plan-generator` - Create test plans from templates
-
-**Contributing New Commands:**
-See the [Contributing](#-contributing) section for guidelines on adding new commands to the framework.
+Additional commands available:
+- Enhanced JIRA MCP server integration
+- Ticket creation and management tools
+- Bug report generation utilities
 
 ## 🛠️ Key Features
 
@@ -163,7 +136,7 @@ See the [Contributing](#-contributing) section for guidelines on adding new comm
 ### 🎓 Guides
 - [Quick Start Guide](06-documentation/guides/quick_start_guide.md)
 - [JIRA Environment Setup](06-documentation/guides/jira_env_setup_guide.md)
-- [Enhanced JIRA Integration](01-jira-integration/README.md)
+- [JIRA Integration Scripts](01-jira-integration/scripts/)
 - [Bug Report Quality Standards](02-bug-reports/templates/bug_metrics_reference.md)
 - [Test Plan Creation](03-test-plans/template/test_plan_template.md)
 
@@ -193,7 +166,7 @@ JIRA_MCP_TOKEN=your_api_token_here
 
 **1. Create Your Feature Branch**
 ```bash
-git clone https://github.com/Fearthepencil/QA-Manual-Framework.git
+git clone https://github.com/compstak/QA-Manual-Framework.git
 cd QA-Manual-Framework
 git checkout -b feature/your-feature-name
 ```
