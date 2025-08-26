@@ -1,0 +1,93 @@
+Bug Report Template - ACME E-commerce Testing
+
+Title
+Missing Buyer and Seller Information in New Sales Comp Versions and Masters (Dev Environment Only)
+
+Description
+When creating new sales comp masters with new owners via Cluster (QA Tool), buyer and seller information is missing from the created versions and masters despite being present in the original proposals. The sales.participant_groups table remains empty, causing sales comps to be classified as partial instead of full/premium comps. This issue only occurs when creating new sales comp masters with new owners and currently affects only the dev environment.
+
+Expected Behaviour
+Buyer and seller information should be transferred from proposals to versions and masters during the Argo Job execution. The sales.participant_groups table should be populated with the buyer and seller data, and sales comps should be classified as full/premium rather than partial.
+
+Actual Behaviour
+- Sales.participant_groups table is empty despite proposal data containing buyer and seller information
+- Buyer and seller information is missing from versions and masters
+- Sales comps are incorrectly classified as partial instead of full/premium
+- The data transfer process from proposals to versions fails for new owners
+
+Steps to Reproduce
+1. Create new sales comp proposals with new buyers and sellers via submission process
+2. Create new masters via Cluster (QA Tool) with probability set to 0.99
+3. Run Argo Job to create versions from the new proposals
+4. Query sales.participant_groups table for the created versions
+5. Observe that participant_groups table is empty
+6. Verify that original proposal data contains correct buyer and seller information
+7. Confirm that sales comps are marked as partial instead of full/premium
+
+Evidence
+Submission Details:
+- Submission file: https://specialk.dev.cs-int-592.com/versions?dataType=sales&batch=56076
+- New proposal IDs: 11918678 and 11918677
+- Version IDs: 7394064 and 7394065  
+- New master IDs: 3926282 and 3926281 (Probability: 0.99)
+- Buyer: "Joka Saved Search 2"
+- Seller: "Koka Saved Search 2"
+
+Database Evidence:
+- MySQL landlords table contains both new owners correctly
+- sales_comps.proposals table has proper data in "data" column with buyer/seller information
+- sales.participant_groups table is empty for the new versions
+- Query result shows empty participant_groups: []
+
+Sample Proposal Data (from "data" column):
+{
+  "buyer": "Joka Saved Search 2",
+  "seller": "Koka Saved Search 2",
+  "proposalId": 1540867,
+  "versionId": 3662078,
+  "buildingAddress": "1710 Tully Road",
+  "city": "San Jose",
+  "state": "CA",
+  "totalSalePrice": "2282882",
+  "saleDate": "07/01/2025"
+}
+
+Technical Details
+- Environment: Dev only (other environments unaffected)
+- Issue Type: Data transfer failure from proposals to versions
+- Affected Process: Argo Job version creation workflow
+- Database Tables: sales.participant_groups (empty), sales_comps.proposals (contains data), MySQL landlords (populated)
+- Classification Impact: Sales comps marked as partial instead of full/premium
+
+Impact Assessment
+- Severity: High - Affects data quality and sales comp classification
+- User Impact: QA testing workflow disrupted, incorrect comp classifications
+- Business Impact: Inaccurate sales comp data, potential reporting issues
+- Environment Impact: Dev environment inconsistent with expected behavior
+
+Reproducibility
+- Frequency: Always when creating new sales comp masters with new owners
+- Conditions: New owners only; existing owners work correctly
+- Dependencies: Requires new buyer/seller creation, Cluster QA Tool, Argo Job execution
+- Environment: Dev environment only
+
+Suggested Fix
+1. Investigate the Argo Job workflow for data transfer from proposals to versions
+2. Check participant_groups population logic specifically for new owners vs existing owners
+3. Review dev environment configuration for potential differences in data processing
+4. Add validation to ensure participant_groups is populated when proposals contain buyer/seller data
+5. Add automated tests to verify buyer/seller data transfer in version creation process
+6. Implement logging to track data flow from proposals through to participant_groups table
+
+Bug Report Metadata
+- Reported By: [Your Name]
+- Date Reported: [YYYY-MM-DD HH:MM:SS]
+- Bug ID: [To be assigned]
+- Status: New
+- Assigned To: [Developer/Team]
+- Evidence Location: Database queries and SpecialK submission file
+- Environment: Dev only
+- Linked Test Case: [Reference if available]
+- Requirement Reference: [Req-X-X if available]
+
+--- 

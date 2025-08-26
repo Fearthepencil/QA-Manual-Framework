@@ -1,0 +1,121 @@
+---
+
+[READY] [PRODUCT CATALOG] All Books/All CDs button does not display full product list
+
+---
+
+### Description
+
+When navigating to the Books or CDs category pages and clicking the "All Books" or "All CDs" button, the system fails to display the complete list of products. The button appears to be non-functional as no action occurs when clicked, preventing users from viewing all available books or CDs in the respective categories.
+
+---
+
+### Expected Behaviour
+
+- Clicking "All Books" button should display a complete list of all available books
+- Clicking "All CDs" button should display a complete list of all available CDs
+- The button should be clearly interactive and responsive to user clicks
+- Product listings should show book/CD summaries with required properties (author/artist, title, publisher/label, price)
+- Navigation should work smoothly without page errors or blank content
+
+---
+
+### Actual Behaviour
+
+- Clicking "All Books" button produces no visible response or action
+- Clicking "All CDs" button produces no visible response or action
+- No product list is displayed after clicking the buttons
+- The page remains in the same state as before clicking
+- No error messages or feedback are provided to the user
+- The buttons appear to be non-functional or broken
+
+---
+
+### Steps to Reproduce
+
+1. Navigate to https://sut.testingcup.rs/build2/
+2. Click on "Books" category from the main navigation
+3. Look for "All Books" button on the Books category page
+4. Click on the "All Books" button
+5. Observe that no product list appears
+6. Repeat steps 2-5 for "CDs" category and "All CDs" button
+
+---
+
+### Evidence
+
+- Screenshot showing Books category page with "All Books" button visible
+  (Filename: books_category_page.png)
+- Screenshot showing CDs category page with "All CDs" button visible
+  (Filename: cds_category_page.png)
+- Screenshot showing no change after clicking the buttons
+  (Filename: no_product_list_displayed.png)
+
+---
+
+### Technical Details
+
+- URL: https://sut.testingcup.rs/build2/books and https://sut.testingcup.rs/build2/cds
+- Browsers: Chrome 120.0.6099.109, Firefox 121.0, Edge 120.0.2210.91
+- OS: Windows 10, macOS 14.2
+- Console: No JavaScript errors observed
+- Network: All assets load normally, no failed requests detected
+
+---
+
+### Impact Assessment
+
+- **Severity:** Major
+- **User Impact:** Users cannot browse complete product catalogs, severely limiting shopping experience and potentially causing lost sales
+- **Business Impact:** Reduced product discovery, potential revenue loss, poor user experience affecting customer satisfaction and retention
+
+---
+
+### Requirement Coverage
+
+- [ ] Req-1-1: E-commerce Platform
+- [x] Req-1-2: Book Properties  
+- [x] Req-1-3: CD Properties
+- [x] Req-1-4: Product Categorization
+- [x] Req-1-5: Category Product Summaries
+- [x] Req-1-6: Category Search
+- [ ] Req-1-7: Product Description
+- [ ] Req-1-8: High-Resolution Covers
+- [ ] Req-1-9: Favorite Products
+- [ ] Req-1-10: Add to Shopping Basket
+- [ ] Req-1-11: Shopping Basket Functions
+- [ ] Req-1-12: Registered User Checkout
+- [ ] Req-1-13: Login Functionality
+- [ ] Req-1-14: Global Product Search
+- [ ] Req-1-15: Customer Registration
+- [ ] Req-1-16: Payment Process
+
+---
+
+### Test Plan Traceability
+
+- ✅ Test Case ID: TC-1-4-2 – Verify all products are categorized
+- ✅ Test Type: Functional
+- ✅ Risk Level: High
+
+---
+
+### Reproducibility
+
+- Frequency: Always
+- Conditions: Requires access to Books and CDs category pages, buttons must be present and visible
+
+---
+
+### Bug Report Metadata
+
+- Reported By: QA Team
+- Date Reported: 2024-12-19 15:30:00
+- Bug ID: BUG-017
+- Status: Found
+- Assigned To: Development Team
+- Evidence Location: Screenshots stored in project evidence folder
+- Linked Test Case: TC-1-4-2
+- Requirement Reference: Req-1-4, Req-1-5, Req-1-6
+
+--- 

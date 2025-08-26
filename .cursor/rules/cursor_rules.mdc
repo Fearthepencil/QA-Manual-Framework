@@ -1,0 +1,195 @@
+# Project: Manual QA Framework
+
+## Current Task
+Integration implementation in progress:
+- ✅ Phase 1: Template Integration - Copying QA Assistant Igor templates
+- 🔄 Phase 2: AI Knowledge Base Integration - Adding ISTQB content
+- ⏳ Phase 3: Enhanced JIRA Integration - MCP server enhancements
+- ⏳ Phase 4: Documentation Consolidation - Unified guides
+
+## Framework Overview
+**Manual QA Framework** is a structured testing framework that provides:
+- Standardized bug reporting templates
+- JIRA integration for seamless ticket management
+- Test plan templates and execution guides
+- API testing utilities and documentation
+- Data validation and synchronization testing tools
+
+## Repository Setup Plan
+
+### Phase 1: Private Repository Creation ✅ COMPLETED
+- ✅ Create private GitHub repository: `qa-manual-framework`
+- ✅ Push current framework code
+- ✅ Set up proper .gitignore for sensitive files
+- ✅ Configure repository settings for private access
+
+### Phase 2: Company Integration Preparation
+- Prepare framework for database integration
+- Document integration points for company systems
+- Create migration plan for company repository
+- Prepare team onboarding documentation
+
+### Phase 3: Company Repository Migration
+- Get manager approval for company integration
+- Migrate to company repository structure
+- Set up team access and permissions
+- Deploy framework for colleague use
+
+## OES Documentation Task ✅ COMPLETED
+
+### Current Status: Documentation Successfully Retrieved and Organized
+- ✅ **Target URL**: https://compstak.atlassian.net/wiki/spaces/QA/pages/3569319954/Testing+the+Ownership+Entity+System+OES
+- ✅ **Content Retrieved**: Complete OES system documentation via JIRA MCP integration
+- ✅ **Documentation Created**: Comprehensive OES testing guide
+- ✅ **Location**: `04-projects/ownership-entity/project documentation/OES_System_Documentation.md`
+
+### OES Documentation Content
+- Complete system architecture and database relationships
+- Data processing workflows (Import → Process → Export)
+- API endpoints with request/response examples
+- Testing requirements and workflows
+- SQL queries for validation and testing
+- Monitoring and validation procedures
+- Automation details (cronjobs, synchronization)
+- Test cases and troubleshooting guides
+
+## Updated Project Structure
+
+### 04-projects/ownership-entity/
+- **project documentation/** - OES System Documentation
+- **project rules/** - OES testing guidelines and rules
+
+## Key Components
+
+### JIRA Integration
+- **MCP Server**: @timbreeding/jira-mcp-server configured
+- **Field Mapping**: Comprehensive mapping for "All Tech Projects" (AP) + "Bug (t)" issue type
+- **ADF Format**: Atlassian Document Format for descriptions/comments
+- **Ticket Management**: Automated creation and updates via API
+
+### Bug Reporting System
+- **Templates**: Standardized bug report templates
+- **Metadata**: JIRA-specific metadata for AP projects
+- **Metrics**: Bug metrics reference and tracking
+- **Quick Guide**: Streamlined reporting process
+
+### Test Planning
+- **Templates**: Comprehensive test plan templates
+- **Demo Examples**: Real-world test plan demonstrations
+- **Standards**: ISTQB CTFL Syllabus v4.0.1 compliance
+
+### API Testing
+- **Ownership Entity Testing**: New attribute fields validation
+- **Kafka Events**: Event creation and validation
+- **Data Synchronization**: Neo4J, Kafka, Elasticsearch flow verification
+- **Manual Endpoints**: API endpoint testing utilities
+
+### New Attribute Fields (Ownership Entity)
+- **Entity Name**: String (Blackstone, Prologis, Simon Property Group)
+- **Ticker/Exchange**: Array of objects with ticker, exchange, country
+- **Country of Ownership**: String single select (US, Singapore, UAE)
+- **Capital Type**: String single select (Pension Fund, Sovereign Wealth, Private Equity, Public REIT, Private REIT)
+- **Owner Types**: Array (Investor, Operator, Occupier)
+- **Website**: String URL
+- **Primary Asset Classes**: Array max 3 (Office, Retail, Industrial, Specialty, Diversified)
+- **Investment Strategy Primary**: String single select (Core, Core Plus, Value-Add, Opportunistic, Multi-Strategy)
+- **Investment Strategy Also Invests In**: Array max 2 (Core, Core Plus, Value-Add, Opportunistic)
+- **Additional fields**: name, display name, hidden, hidden reason
+
+### Infrastructure
+- **Kafka Topic**: "ownership-entity.owners" (all environments)
+- **Elasticsearch Index**: "owner-v020" (all environments)
+- **API Base**: https://ownership-entity-service.dev.cs-int-592.com/docs/swagger/
+
+### API Endpoints to Test
+- POST /knowledge-graph/owners/import
+- POST /kafka/owners/publish  
+- POST /elastic/owners/refresh
+- POST /owners/search
+
+### Database Tables
+- kg_owners (imported from Neo4J)
+- kg_owner_import_results (import statistics)
+- kafka_owners_publish_export_results (manual publishing results)
+- elastic_owners_refresh_export_results (manual indexing results)
+
+### Kafka Events
+- OwnerUpserted events (automatic and manual)
+- OwnerDeleted events
+- Event structure includes full owner data with all new attributes
+
+### Data Sources
+- **Neo4J**: ~10M owners, max ID ~340M
+- **Source Query**: Complex MATCH query handling duplicates and parent relationships
+
+## Testing Objectives
+1. Test automatic Kafka event creation
+2. Test manual API endpoints for event creation
+3. Verify data flow: Neo4J → Kafka → Elasticsearch
+4. Validate all new attribute fields are properly handled
+5. Confirm event structure matches specification
+
+## Current Status
+✅ **JIRA MCP Integration**: Successfully configured and tested
+✅ **Bug Report Created**: AP-20715 for Stage Enterprise buyer/seller field issue
+✅ **Framework Refactoring**: Successfully pivoted from Testing Cup to Manual QA Framework
+✅ **Repository Created**: Private GitHub repository successfully set up
+✅ **README Streamlined**: Documentation made more concise and readable
+✅ **OES Documentation**: Successfully retrieved from Atlassian and organized
+✅ **Project Structure**: Reorganized to proper 04-projects/ownership-entity structure
+
+**OES Testing Discovery**: Important edge case with deleted owners:
+- /landlords/find-or-create endpoint behavior with deleted owners
+- Natural deleted=1 owners can be un-deleted successfully
+- Manually set deleted=1 owners cannot be un-deleted
+- Root cause: OES data synchronization gap between MySQL and PostgreSQL
+
+**Stage Environment Bug**: ✅ **RESOLVED AND REPORTED**
+- **JIRA Ticket**: AP-20715 "[BE] Buyer/Seller Fields Missing from Enterprise Stage Sales Search Results"
+- **Root Cause**: Stage Elasticsearch documents missing root-level buyer/seller fields
+- **Technical Issue**: ES indexing pipeline missing field transformation step
+- **Scope**: Stage only (Dev/Prod working correctly)
+
+## Current Testing Issues
+- Need to complete Step 2: Manual API endpoint testing for OES
+- Continue ownership entity testing workflow
+- Address ES indexing pipeline issue in Stage environment
+
+## Architecture Discovery: OES Data Synchronization
+- OES (Owner Entity Service) has local PostgreSQL copy of MySQL landlords
+- /landlords/find-or-create checks LOCAL copy first (avoids MySQL calls)
+- If name exists locally → return landlord IDs  
+- If name doesn't exist locally → insert/un-delete in MySQL
+- Manual MySQL changes don't sync to OES PostgreSQL automatically
+- OES PostgreSQL uses `date_deleted` column vs MySQL `deleted` column
+- "Natural" deletions work through proper sync flow
+- "Manual" deletions only affect one system, breaking sync
+
+## JIRA Integration Status
+✅ **Successfully Configured**: JIRA MCP server with @timbreeding/jira-mcp-server
+✅ **Field Mapping Created**: Comprehensive mapping for "All Tech Projects" (AP) + "Bug (t)" issue type
+✅ **ADF Format Identified**: Atlassian Document Format required for descriptions/comments
+✅ **Ticket Creation Tested**: Successfully created and updated JIRA tickets via API
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

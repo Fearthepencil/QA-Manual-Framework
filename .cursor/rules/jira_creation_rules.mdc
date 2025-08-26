@@ -1,0 +1,166 @@
+# JIRA Bug Creation Rules for All Tech Projects
+
+## Standard Bug Creation Format
+
+When creating JIRA tickets in All Tech Projects (AP), always use:
+
+### Required Fields
+```json
+{
+  "fields": {
+    "project": {"key": "AP"},
+    "issuetype": {"id": "1"},
+    "summary": "Clear, descriptive title",
+    "customfield_11332": {"value": "Dev"}
+  }
+}
+```
+
+### Common Field Mappings
+
+**Environment (REQUIRED):**
+- Dev: `{"value": "Dev"}`
+- Stage: `{"value": "Stage"}`  
+- Prod: `{"value": "Prod"}`
+
+**Engineering Teams:**
+- Polaris: `{"value": "Polaris"}`
+- Vega: `{"value": "Vega"}`
+- Sirius: `{"value": "Sirius"}`
+- Helios: `{"value": "Helios"}`
+
+**Priority Levels:**
+- Critical: `{"id": "1"}`
+- High: `{"id": "2"}`
+- Medium: `{"id": "3"}`
+- Low: `{"id": "4"}`
+
+**Severity Levels:**
+- P0 Site Outage: `{"value": "P0 - Site Outage"}`
+- P1 Data Issue: `{"value": "P1 - Trust/Data/Datafeed/API Issue"}`
+- P2 Broken Function: `{"value": "P2 - Broken Functionality With No Work Around"}`
+- P3 Has Workaround: `{"value": "P3 - Broken Functionality With Work Around"}`
+
+**Common Components:**
+- sales-comps: `{"id": "11718"}`
+- Elastic Search: `{"id": "11681"}`
+- External/CompStak API: `{"id": "11633"}`
+- Gateway: `{"id": "11714"}`
+
+### API Endpoint
+```
+POST https://compstak.atlassian.net/rest/api/3/issue
+```
+
+### Authentication Format
+```
+Authorization: Basic base64(email:api_token)
+Content-Type: application/json
+```
+
+## Critical Formatting Rules
+
+### Description Field - ADF Format REQUIRED
+❌ **NEVER use plain text for descriptions:**
+```json
+"description": "Plain text will cause 400 Bad Request"
+```
+
+✅ **ALWAYS use Atlassian Document Format (ADF):**
+```json
+"description": {
+  "type": "doc",
+  "version": 1,
+  "content": [
+    {
+      "type": "paragraph",
+      "content": [
+        {
+          "type": "text",
+          "text": "Your description here"
+        }
+      ]
+    }
+  ]
+}
+```
+
+### ADF Examples from Testing
+
+**Simple Text:**
+```json
+"description": {
+  "type": "doc",
+  "version": 1,
+  "content": [
+    {
+      "type": "paragraph",
+      "content": [
+        {"type": "text", "text": "Simple description text"}
+      ]
+    }
+  ]
+}
+```
+
+**Bold Text:**
+```json
+{
+  "type": "text",
+  "text": "Bold text here",
+  "marks": [{"type": "strong"}]
+}
+```
+
+**Bullet List:**
+```json
+{
+  "type": "bulletList",
+  "content": [
+    {
+      "type": "listItem",
+      "content": [
+        {
+          "type": "paragraph",
+          "content": [
+            {"type": "text", "text": "Bullet point text"}
+          ]
+        }
+      ]
+    }
+  ]
+}
+```
+
+## Bug Report Quality Standards
+
+### Summary Format: `[WHERE] > [WHAT] > [WHEN]`
+**Examples**:
+- `[BE] Enterprise Stage > Buyer/Seller Fields Missing > During Sales Search`
+- `[FE] Retool Dashboard > API Timeout Error > On Large Dataset Load`
+- `[API] OES Service > Returns Deleted Owner > When Name Exists in MySQL`
+
+### Required Bug Report Structure
+1. **Preconditions**: What's needed to start reproducing
+2. **Steps to Reproduce**: Clear, numbered actionable steps
+3. **Expected Result**: What should happen
+4. **Actual Result**: What actually happens
+5. **Additional Information**: Technical details, logs, related tickets (bottom section)
+
+### Quality Metrics
+- Summary immediately tells WHERE > WHAT > WHEN
+- Preconditions enable others to set up same starting state
+- Steps are reproducible by following exactly
+- Expected vs Actual shows clear contrast
+- Additional info separated from main reproduction flow
+
+**Reference**: See `bug_metrics_reference.md` for detailed examples and templates
+
+## Standard Rules
+1. Always include Environment field - it's REQUIRED
+2. Use descriptive summaries following WHERE > WHAT > WHEN format
+3. Include relevant components when known
+4. Set appropriate severity for bugs
+5. Tickets automatically go to Backlog status
+6. **CRITICAL: Use ADF format for descriptions - plain text causes 400 errors**
+7. **CRITICAL: Follow bug metrics structure for quality reports**

@@ -1,0 +1,81 @@
+Bug Report Template - ACME E-commerce Testing
+
+Title
+[Clear, concise title describing the bug. Use action-oriented language and reference the affected feature/requirement]
+
+Description
+[Detailed explanation of the bug, including context, impact, and why it matters. Reference related test case/charter and requirement if possible. Explain the business impact and user experience implications.]
+
+Expected Behaviour
+[What should happen according to requirements/specifications/test plan. Be specific about the expected user experience and system behavior.]
+
+Actual Behaviour
+[What actually happens. Be specific about observed behavior, error messages, or unexpected outcomes. Include any error codes or technical details.]
+
+Steps to Reproduce
+[Numbered, detailed steps that will reliably reproduce the bug. Include specific URLs, actions, and data if relevant.]
+
+1. [Step 1 - specific action]
+2. [Step 2 - specific action]
+3. [Step 3 - specific action]
+4. [Step 4 - specific action]
+5. [Step 5 - specific action]
+
+Alternative Reproduction Path:
+1. [Alternative step 1]
+2. [Alternative step 2]
+3. [Alternative step 3]
+
+Evidence
+Screenshots:
+- Screenshot 1: [Description of what the screenshot shows]
+- Screenshot 2: [Description of what the screenshot shows]
+- Screenshot 3: [Description of what the screenshot shows]
+- Screenshot 4: [Description of what the screenshot shows] (if needed)
+
+Technical Details:
+- URL: [Specific URL where bug occurs]
+- Error Type: [404, 500, JavaScript error, etc.]
+- Browser Console: [Any JavaScript errors or warnings]
+- Network Tab: [Any failed API calls or requests]
+- Browser: [Chrome/Firefox/Edge version]
+- OS: [Windows/Mac/Linux version]
+
+Impact Assessment
+- Severity: [High/Medium/Low] - [Brief explanation of why this severity]
+- User Impact: [How this affects users and their experience]
+- Business Impact: [How this affects sales, conversions, or business operations]
+- Traceability: [Link to requirement number(s) - e.g., Req-1-10, Req-1-11]
+
+Reproducibility
+- Frequency: [Always/Sometimes/Once] (happens every time/sometimes/only once)
+- Conditions: [Any specific conditions or dependencies]
+- Dependencies: [What needs to be in place for this bug to occur]
+
+Suggested Fix
+[Optional: Provide 2-3 specific recommendations for how the bug could be fixed]
+
+1. [Specific technical recommendation]
+2. [Specific technical recommendation]
+3. [Specific technical recommendation]
+
+Bug Report Metadata
+- Reported By: [Your Name]
+- Date Reported: [YYYY-MM-DD HH:MM:SS]
+- Bug ID: [Auto-generated or assigned]
+- Status: [New/Open/In Progress/Resolved/Closed]
+- Assigned To: [Developer/Team]
+- Evidence Location: [Link to screenshots if stored externally]
+- Linked Test Case: [Reference to test case or charter]
+- Requirement Reference: [Req-X-X format]
+
+---
+
+INSTRUCTIONS FOR USE:
+1. Copy this template for each new bug
+2. Fill in all sections with specific details
+3. Take screenshots immediately when finding bugs
+4. Include technical details from browser dev tools
+5. Link to specific requirements for traceability
+6. Be specific about reproduction steps
+7. Assess business impact for competition scoring 

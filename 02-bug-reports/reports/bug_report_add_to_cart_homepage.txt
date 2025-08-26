@@ -1,0 +1,85 @@
+Bug Report: Add to Cart Functionality Fails on Homepage Featured Books
+
+Title
+User unable to add featured books to cart from homepage - Add to Cart button non-functional
+
+Description
+When a user is on the homepage and attempts to add a featured book to the shopping cart by clicking on the featured book and then clicking the "Add to Cart" button, the book is not added to the cart. This is a critical functionality failure that prevents users from making purchases directly from the homepage, significantly impacting the user experience and potential sales conversion. The issue appears to be related to JavaScript functionality, event handling, or cart state management for featured products on the homepage.
+
+Expected Behaviour
+- User should be able to click on a featured book on the homepage
+- "Add to Cart" button should be clickable and functional
+- Book should be successfully added to the shopping cart
+- Cart should update to reflect the added item
+- User should receive visual feedback (cart icon update, confirmation message, etc.)
+- Cart count should increment by 1
+
+Actual Behaviour
+- User can click on featured book on the homepage
+- "Add to Cart" button appears to be clickable
+- No visual feedback when button is clicked
+- Book is not added to the shopping cart
+- Cart count does not increment
+- No error message is displayed to the user
+- User is left with no indication that the action failed
+
+Steps to Reproduce
+1. Navigate to https://sut.testingcup.rs/build1/
+2. Verify the homepage loads with featured books visible
+3. Locate a featured book on the homepage
+4. Click on the featured book to view its details
+5. Click the "Add to Cart" button
+6. Verify that the book is not added to the shopping cart
+7. Check cart icon/count - should remain unchanged
+8. Navigate to cart page to confirm item is not present
+
+Alternative Reproduction Path:
+1. Navigate to https://sut.testingcup.rs/build1/
+2. Locate a featured book on the homepage
+3. Click on the featured book
+4. Click "Add to Cart" button multiple times
+5. Verify no items are added to cart regardless of number of clicks
+
+Evidence
+Screenshots:
+- Screenshot 1: Homepage showing featured books with "Add to Cart" buttons
+- Screenshot 2: Featured book detail view with "Add to Cart" button visible
+- Screenshot 3: Cart page showing no items added after clicking "Add to Cart"
+- Screenshot 4: Browser developer tools console showing any JavaScript errors
+
+Technical Details:
+- Page: Homepage (https://sut.testingcup.rs/build1/)
+- Element: "Add to Cart" button on featured books
+- Browser Console: [Check for JavaScript errors]
+- Network Tab: [Check for failed API calls]
+- Browser: [To be specified]
+- OS: [To be specified]
+
+Impact Assessment
+- Severity: High - Critical e-commerce functionality failure
+- User Impact: Users cannot add products to cart from homepage, blocking purchases
+- Business Impact: Significant loss of sales due to broken add-to-cart functionality
+- Traceability: Affects Req-1-10 (Add products to shopping basket) and Req-1-11 (Shopping basket functions)
+
+Reproducibility
+- Frequency: 100% (happens every time)
+- Conditions: Any browser, any featured book on homepage
+- Dependencies: Requires featured books to be present on homepage
+
+Suggested Fix
+1. Review JavaScript event handlers for "Add to Cart" buttons on homepage
+2. Check cart state management and API integration
+3. Verify proper event binding for dynamically loaded content
+4. Implement proper error handling and user feedback
+5. Test add-to-cart functionality across different product types
+6. Ensure cart updates are properly reflected in UI
+
+Bug Report Metadata
+- Reported By: [Your Name]
+- Date Reported: [YYYY-MM-DD HH:MM:SS]
+- Bug ID: [Auto-generated or assigned]
+- Status: New
+- Assigned To: [Developer/Team]
+- Evidence Location: [Link to screenshots when uploaded]
+- Linked Test Case: Homepage add-to-cart functionality testing
+- Requirement Reference: Req-1-10 (Add products to shopping basket) 

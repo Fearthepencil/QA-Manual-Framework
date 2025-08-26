@@ -1,0 +1,93 @@
+Bug Report: Buyer/Seller Fields Missing in Stage Environment Sales Data
+
+================================================================================
+
+TITLE: Buyer/Seller Fields Missing from Enterprise Stage Sales Search Results
+
+SEVERITY: P2 - Broken Functionality With No Work Around
+
+ENVIRONMENT: Stage (enterprise.stage.cs-int-592.com)
+
+COMPONENTS: Enterprise Sales Search, Data Pipeline, Elasticsearch Indexing
+
+================================================================================
+
+DESCRIPTION:
+Sales records in the Stage environment are missing Buyer/Seller field data in the Enterprise UI, while the same records show complete buyer/seller information in Production. This affects high-value transactions when sorting by total sale price, making it appear that buyer/seller data is missing when it actually exists in the underlying data.
+
+AFFECTED URL:
+https://enterprise.stage.cs-int-592.com/search/sales/list?marketNames=[%22Manhattan%22]&transactionSizeMin=10&transactionSizeMax=100000&sortField=totalSalePrice&sortDirection=desc
+
+================================================================================
+
+EXPECTED BEHAVIOR:
+- Sales records in Stage should display Buyer/Seller fields consistently with Production
+- High-value transactions should show complete ownership information
+- Data displayed should match what exists in the master records and Elasticsearch indices
+
+ACTUAL BEHAVIOR:
+- Sales records in Stage show only "Recorded Buyer/Seller" fields
+- "Buyer/Seller" fields appear empty/missing in Enterprise UI
+- This primarily affects top transactions when sorted by total sale price
+- Issue does not exist in Production environment
+
+================================================================================
+
+EXAMPLE CASE: Sale ID 3657228 ($302M Transaction)
+
+STAGE vs PRODUCTION COMPARISON:
+Stage URL: https://enterprise.stage.cs-int-592.com/comps/sales/3657228
+- Shows: Recorded Buyer: "655 FIFTH AVENUE LLC"
+- Shows: Recorded Seller: "MM 655 FIFTH LLC" 
+- Missing: Buyer/Seller fields (empty)
+
+Production URL: https://enterprise.compstak.com/comps/sales/3657228
+- Shows: Recorded Buyer: "655 FIFTH AVENUE LLC"
+- Shows: Recorded Seller: "MM 655 FIFTH LLC"
+- Shows: Buyer/Seller fields (populated)
+
+MASTER DATA COMPARISON:
+Stage Master: https://specialk.stage.cs-int-592.com/sales/master/3657228
+Production Master: https://specialk.compstak.com/sales/master/3657228
+- Both master records appear identical
+- Both contain same buyer/seller data
+
+ELASTICSEARCH DATA (STAGE):
+Index: new-salesmaster-single-property-v20241120
+Document ID: 365722800000790
+- Contains complete buyer/seller data in suggestionFields:
+  - buyer: "655 FIFTH AVENUE LLC"
+  - seller: "MM 655 FIFTH LLC"
+- recordedBuyer: ["655 FIFTH AVENUE LLC"]
+- recordedSeller: ["MM 655 FIFTH LLC"]
+
+================================================================================
+
+DATA ANALYSIS:
+
+ENVIRONMENT COMPARISON:
+✅ Production: Buyer/Seller fields display correctly
+❌ Stage: Buyer/Seller fields missing from UI
+✅ Both: Master data appears identical
+✅ Both: Recorded Buyer/Seller display correctly
+
+ELASTICSEARCH INDEX STATUS:
+✅ Stage ES Index: Contains complete buyer/seller data
+✅ Data Structure: suggestionFields.buyer/seller populated
+✅ Raw Data: recordedBuyer/recordedSeller arrays populated
+
+AFFECTED SCOPE:
+- Primarily affects high-value transactions (top results when sorted by price)
+- Multiple records affected in Manhattan market
+- Issue appears systematic, not isolated to single record
+
+================================================================================
+
+REPRODUCTION STEPS:
+1. Navigate to Stage Enterprise sales search
+2. Filter for Manhattan market with transaction size 10-100,000
+3. Sort by Total Sale Price (descending)
+4. Examine top results (highest value transactions)
+5. Observe missing Buyer/Seller fields in transaction details
+6. Compare same transaction ID in Production environment
+7. Verify data exists in Stage master records and ES indices

@@ -1,0 +1,14 @@
+{
+  "fields": {
+    "project": {
+      "key": "AP"
+    },
+    "summary": "Test Ticket - JIRA MCP Integration Verification",
+    "issuetype": {
+      "id": "1"
+    },
+    "customfield_11332": {
+      "value": "Dev"
+    }
+  }
+}
