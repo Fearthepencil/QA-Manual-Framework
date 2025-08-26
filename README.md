@@ -43,9 +43,13 @@ cd QA-Manual-Framework
 Follow the [JIRA Environment Setup Guide](06-documentation/guides/jira_env_setup_guide.md)
 
 ### 3. Choose Your Workflow
-- **Bug Reporting**: Use templates in `02-bug-reports/templates/`
-- **Test Planning**: Start with `03-test-plans/template/test_plan_template.md`
+- **Bug Reporting**: Use enhanced templates in `02-bug-reports/templates/`
+- **Test Planning**: Start with enhanced templates in `03-test-plans/template/`
 - **Project Testing**: Check `04-projects/ownership-entity/project rules/`
+- **AI Assistant**: Use Igor for test case generation and QA guidance
+
+### 4. Quick Start Guide
+For detailed setup instructions, see the [Quick Start Guide](06-documentation/guides/quick_start_guide.md)
 
 ## 🖥️ Available Commands
 
@@ -128,30 +132,50 @@ See the [Contributing](#-contributing) section for guidelines on adding new comm
 ## 🛠️ Key Features
 
 ### 🔗 JIRA Integration
-- Automated ticket creation with standardized formats
-- Field mapping for all JIRA project types
-- ADF formatting support for rich descriptions
+- **Ticket Creation**: Automated bug report → JIRA ticket creation with MCP server
+- **Ticket Reading**: Comprehensive ticket information extraction and JQL searching
+- **Field Mapping**: Standardized formats for all JIRA project types
+- **ADF Formatting**: Rich descriptions with environment tracking
+- **QA Workload Management**: Track assignments and workload distribution
+- **Enhanced Scripts**: Shell-based integration with JSON output
 
 ### 📊 Bug Reporting System
-- Standardized templates following WHERE > WHAT > WHEN format
+- Enhanced templates with environment context and traceability
 - Quality metrics for reproducible reports
 - Category organization (UI, API, Data, Performance)
+- ISTQB-aligned structure with JIRA integration fields
 
 ### 📋 Test Planning
-- ISTQB-aligned templates
+- Enhanced ISTQB-aligned templates with environment context
 - Performance testing integration
-- Traceability matrix support
+- Comprehensive traceability matrix support
+- AI-assisted test case generation
+- Project-specific test plans and rules
+
+### 🤖 AI Assistant (Igor)
+- AI-powered test case and bug report generation
+- ISTQB knowledge base integration
+- Environment-aware template usage
+- Best practices enforcement and guidance
 
 ## 📚 Documentation
 
 ### 🎓 Guides
+- [Quick Start Guide](06-documentation/guides/quick_start_guide.md)
 - [JIRA Environment Setup](06-documentation/guides/jira_env_setup_guide.md)
+- [Enhanced JIRA Integration](01-jira-integration/README.md)
 - [Bug Report Quality Standards](02-bug-reports/templates/bug_metrics_reference.md)
 - [Test Plan Creation](03-test-plans/template/test_plan_template.md)
 
 ### 📖 References
 - [JIRA Field Reference](01-jira-integration/config/jira_field_reference.md)
 - [Framework Rules](.cursor/rules/cursor_rules.mdc)
+- [AI Assistant Rules](.cursor/rules/ai_assistant_rules.mdc)
+- [ISTQB Knowledge Base](.cursor/Additional context/)
+
+### 🏗️ Projects
+- [Folders Project](04-projects/folders/) - Folder management functionality (Phase 1)
+- [Ownership Entity](04-projects/ownership-entity/) - OES system documentation
 
 ## 🔧 Configuration
 
