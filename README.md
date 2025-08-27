@@ -310,24 +310,6 @@ git push origin develop
 - Documentation updated if needed
 - No sensitive data in commits
 
-### GitHub Branch Protection Setup
-
-**To enforce these rules, set up branch protection in GitHub:**
-
-1. **Go to Repository Settings** → **Branches**
-2. **Add Branch Protection Rule** for `main`:
-   - ✅ **Require a pull request before merging**
-   - ✅ **Require approvals** (1 reviewer minimum)
-   - ✅ **Dismiss stale PR approvals when new commits are pushed**
-   - ✅ **Restrict pushes that create files larger than 100MB**
-
-3. **Add Branch Protection Rule** for `develop`:
-   - ✅ **Require a pull request before merging**
-   - ✅ **Require approvals** (1 reviewer minimum)
-   - ✅ **Dismiss stale PR approvals when new commits are pushed**
-   - ✅ **Allow specified actors to bypass required pull requests** (for maintainers)
-
-4. **Feature branches** remain unprotected for development flexibility
 
 ## 📈 Quality Standards
 
