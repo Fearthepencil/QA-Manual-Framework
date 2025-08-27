@@ -199,8 +199,14 @@ Additional commands available:
 - [ISTQB Knowledge Base](.cursor/Additional context/)
 
 ### 🏗️ Projects
-- [Folders Project](04-projects/folders/) - Folder management functionality (Phase 1)
-- [Ownership Entity](04-projects/ownership-entity/) - OES system documentation
+- [Folders Project](04-projects/folders/project_documentation/) - Folder management functionality (Phase 1)
+- [Ownership Entity](04-projects/ownership-entity/project_documentation/) - OES system documentation
+
+**Important Project Structure Rules:**
+- **Only Documentation**: Only `project_documentation/` folder can be committed to git
+- **No Testing Files**: Individual test cases, bug reports, and test results are excluded
+- **Final Summary**: When testing is complete, create ONE aggregated .md file with all results
+- **Project Documentation Only**: Documentation folder contains rules, requirements, and final summary
 
 ## 🔧 Configuration
 
@@ -332,6 +338,14 @@ git push origin develop
 - Testing completed
 - Documentation updated if needed
 - No sensitive data in commits
+
+#### 📁 **Project Folder Rules**
+- **ONLY DOCUMENTATION FOLDER CAN BE PUSHED**: In project folders (04-projects/*), only the documentation folder can be committed to git
+- **ALL OTHER PROJECT FILES ARE GITIGNORED**: Test files, bug reports, test results, screenshots, etc. are excluded from version control
+- **DOCUMENTATION FOLDER RESTRICTIONS**: Documentation folder can ONLY contain project documentation, NOT testing files
+- **FINAL TESTING SUMMARY**: When testing is complete, create ONE .md file with aggregated data (bugs, test cases, test results)
+- **NO INDIVIDUAL TESTING FILES**: Individual bug reports, test cases, or test results should NOT be in documentation folder
+- **PROJECT DOCUMENTATION ONLY**: Documentation folder should contain project rules, requirements, specifications, and final summary
 
 
 ## 📈 Quality Standards
