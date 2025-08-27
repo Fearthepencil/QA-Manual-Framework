@@ -117,3 +117,14 @@ personal/
 !04-projects/*/project_documentation/*_aggregated.md
 !04-projects/*/documentation/*_summary.md
 !04-projects/*/documentation/*_aggregated.md
+
+# AI-Generated temporary files
+temp_*.json
+ai_*.json
+test_*.json
+*_comment_*.json
+generate_*.json
+
+# JIRA Integration temporary files
+01-jira-integration/commands/temp_*.json
+01-jira-integration/commands/ai_*.json

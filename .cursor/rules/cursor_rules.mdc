@@ -1,3 +1,7 @@
+---
+alwaysApply: true
+---
+
 
 # Manual QA Framework - Cursor Rules
 
@@ -31,6 +35,8 @@
 - **PRESERVE COMPLETE HISTORY**: Maintain all existing examples, references, and detailed information
 - **APPEND, DON'T REPLACE**: When updating documentation, add new sections rather than replacing existing ones
 - **MAINTAIN BACKWARDS COMPATIBILITY**: Keep all existing field references, examples, and formats
+- **FOCUS ON ADDING, NOT REMOVING**: Mostly focus on adding content, not taking away existing information
+- **ONLY REMOVE IF DUPLICATED/OUTDATED**: Only remove content if it's clearly duplicated or outdated, otherwise preserve it
 - **CRITICAL**: CURSOR SHOULD NOT GENERATE ANY NEW FILES IF NOT ABSOLUTELY NECESSARY
 - **ALWAYS READ EXISTING DOCUMENTATION FIRST** before creating anything new
 - **Check existing files** for similar functionality before creating duplicates
@@ -110,19 +116,78 @@
 
 
 
-## Bug Documentation Alignment Task
-- 🔄 Reviewing existing bug report templates and quality standards
-- 🔄 Attempting to access company Atlassian Confluence template
-- 🔄 Identifying gaps between current framework and company standards
-- 🔄 Planning updates to ensure consistency and compliance
-- 🔄 Maintaining framework structure while incorporating company requirements
+## Cross-Platform JIRA Commands - COMPLETED
+- ✅ Fixed Bash script authentication issues (was using wrong auth method)
+- ✅ Both PowerShell and Bash versions working perfectly
+- ✅ Technical detection working on both platforms
+- ✅ User authentication and JIRA API calls working correctly
+- ✅ Cross-platform ticket creation and commenting fully functional
+
+## BUG CREATION RULES - MANDATORY COMPLIANCE
+**CRITICAL**: EVERY bug ticket MUST be validated against bug_metrics_reference.md BEFORE publishing.
+
+### PRE-PUBLISHING VALIDATION CHECKLIST (MANDATORY)
+BEFORE creating ANY ticket, verify compliance with bug_metrics_reference.md:
+
+1. **Pre-Reporting Quality Checklist**:
+   - ✅ Bug reproduced 2-3 times
+   - ✅ Checked Tech bug board for duplicates using keywords  
+   - ✅ Verified if same issue exists in related modules
+   - ✅ Written detailed reproduction steps
+   - ✅ Attached videos, screenshots, logs
+   - ✅ All mandatory fields completed
+
+2. **Summary Format**: "[QA Manual Framework Testing] [Feature/Functionality Name] Title"
+
+3. **Mandatory JIRA Fields**:
+   - Project: "All Tech Projects (AP)"
+   - Issue Type: "Bug (t)" (ID: 1)
+   - Environment: Highest affected (dev → stage → prod)
+   - User: Credentials with Vault link
+
+4. **Required Sections** (ALL MANDATORY):
+   - Description
+   - Preconditions (setup requirements, user access, data state)
+   - Steps to Reproduce (start with "Login as [user type] for example")
+   - Expected Result (specific outcomes)
+   - Actual Result (what actually happens)
+   - Additional Information (environment, browser, errors, related tickets)
+
+5. **Visual Proof Requirements**:
+   - Screenshots with page URL visible
+   - Developer console open with JavaScript errors
+   - System information (OS version, browser version)
+   - Videos/logs when applicable
+
+6. **Severity Classification**: Use P0/P1/P2/P3/P4/5MF (NOT "Major/Minor")
+   - P0: Site Outage
+   - P1: Trust/Data Issues & Data Feed/API issues
+   - P2: Broken Functionality With No Work Around
+   - P3: Broken Functionality With Work Around
+   - P4: Usability Concerns
+   - 5MF: Five Minute Fix
+
+### TECHNICAL BUG REPORTS - ENHANCED REQUIREMENTS
+When user provides detailed technical information:
+- Include all standard sections PLUS technical evidence
+- Add ES document structures, API responses in code blocks
+- Include environment comparison analysis
+- Add root cause analysis section
+- Use proper ADF formatting with headings and structured content
+
+### VALIDATION PROCESS
+1. Generate ticket content
+2. CHECK against bug_metrics_reference.md compliance
+3. Identify missing sections
+4. ADD missing mandatory sections
+5. VERIFY all checklist items
+6. Only THEN publish ticket
+
+**CRITICAL**: NO ticket should be published without full bug_metrics_reference.md compliance verification.
 
 ## Next Steps
 1. Complete bug documentation alignment with company standards
 2. Continue developing additional JIRA commands (show-ticket, update-status, add-comment)
-3. Implement bug report generation commands
-4. Add test plan generation functionality
-5. Continue with framework development as needed
 3. Implement bug report generation commands
 4. Add test plan generation functionality
 5. Continue with framework development as needed

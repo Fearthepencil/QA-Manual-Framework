@@ -4,6 +4,102 @@
 
 This guide explains the JIRA workflow, status definitions, and best practices for QA engineers working with the Manual QA Framework.
 
+## 🚀 NEW: AI-Powered JIRA Workflows
+
+### **🤖 AI-Generated Comment Workflow**
+1. **User Input**: Posts screenshot, text, or asks for specific comment
+2. **AI Analysis**: Generates comprehensive comment with proper ADF structure and JSON code blocks  
+3. **JSON Creation**: AI creates temporary JSON file with generated content
+4. **Direct API Call**: AI posts comment using working scripts (`generate_and_post_comment.ps1/.sh`)
+5. **Auto-Cleanup**: AI automatically deletes temporary JSON file
+
+**Command Usage:**
+```bash
+# PowerShell (Windows)
+powershell -File 01-jira-integration/commands/generate_and_post_comment.ps1 "TICKET-KEY" "comment.json"
+
+# Bash (Linux/Mac)  
+bash 01-jira-integration/commands/generate_and_post_comment.sh "TICKET-KEY" "comment.json"
+```
+
+### **🎫 AI-Generated Ticket Creation Workflow**
+1. **User Input**: Sends screenshot/text describing bug or issue
+2. **AI Generation**: Creates properly formatted ADF ticket with company compliance
+3. **Preview & Confirmation**: AI shows preview and asks for confirmation in terminal
+4. **User Confirmation**: User confirms with "y" in terminal
+5. **Ticket Creation**: AI posts ticket and returns ticket ID
+
+**Command Usage:**
+```bash
+# PowerShell (Windows)
+powershell -File 01-jira-integration/commands/create_ticket.ps1 "[Bug Title]" "Bug description" "Environment"
+
+# Bash (Linux/Mac)
+bash 01-jira-integration/commands/create_ticket.sh "[Bug Title]" "Bug description" "Environment"
+```
+
+## 🛠️ Available JIRA Commands
+
+### **📋 Ticket Query Commands**
+```bash
+# Show tickets assigned to you as QA
+powershell -File 01-jira-integration/commands/show_my_tickets.ps1
+bash 01-jira-integration/commands/show_my_tickets.sh
+
+# Show deployment tickets
+powershell -File 01-jira-integration/commands/show_deployment_tickets.ps1
+bash 01-jira-integration/commands/show_deployment_tickets.sh
+
+# Show tickets ready for QA
+powershell -File 01-jira-integration/commands/show_ready_for_qa_tickets.ps1
+bash 01-jira-integration/commands/show_ready_for_qa_tickets.sh
+```
+
+### **✅ Features of AI-Generated Content**
+- **Perfect ADF Formatting**: All content uses proper Atlassian Document Format
+- **JSON Code Blocks**: Technical data formatted with syntax highlighting
+- **Company Compliance**: Automatic validation against `bug_metrics_reference.md`
+- **Cross-Platform**: Identical functionality on Windows (PowerShell) and Linux/Mac (Bash)
+- **Error Handling**: Comprehensive error detection and reporting
+- **Auto-Cleanup**: Temporary files automatically removed after use
+
+## 🔒 Security & Git Management
+
+### **🔐 Gitignore Rules for JIRA Integration**
+The framework automatically ignores sensitive and temporary files:
+
+```gitignore
+# JIRA Credentials (NEVER COMMIT)
+01-jira-integration/config/.env
+
+# AI-Generated temporary files
+temp_*.json
+ai_*.json
+test_*.json
+*_comment_*.json
+generate_*.json
+
+# Project Testing Files (except documentation)
+04-projects/*/
+!04-projects/*/project documentation/
+!04-projects/*/project rules/
+
+# Bug Reports (examples only)
+02-bug-reports/reports/
+```
+
+### **⚠️ Critical Security Notes**
+- **🚨 NEVER COMMIT** `.env` files containing JIRA API credentials
+- **🚨 ONLY documentation folders** in projects should be pushed to git
+- **🚨 ALL testing files** (bug reports, test results, screenshots) are gitignored
+- **🚨 TEMPORARY JSON files** are auto-cleaned by scripts and gitignored
+
+### **📋 Project Folder Rules**
+- **✅ CAN BE COMMITTED**: `04-projects/*/project documentation/` folder
+- **✅ CAN BE COMMITTED**: `04-projects/*/project rules/` folder  
+- **❌ NEVER COMMIT**: Individual test files, bug reports, screenshots, test results
+- **❌ NEVER COMMIT**: Personal testing data or sensitive information
+
 ## 📋 JIRA Status Definitions
 
 ### **📋 To Do**
