@@ -75,5 +75,8 @@ drafts/
 notes/
 personal/
 
-# QA Assistant Igor Project (for integration reference only)
-qa_assistant_igor/
+# Personal Task Tracking
+.cursor/rules/task_tracking.mdc
+
+# Project-specific folders (keep structure, exclude content)
+04-projects/*/

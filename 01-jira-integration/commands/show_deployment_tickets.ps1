@@ -1,6 +1,6 @@
-# Show My Tickets - QA Engineer Command
-# Purpose: Show tickets assigned to the current QA Engineer
-# Usage: .\show_my_tickets.ps1
+# Show Deployment Tickets - QA Engineer Command
+# Purpose: Show tickets assigned to the current QA Engineer that are ready for deployment (status "To Deploy")
+# Usage: .\show_deployment_tickets.ps1
 
 # Load environment variables from .env file
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
@@ -41,8 +41,8 @@ if (-not $API_TOKEN) {
 $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $EMAIL, $API_TOKEN)))
 $headers = @{Authorization=("Basic {0}" -f $base64AuthInfo)}
 
-Write-Host "Show My Tickets - QA Engineer Dashboard" -ForegroundColor Blue
-Write-Host "================================================" -ForegroundColor Blue
+Write-Host "Show Deployment Tickets - QA Engineer Dashboard" -ForegroundColor Blue
+Write-Host "=================================================" -ForegroundColor Blue
 
 # Get current user info
 Write-Host "Getting user information..." -ForegroundColor Yellow
@@ -53,22 +53,23 @@ $displayName = $userInfo.displayName
 Write-Host "Current User: $displayName ($accountId)" -ForegroundColor Green
 Write-Host ""
 
-# Search for tickets where current user is QA Assignee
-Write-Host "Searching for tickets assigned to you as QA Assignee..." -ForegroundColor Yellow
+# Search for tickets where current user is QA Assignee and status is "To Deploy"
+Write-Host "Searching for tickets ready for deployment..." -ForegroundColor Yellow
 
-# JQL query to find tickets where current user is QA Assignee
-$jqlQuery = "cf[11207] = `"$accountId`" AND project = AP ORDER BY updated DESC"
+# JQL query to find tickets where current user is QA Assignee and status is "To Deploy"
+$jqlQuery = "cf[11207] = `"$accountId`" AND project = AP AND status = `"To Deploy`" ORDER BY updated DESC"
 $searchUrl = "$JIRA_URL/rest/api/3/search?jql=$([System.Web.HttpUtility]::UrlEncode($jqlQuery))`&maxResults=50`&fields=key,summary,status,priority,assignee,updated,customfield_11332"
 
 try {
     $response = Invoke-RestMethod -Uri $searchUrl -Headers $headers -Method Get
     
     $total = $response.total
-    Write-Host "Found $total tickets assigned to you as QA Assignee" -ForegroundColor Green
+    Write-Host "Found $total tickets ready for deployment" -ForegroundColor Green
     Write-Host ""
     
     if ($total -eq 0) {
-        Write-Host "No tickets found assigned to you as QA Assignee." -ForegroundColor Yellow
+        Write-Host "No tickets found ready for deployment." -ForegroundColor Yellow
+        Write-Host "These tickets have been tested on dev environment and are waiting to be deployed to staging." -ForegroundColor Cyan
         exit 0
     }
     
@@ -101,13 +102,8 @@ try {
         # Truncate summary if too long
         $shortSummary = if ($summary.Length -gt 50) { $summary.Substring(0, 47) + "..." } else { $summary }
         
-        # Color coding based on status
-        $statusColor = switch ($status) {
-            { $_ -in @("Done", "Closed") } { "Green" }
-            "In Progress" { "Yellow" }
-            { $_ -in @("To Do", "Open") } { "Red" }
-            default { "White" }
-        }
+        # Color coding for deployment tickets (all should be "To Deploy" status)
+        $statusColor = "Yellow"  # To Deploy status is highlighted in yellow
         
         Write-Host "$($key.PadRight(11)) | $($shortSummary.PadRight(55)) | " -NoNewline
         Write-Host $status.PadRight(11) -ForegroundColor $statusColor -NoNewline
@@ -117,15 +113,21 @@ try {
     Write-Host "===============================================================================================================" -ForegroundColor Blue
     
     Write-Host ""
+    Write-Host "Deployment Information:" -ForegroundColor Cyan
+    Write-Host "  - These tickets have been tested on development environment" -ForegroundColor White
+    Write-Host "  - All test cases have passed" -ForegroundColor White
+    Write-Host "  - Ready to be deployed to staging environment" -ForegroundColor White
+    Write-Host "  - Contact DevOps team for deployment process" -ForegroundColor White
+    Write-Host ""
     Write-Host "Tips:" -ForegroundColor Yellow
     Write-Host "  - Use 'jira show-ticket [KEY]' to view detailed ticket information"
-    Write-Host "  - Use 'jira update-status [KEY] [STATUS]' to update ticket status"
-    Write-Host "  - Use 'jira add-comment [KEY]' to add comments to tickets"
+    Write-Host "  - Use 'jira update-status [KEY] [STATUS]' to update ticket status after deployment"
+    Write-Host "  - Use 'jira add-comment [KEY]' to add deployment notes"
     Write-Host ""
     Write-Host "Command completed successfully!" -ForegroundColor Green
     
 } catch {
-    Write-Host "Error: Failed to retrieve tickets" -ForegroundColor Red
+    Write-Host "Error: Failed to retrieve deployment tickets" -ForegroundColor Red
     Write-Host $_.Exception.Message -ForegroundColor Red
     exit 1
 }

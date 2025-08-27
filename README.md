@@ -51,13 +51,16 @@ Follow the [JIRA Environment Setup Guide](06-documentation/guides/jira_env_setup
 ### 4. Quick Start Guide
 For detailed setup instructions, see the [Quick Start Guide](06-documentation/guides/quick_start_guide.md)
 
+### 5. JIRA Workflow
+For JIRA status definitions and workflow processes, see the [JIRA Workflow Guide](06-documentation/guides/jira_workflow_guide.md)
+
 ## 🖥️ Available Commands
 
 The framework includes cross-platform command-line tools for JIRA integration and QA workflow automation.
 
 ### 📋 Show My Tickets
 
-Display all JIRA tickets assigned to you as QA Assignee.
+Display all JIRA tickets assigned to you as QA Assignee (regardless of status).
 
 **Windows (PowerShell):**
 ```powershell
@@ -83,6 +86,29 @@ bash "01-jira-integration/commands/show_my_tickets.sh"
 
 **Security Note:** Credentials are now loaded from `.env` file instead of being hardcoded in scripts.
 
+### 🚀 Show Deployment Tickets
+
+Display tickets assigned to you as QA Assignee that are ready for deployment (status "To Deploy").
+
+**Windows (PowerShell):**
+```powershell
+powershell -ExecutionPolicy Bypass -File "01-jira-integration/commands/show_deployment_tickets.ps1"
+```
+
+**Mac/Linux (Bash):**
+```bash
+bash "01-jira-integration/commands/show_deployment_tickets.sh"
+```
+
+**Features:**
+- ✅ Shows only tickets with "To Deploy" status
+- ✅ Cross-platform compatibility (Windows, Mac, Linux)
+- ✅ Real-time JIRA API integration
+- ✅ Deployment-specific information and guidance
+- ✅ Formatted table output with deployment context
+
+**Use Case:** Identify tickets that have been tested on development environment and are ready to be deployed to staging environment.
+
 ### 🔧 Command Configuration
 
 All commands use the same JIRA configuration:
@@ -96,6 +122,7 @@ For detailed command documentation and advanced usage:
 - [JIRA Integration Guide](01-jira-integration/)
 - [Command Configuration](01-jira-integration/config/)
 - [Field Reference](01-jira-integration/config/jira_field_reference.md)
+- [Deployment Rules](06-documentation/guides/deployment_rules.md)
 
 ### 🚧 Additional Commands
 
@@ -154,10 +181,47 @@ Additional commands available:
 
 ## 🔧 Configuration
 
-Create a `.env` file in `01-jira-integration/config/.env`:
+### **Environment File Setup**
+
+**Important**: Create your `.env` file in the exact location shown below for the scripts to work properly.
+
+#### **File Location:**
+```
+QA-Manual-Framework/
+├── 01-jira-integration/
+│   ├── config/
+│   │   └── .env  ← Place your .env file here
+│   ├── commands/
+│   └── scripts/
+└── ...
+```
+
+#### **Step-by-Step Setup:**
+
+1. **Navigate to the config folder:**
+   ```bash
+   cd 01-jira-integration/config/
+   ```
+
+2. **Create the .env file:**
+   ```bash
+   # Windows (PowerShell)
+   New-Item -Path ".env" -ItemType File
+   
+   # Mac/Linux (Bash)
+   touch .env
+   ```
+
+3. **Add your JIRA credentials to the .env file:**
+   ```env
+   JIRA_MCP_LOGIN=your.email@compstak.com
+   JIRA_MCP_TOKEN=your_api_token_here
+   ```
+
+#### **Example .env file content:**
 ```env
-JIRA_MCP_LOGIN=your.email@compstak.com
-JIRA_MCP_TOKEN=your_api_token_here
+JIRA_MCP_LOGIN=pavle.stefanovic@compstak.com
+JIRA_MCP_TOKEN=your_actual_api_token_here
 ```
 
 **Security Features:**

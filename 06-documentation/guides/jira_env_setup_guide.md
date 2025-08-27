@@ -24,18 +24,49 @@
 
 ## 📁 Step 2: Create Environment File
 
-### Create `.env` file in project root:
-```bash
-# Create .env file (if it doesn't exist)
-touch .env
+### **Important**: Create `.env` file in the exact location shown below
+
+**File Structure:**
+```
+QA-Manual-Framework/
+├── 01-jira-integration/
+│   ├── config/
+│   │   └── .env  ← Place your .env file here (NOT in project root)
+│   ├── commands/
+│   └── scripts/
+└── ...
 ```
 
-### Add your credentials:
+### **Step-by-Step Setup:**
+
+1. **Navigate to the correct directory:**
+   ```bash
+   cd 01-jira-integration/config/
+   ```
+
+2. **Create the .env file:**
+   ```bash
+   # Windows (PowerShell)
+   New-Item -Path ".env" -ItemType File
+   
+   # Mac/Linux (Bash)
+   touch .env
+   ```
+
+3. **Add your credentials to the .env file:**
+   ```env
+   # JIRA MCP Integration Credentials
+   JIRA_MCP_LOGIN=your.email@compstak.com
+   JIRA_MCP_TOKEN=ATATT3xFfGF0...your_long_token_here
+   ```
+
+### **Example .env file content:**
 ```env
-# JIRA MCP Integration Credentials
-JIRA_MCP_LOGIN=your.email@compstak.com
-JIRA_MCP_TOKEN=ATATT3xFfGF0...your_long_token_here
+JIRA_MCP_LOGIN=pavle.stefanovic@compstak.com
+JIRA_MCP_TOKEN=ATATT3xFfGF0...your_actual_token_here
 ```
+
+**Note**: All scripts are configured to look for the .env file in `01-jira-integration/config/` directory. Placing it anywhere else will cause the scripts to fail.
 
 ---
 
@@ -79,7 +110,7 @@ curl -u "your.email@compstak.com:your_api_token" \
 ## 🛡️ Security Best Practices
 
 ### ✅ Do's:
-- Store `.env` file in project root
+- Store `.env` file in `01-jira-integration/config/` directory
 - Use descriptive token names
 - Rotate tokens regularly
 - Add `.env` to `.gitignore`

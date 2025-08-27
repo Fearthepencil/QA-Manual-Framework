@@ -6,9 +6,6 @@
 **Purpose**: Internal company framework for standardized manual QA processes  
 **Status**: Active Development  
 
-## Current Task
-- **See task_tracking.mdc for current tasks and project status**
-
 ## Framework Overview
 - **Manual QA Framework**: Comprehensive testing framework for internal company use
 - **JIRA Integration**: Full integration with company JIRA for bug tracking and test management
@@ -34,6 +31,11 @@
 - **PRESERVE COMPLETE HISTORY**: Maintain all existing examples, references, and detailed information
 - **APPEND, DON'T REPLACE**: When updating documentation, add new sections rather than replacing existing ones
 - **MAINTAIN BACKWARDS COMPATIBILITY**: Keep all existing field references, examples, and formats
+- **CRITICAL**: CURSOR SHOULD NOT GENERATE ANY NEW FILES IF NOT ABSOLUTELY NECESSARY
+- **ALWAYS READ EXISTING DOCUMENTATION FIRST** before creating anything new
+- **Check existing files** for similar functionality before creating duplicates
+- **Update existing files** instead of creating new ones when possible
+- **Only create new files** when there's a clear, unique need that cannot be addressed by updating existing files
 
 ## Repository Setup Plan
 - ✅ Created private GitHub repository: https://github.com/Fearthepencil/QA-Manual-Framework
@@ -108,29 +110,6 @@
 3. Implement bug report generation commands
 4. Add test plan generation functionality
 5. Continue with framework development as needed
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+3. Implement bug report generation commands
+4. Add test plan generation functionality
+5. Continue with framework development as needed

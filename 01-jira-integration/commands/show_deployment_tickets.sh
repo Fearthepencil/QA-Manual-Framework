@@ -1,8 +1,8 @@
 #!/bin/bash
 
-# Show My Tickets - QA Engineer Command
-# Purpose: Show tickets assigned to the current QA Engineer
-# Usage: ./show_my_tickets.sh
+# Show Deployment Tickets - QA Engineer Command
+# Purpose: Show tickets assigned to the current QA Engineer that are ready for deployment (status "To Deploy")
+# Usage: ./show_deployment_tickets.sh
 
 # Load environment variables from .env file
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -34,10 +34,11 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 YELLOW='\033[1;33m'
 BLUE='\033[0;34m'
+CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
-echo -e "${BLUE}Show My Tickets - QA Engineer Dashboard${NC}"
-echo "================================================"
+echo -e "${BLUE}Show Deployment Tickets - QA Engineer Dashboard${NC}"
+echo "================================================="
 
 # Get current user info
 echo -e "${YELLOW}Getting user information...${NC}"
@@ -48,20 +49,20 @@ DISPLAY_NAME=$(echo "$USER_INFO" | grep -o '"displayName":"[^"]*"' | cut -d'"' -
 echo -e "${GREEN}Current User: $DISPLAY_NAME ($ACCOUNT_ID)${NC}"
 echo ""
 
-# Search for tickets where current user is QA Assignee
-echo -e "${YELLOW}Searching for tickets assigned to you as QA Assignee...${NC}"
+# Search for tickets where current user is QA Assignee and status is "To Deploy"
+echo -e "${YELLOW}Searching for tickets ready for deployment...${NC}"
 
-# JQL query to find tickets where current user is QA Assignee
-JQL_QUERY="cf[11207] = \"$ACCOUNT_ID\" AND project = AP ORDER BY updated DESC"
+# JQL query to find tickets where current user is QA Assignee and status is "To Deploy"
+JQL_QUERY="cf[11207] = \"$ACCOUNT_ID\" AND project = AP AND status = \"To Deploy\" ORDER BY updated DESC"
 # Use the exact encoding that works (same as PowerShell)
-ENCODED_JQL="cf%5B11207%5D%20%3D%20%22$ACCOUNT_ID%22%20AND%20project%20%3D%20AP%20ORDER%20BY%20updated%20DESC"
+ENCODED_JQL="cf%5B11207%5D%20%3D%20%22$ACCOUNT_ID%22%20AND%20project%20%3D%20AP%20AND%20status%20%3D%20%22To%20Deploy%22%20ORDER%20BY%20updated%20DESC"
 SEARCH_URL="$JIRA_URL/rest/api/3/search?jql=$ENCODED_JQL&maxResults=50&fields=key,summary,status,priority,assignee,updated,customfield_11332"
 
 RESPONSE=$(curl -s -u "$EMAIL:$API_TOKEN" "$SEARCH_URL")
 
 # Check if response contains error
 if echo "$RESPONSE" | grep -q "errorMessages"; then
-    echo -e "${RED}Error: Failed to retrieve tickets${NC}"
+    echo -e "${RED}Error: Failed to retrieve deployment tickets${NC}"
     echo "$RESPONSE"
     exit 1
 fi
@@ -71,11 +72,12 @@ TOTAL=$(echo "$RESPONSE" | grep -o '"total":[0-9]*' | cut -d':' -f2)
 if [ -z "$TOTAL" ]; then
     TOTAL=0
 fi
-echo -e "${GREEN}Found $TOTAL tickets assigned to you as QA Assignee${NC}"
+echo -e "${GREEN}Found $TOTAL tickets ready for deployment${NC}"
 echo ""
 
 if [ "$TOTAL" -eq 0 ]; then
-    echo -e "${YELLOW}No tickets found assigned to you as QA Assignee.${NC}"
+    echo -e "${YELLOW}No tickets found ready for deployment.${NC}"
+    echo -e "${CYAN}These tickets have been tested on dev environment and are waiting to be deployed to staging.${NC}"
     exit 0
 fi
 
@@ -110,14 +112,8 @@ echo "$RESPONSE" | sed 's/},{/}\n{/g' | grep '"key":"AP-' | while read -r line; 
         SHORT_SUMMARY="$SHORT_SUMMARY..."
     fi
     
-    # Color coding based on status
-    STATUS_COLOR=""
-    case "$STATUS" in
-        "Done"|"Closed") STATUS_COLOR="$GREEN" ;;
-        "In Progress") STATUS_COLOR="$YELLOW" ;;
-        "To Do"|"Open") STATUS_COLOR="$RED" ;;
-        *) STATUS_COLOR="$NC" ;;
-    esac
+    # Color coding for deployment tickets (all should be "To Deploy" status)
+    STATUS_COLOR="$YELLOW"  # To Deploy status is highlighted in yellow
     
     printf "%-11s | %-55s | ${STATUS_COLOR}%-11s${NC} | %-11s | %-19s\n" \
         "$KEY" "$SHORT_SUMMARY" "$STATUS" "$PRIORITY" "$FORMATTED_DATE"
@@ -126,9 +122,15 @@ done
 echo "==============================================================================================================="
 
 echo ""
+echo -e "${CYAN}Deployment Information:${NC}"
+echo "  - These tickets have been tested on development environment"
+echo "  - All test cases have passed"
+echo "  - Ready to be deployed to staging environment"
+echo "  - Contact DevOps team for deployment process"
+echo ""
 echo -e "${YELLOW}Tips:${NC}"
 echo "  - Use 'jira show-ticket [KEY]' to view detailed ticket information"
-echo "  - Use 'jira update-status [KEY] [STATUS]' to update ticket status"
-echo "  - Use 'jira add-comment [KEY]' to add comments to tickets"
+echo "  - Use 'jira update-status [KEY] [STATUS]' to update ticket status after deployment"
+echo "  - Use 'jira add-comment [KEY]' to add deployment notes"
 echo ""
 echo -e "${GREEN}Command completed successfully!${NC}"
