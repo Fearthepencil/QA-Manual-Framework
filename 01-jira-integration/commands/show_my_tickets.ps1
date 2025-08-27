@@ -2,7 +2,7 @@
 # Purpose: Show tickets assigned to the current QA Engineer
 # Usage: .\show_my_tickets.ps1
 
-# Load environment variables from .env file
+ng es# Load environment variables from .env file
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
 $envFile = Join-Path (Split-Path -Parent (Split-Path -Parent $scriptDir)) "01-jira-integration\config\.env"
 
