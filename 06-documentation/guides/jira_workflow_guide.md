@@ -131,7 +131,7 @@ Planning  Development   Code Review   Ready for    Testing    Dev QA     Staging
 ## 🎯 Best Practices
 
 ### **For QA Engineers**
-1. **Monitor "Ready for QA" tickets**: These are ready for your testing
+1. **Monitor "Ready for QA" tickets**: Use `show_ready_for_qa_tickets` command to identify tickets ready for testing
 2. **Update "QA Testing" status**: When you begin testing
 3. **Move to "To Deploy"**: Only after comprehensive testing is complete
 4. **Validate "Deployed" tickets**: Perform final staging checks
@@ -169,6 +169,7 @@ Planning  Development   Code Review   Ready for    Testing    Dev QA     Staging
 ### **JIRA Integration**
 - **Enhanced MCP Script**: `01-jira-integration/scripts/jira-mcp-enhanced.sh`
 - **Show My Tickets**: `01-jira-integration/commands/show_my_tickets.sh` (all assigned tickets regardless of status)
+- **Show Ready for QA Tickets**: `01-jira-integration/commands/show_ready_for_qa_tickets.sh` (tickets ready for QA testing)
 - **Show Deployment Tickets**: `01-jira-integration/commands/show_deployment_tickets.sh` (tickets ready for deployment)
 
 ## 📈 Metrics and Reporting
