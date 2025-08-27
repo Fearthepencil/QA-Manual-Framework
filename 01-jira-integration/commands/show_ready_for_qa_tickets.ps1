@@ -1,0 +1,135 @@
+# Show Ready for QA Tickets - QA Engineer Command
+# Purpose: Show tickets assigned to the current QA Engineer that are ready for QA testing (status "Ready for QA")
+# Usage: .\show_ready_for_qa_tickets.ps1
+
+# Load environment variables from .env file
+$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
+$envFile = Join-Path (Split-Path -Parent (Split-Path -Parent $scriptDir)) "01-jira-integration\config\.env"
+
+if (Test-Path $envFile) {
+    Write-Host "Loading environment from $envFile" -ForegroundColor Yellow
+    Get-Content $envFile | ForEach-Object {
+        if ($_ -match '^([^=]+)=(.*)$') {
+            [System.Environment]::SetEnvironmentVariable($matches[1], $matches[2], "Process")
+        }
+    }
+} else {
+    Write-Host "Warning: .env file not found at $envFile" -ForegroundColor Red
+    Write-Host "Please create .env file with JIRA_MCP_LOGIN and JIRA_MCP_TOKEN" -ForegroundColor Red
+    exit 1
+}
+
+# Configuration from environment variables
+$JIRA_URL = "https://compstak.atlassian.net"
+$EMAIL = $env:JIRA_MCP_LOGIN
+$API_TOKEN = $env:JIRA_MCP_TOKEN
+
+# Validate environment variables
+if (-not $EMAIL) {
+    Write-Host "Error: JIRA_MCP_LOGIN not found in environment variables" -ForegroundColor Red
+    Write-Host "Please set JIRA_MCP_LOGIN in your .env file" -ForegroundColor Red
+    exit 1
+}
+
+if (-not $API_TOKEN) {
+    Write-Host "Error: JIRA_MCP_TOKEN not found in environment variables" -ForegroundColor Red
+    Write-Host "Please set JIRA_MCP_TOKEN in your .env file" -ForegroundColor Red
+    exit 1
+}
+
+# Create basic auth header
+$base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $EMAIL, $API_TOKEN)))
+$headers = @{Authorization=("Basic {0}" -f $base64AuthInfo)}
+
+Write-Host "Show Ready for QA Tickets - QA Engineer Dashboard" -ForegroundColor Blue
+Write-Host "===================================================" -ForegroundColor Blue
+
+# Get current user info
+Write-Host "Getting user information..." -ForegroundColor Yellow
+$userInfo = Invoke-RestMethod -Uri "$JIRA_URL/rest/api/3/myself" -Headers $headers -Method Get
+$accountId = $userInfo.accountId
+$displayName = $userInfo.displayName
+
+Write-Host "Current User: $displayName ($accountId)" -ForegroundColor Green
+Write-Host ""
+
+# Search for tickets where current user is QA Assignee and status is "Ready for QA"
+Write-Host "Searching for tickets ready for QA testing..." -ForegroundColor Yellow
+
+# JQL query to find tickets where current user is QA Assignee and status is "Ready for QA"
+$jqlQuery = "cf[11207] = `"$accountId`" AND project = AP AND status = `"Ready for QA`" ORDER BY updated DESC"
+$searchUrl = "$JIRA_URL/rest/api/3/search?jql=$([System.Web.HttpUtility]::UrlEncode($jqlQuery))`&maxResults=50`&fields=key,summary,status,priority,assignee,updated,customfield_11332"
+
+try {
+    $response = Invoke-RestMethod -Uri $searchUrl -Headers $headers -Method Get
+    
+    $total = $response.total
+    Write-Host "Found $total tickets ready for QA testing" -ForegroundColor Green
+    Write-Host ""
+    
+    if ($total -eq 0) {
+        Write-Host "No tickets found ready for QA testing." -ForegroundColor Yellow
+        Write-Host "These tickets have completed development and peer review and are waiting for QA testing to begin." -ForegroundColor Cyan
+        exit 0
+    }
+    
+    # Display tickets in a formatted table
+    Write-Host "===============================================================================================================" -ForegroundColor Blue
+    Write-Host "Ticket Key  | Summary                                                     | Status      | Priority    | Last Updated        " -ForegroundColor Blue
+    Write-Host "===============================================================================================================" -ForegroundColor Blue
+    
+    foreach ($issue in $response.issues) {
+        $key = $issue.key
+        $summary = $issue.fields.summary
+        $status = $issue.fields.status.name
+        $priority = $issue.fields.priority.name
+        $updated = $issue.fields.updated
+        $environment = if ($issue.fields.customfield_11332) { $issue.fields.customfield_11332.value } else { "N/A" }
+        
+        # Format the date
+        try {
+            $date = [DateTime]::ParseExact($updated, "yyyy-MM-ddTHH:mm:ss.fffzzz", $null)
+            $formattedDate = $date.ToString("MM/dd/yyyy HH:mm")
+        } catch {
+            $formattedDate = $updated.Substring(0, 16).Replace("T", " ")
+        }
+        
+        # Truncate summary if too long
+        if ($summary.Length -gt 50) {
+            $summary = $summary.Substring(0, 47) + "..."
+        }
+        
+        # Color code the status
+        $statusColor = switch ($status) {
+            "Ready for QA" { "Green" }
+            default { "White" }
+        }
+        
+        # Color code the priority
+        $priorityColor = switch ($priority) {
+            "Highest" { "Red" }
+            "High" { "Red" }
+            "Medium" { "Yellow" }
+            "Low" { "Green" }
+            "Lowest" { "Green" }
+            default { "White" }
+        }
+        
+        # Display the ticket information
+        Write-Host ($key.PadRight(12) + " | " + $summary.PadRight(53) + " | " + $status.PadRight(12) + " | " + $priority.PadRight(12) + " | " + $formattedDate) -ForegroundColor $statusColor
+    }
+    
+    Write-Host "===============================================================================================================" -ForegroundColor Blue
+    Write-Host ""
+    Write-Host "Ready for QA tickets are waiting for you to begin testing." -ForegroundColor Cyan
+    Write-Host "Next steps:" -ForegroundColor Yellow
+    Write-Host "1. Update ticket status to 'QA Testing' when you begin testing" -ForegroundColor White
+    Write-Host "2. Use enhanced test case templates from 03-test-plans/template/" -ForegroundColor White
+    Write-Host "3. Document test results and any issues found" -ForegroundColor White
+    Write-Host "4. Move to 'To Deploy' only after comprehensive testing is complete" -ForegroundColor White
+    
+} catch {
+    Write-Host "Error: Failed to retrieve ready for QA tickets" -ForegroundColor Red
+    Write-Host $_.Exception.Message -ForegroundColor Red
+    exit 1
+}

@@ -78,5 +78,42 @@ personal/
 # Personal Task Tracking
 .cursor/rules/task_tracking.mdc
 
-# Project-specific folders (keep structure, exclude content)
-04-projects/*/
+# PROJECT FOLDER RULES - ENFORCE STRICTLY
+# Only documentation folder can be pushed from project folders
+# All other project files are excluded from version control
+
+# Project folders - exclude everything EXCEPT documentation folder
+04-projects/*/project_rules/
+04-projects/*/test_cases/
+04-projects/*/bug_reports/
+04-projects/*/test_results/
+04-projects/*/screenshots/
+04-projects/*/logs/
+04-projects/*/temp/
+04-projects/*/drafts/
+04-projects/*/notes/
+04-projects/*/personal/
+
+# Allow ONLY documentation folder in project folders
+!04-projects/*/project_documentation/
+!04-projects/*/documentation/
+
+# Exclude testing files from documentation folders
+04-projects/*/project_documentation/*_test_*.md
+04-projects/*/project_documentation/*_bug_*.md
+04-projects/*/project_documentation/*_result_*.md
+04-projects/*/project_documentation/test_*.md
+04-projects/*/project_documentation/bug_*.md
+04-projects/*/project_documentation/result_*.md
+04-projects/*/documentation/*_test_*.md
+04-projects/*/documentation/*_bug_*.md
+04-projects/*/documentation/*_result_*.md
+04-projects/*/documentation/test_*.md
+04-projects/*/documentation/bug_*.md
+04-projects/*/documentation/result_*.md
+
+# Allow final aggregated summary files
+!04-projects/*/project_documentation/*_summary.md
+!04-projects/*/project_documentation/*_aggregated.md
+!04-projects/*/documentation/*_summary.md
+!04-projects/*/documentation/*_aggregated.md

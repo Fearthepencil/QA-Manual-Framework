@@ -109,6 +109,29 @@ bash "01-jira-integration/commands/show_deployment_tickets.sh"
 
 **Use Case:** Identify tickets that have been tested on development environment and are ready to be deployed to staging environment.
 
+### 🎯 Show Ready for QA Tickets
+
+Display tickets assigned to you as QA Assignee that are ready for QA testing (status "Ready for QA").
+
+**Windows (PowerShell):**
+```powershell
+powershell -ExecutionPolicy Bypass -File "01-jira-integration/commands/show_ready_for_qa_tickets.ps1"
+```
+
+**Mac/Linux (Bash):**
+```bash
+bash "01-jira-integration/commands/show_ready_for_qa_tickets.sh"
+```
+
+**Features:**
+- ✅ Shows only tickets with "Ready for QA" status
+- ✅ Cross-platform compatibility (Windows, Mac, Linux)
+- ✅ Real-time JIRA API integration
+- ✅ QA testing workflow guidance
+- ✅ Formatted table output with next steps
+
+**Use Case:** Identify tickets that have completed development and peer review and are ready for you to begin QA testing.
+
 ### 🔧 Command Configuration
 
 All commands use the same JIRA configuration:
@@ -176,8 +199,14 @@ Additional commands available:
 - [ISTQB Knowledge Base](.cursor/Additional context/)
 
 ### 🏗️ Projects
-- [Folders Project](04-projects/folders/) - Folder management functionality (Phase 1)
-- [Ownership Entity](04-projects/ownership-entity/) - OES system documentation
+- [Folders Project](04-projects/folders/project_documentation/) - Folder management functionality (Phase 1)
+- [Ownership Entity](04-projects/ownership-entity/project_documentation/) - OES system documentation
+
+**Important Project Structure Rules:**
+- **Only Documentation**: Only `project_documentation/` folder can be committed to git
+- **No Testing Files**: Individual test cases, bug reports, and test results are excluded
+- **Final Summary**: When testing is complete, create ONE aggregated .md file with all results
+- **Project Documentation Only**: Documentation folder contains rules, requirements, and final summary
 
 ## 🔧 Configuration
 
@@ -309,6 +338,14 @@ git push origin develop
 - Testing completed
 - Documentation updated if needed
 - No sensitive data in commits
+
+#### 📁 **Project Folder Rules**
+- **ONLY DOCUMENTATION FOLDER CAN BE PUSHED**: In project folders (04-projects/*), only the documentation folder can be committed to git
+- **ALL OTHER PROJECT FILES ARE GITIGNORED**: Test files, bug reports, test results, screenshots, etc. are excluded from version control
+- **DOCUMENTATION FOLDER RESTRICTIONS**: Documentation folder can ONLY contain project documentation, NOT testing files
+- **FINAL TESTING SUMMARY**: When testing is complete, create ONE .md file with aggregated data (bugs, test cases, test results)
+- **NO INDIVIDUAL TESTING FILES**: Individual bug reports, test cases, or test results should NOT be in documentation folder
+- **PROJECT DOCUMENTATION ONLY**: Documentation folder should contain project rules, requirements, specifications, and final summary
 
 
 ## 📈 Quality Standards

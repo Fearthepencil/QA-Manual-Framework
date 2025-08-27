@@ -37,6 +37,14 @@
 - **Update existing files** instead of creating new ones when possible
 - **Only create new files** when there's a clear, unique need that cannot be addressed by updating existing files
 
+## PROJECT FOLDER RULES - ENFORCE STRICTLY
+- **ONLY DOCUMENTATION FOLDER CAN BE PUSHED**: In project folders (04-projects/*), only the documentation folder can be committed to git
+- **ALL OTHER PROJECT FILES ARE GITIGNORED**: Test files, bug reports, test results, screenshots, etc. are excluded from version control
+- **DOCUMENTATION FOLDER RESTRICTIONS**: Documentation folder can ONLY contain project documentation, NOT testing files
+- **FINAL TESTING SUMMARY**: When testing is complete, create ONE .md file with aggregated data (bugs, test cases, test results)
+- **NO INDIVIDUAL TESTING FILES**: Individual bug reports, test cases, or test results should NOT be in documentation folder
+- **PROJECT DOCUMENTATION ONLY**: Documentation folder should contain project rules, requirements, specifications, and final summary
+
 ## Repository Setup Plan
 - ✅ Company GitHub repository: https://github.com/compstak/QA-Manual-Framework
 - ✅ Pushed initial framework to company repository
@@ -99,6 +107,8 @@
 - ✅ Added 4 files: 322 insertions, 107 deletions
 - ✅ Created cross-platform command scripts (.ps1 and .sh)
 - ✅ Updated README.md with command documentation
+
+
 
 ## Bug Documentation Alignment Task
 - 🔄 Reviewing existing bug report templates and quality standards
