@@ -109,6 +109,29 @@ bash "01-jira-integration/commands/show_deployment_tickets.sh"
 
 **Use Case:** Identify tickets that have been tested on development environment and are ready to be deployed to staging environment.
 
+### 🎯 Show Ready for QA Tickets
+
+Display tickets assigned to you as QA Assignee that are ready for QA testing (status "Ready for QA").
+
+**Windows (PowerShell):**
+```powershell
+powershell -ExecutionPolicy Bypass -File "01-jira-integration/commands/show_ready_for_qa_tickets.ps1"
+```
+
+**Mac/Linux (Bash):**
+```bash
+bash "01-jira-integration/commands/show_ready_for_qa_tickets.sh"
+```
+
+**Features:**
+- ✅ Shows only tickets with "Ready for QA" status
+- ✅ Cross-platform compatibility (Windows, Mac, Linux)
+- ✅ Real-time JIRA API integration
+- ✅ QA testing workflow guidance
+- ✅ Formatted table output with next steps
+
+**Use Case:** Identify tickets that have completed development and peer review and are ready for you to begin QA testing.
+
 ### 🔧 Command Configuration
 
 All commands use the same JIRA configuration:
