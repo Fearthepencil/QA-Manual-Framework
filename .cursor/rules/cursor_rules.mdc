@@ -46,6 +46,7 @@
 - ✅ Added comprehensive command documentation to README
 - ✅ Successfully integrated with company repository
 - ✅ Set up maintainer collaboration (Pavle + Ogi)
+- 🔄 **PENDING**: Set up GitHub branch protection rules for main and develop branches
 
 ## OES Documentation Task
 - ✅ Retrieved OES System Documentation from Atlassian Confluence
