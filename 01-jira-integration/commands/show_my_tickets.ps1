@@ -2,10 +2,40 @@
 # Purpose: Show tickets assigned to the current QA Engineer
 # Usage: .\show_my_tickets.ps1
 
-# Configuration
+# Load environment variables from .env file
+$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
+$envFile = Join-Path (Split-Path -Parent (Split-Path -Parent $scriptDir)) "01-jira-integration\config\.env"
+
+if (Test-Path $envFile) {
+    Write-Host "Loading environment from $envFile" -ForegroundColor Yellow
+    Get-Content $envFile | ForEach-Object {
+        if ($_ -match '^([^=]+)=(.*)$') {
+            [System.Environment]::SetEnvironmentVariable($matches[1], $matches[2], "Process")
+        }
+    }
+} else {
+    Write-Host "Warning: .env file not found at $envFile" -ForegroundColor Red
+    Write-Host "Please create .env file with JIRA_MCP_LOGIN and JIRA_MCP_TOKEN" -ForegroundColor Red
+    exit 1
+}
+
+# Configuration from environment variables
 $JIRA_URL = "https://compstak.atlassian.net"
-$EMAIL = "pavle.stefanovic@compstak.com"
-$API_TOKEN = "ATATT3xFfGF0WoOP7XmgRbjig08sBPpatf0t6uHmOD4wCvsEYmvT7ghM7mpqUqLbXp15KXwP5UxY05uZ1UB4qIk6Y7GASxgHyFcG1sspSVrkGyh0JYZ7xcUfQpwPlSN0uxbJGljjB11Kv596K9QNLc4fQOC2SbYqo3sdjATSjla0wySte4AWi9g=E96B7070"
+$EMAIL = $env:JIRA_MCP_LOGIN
+$API_TOKEN = $env:JIRA_MCP_TOKEN
+
+# Validate environment variables
+if (-not $EMAIL) {
+    Write-Host "Error: JIRA_MCP_LOGIN not found in environment variables" -ForegroundColor Red
+    Write-Host "Please set JIRA_MCP_LOGIN in your .env file" -ForegroundColor Red
+    exit 1
+}
+
+if (-not $API_TOKEN) {
+    Write-Host "Error: JIRA_MCP_TOKEN not found in environment variables" -ForegroundColor Red
+    Write-Host "Please set JIRA_MCP_TOKEN in your .env file" -ForegroundColor Red
+    exit 1
+}
 
 # Create basic auth header
 $base64AuthInfo = [Convert]::ToBase64String([Text.Encoding]::ASCII.GetBytes(("{0}:{1}" -f $EMAIL, $API_TOKEN)))
