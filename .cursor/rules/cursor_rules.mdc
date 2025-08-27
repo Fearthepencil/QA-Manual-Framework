@@ -40,10 +40,13 @@
 ## Repository Setup Plan
 - ✅ Company GitHub repository: https://github.com/compstak/QA-Manual-Framework
 - ✅ Pushed initial framework to company repository
-- ✅ Added branching and PR workflow instructions to README
+- ✅ Created develop branch for active development
+- ✅ Added comprehensive branching strategy to README
 - ✅ Streamlined README for better readability
 - ✅ Added comprehensive command documentation to README
 - ✅ Successfully integrated with company repository
+- ✅ Set up maintainer collaboration (Pavle + Ogi)
+- 🔄 **PENDING**: Set up GitHub branch protection rules for main and develop branches
 
 ## OES Documentation Task
 - ✅ Retrieved OES System Documentation from Atlassian Confluence

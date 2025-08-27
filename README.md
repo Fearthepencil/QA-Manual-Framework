@@ -232,40 +232,84 @@ JIRA_MCP_TOKEN=your_actual_api_token_here
 
 ## 🤝 Contributing
 
-### Branching and Pull Request Workflow
+### Branching Strategy
 
-**All changes require Pull Request review:**
+**Branch Structure:**
+- **`main`**: Production-ready code, stable releases
+- **`develop`**: Development branch for active work and testing
+- **`feature/*`**: Feature branches for specific development tasks
 
-**1. Create Your Feature Branch**
+### Development Workflow
+
+**For Active Development:**
 ```bash
+# Clone and set up
 git clone https://github.com/compstak/QA-Manual-Framework.git
 cd QA-Manual-Framework
+
+# Switch to develop branch for active work
+git checkout develop
+git pull origin develop
+
+# Create feature branch for specific work
 git checkout -b feature/your-feature-name
 ```
 
-**2. Make Your Changes**
+**For Feature Development:**
 ```bash
+# Create feature branch from develop
+git checkout develop
+git pull origin develop
+git checkout -b feature/your-feature-name
+
 # Make changes, test locally
 git add .
-git commit -m "Add new bug report template for API testing"
-```
+git commit -m "Add new feature or enhancement"
 
-**3. Push and Create Pull Request**
-```bash
+# Push feature branch
 git push origin feature/your-feature-name
-# Go to GitHub and create Pull Request
 ```
 
-**4. Review Process**
-- Repository owner reviews all Pull Requests
+**For Direct Development (Maintainers):**
+```bash
+# Work directly on develop branch
+git checkout develop
+git pull origin develop
+
+# Make changes and push
+git add .
+git commit -m "Development update"
+git push origin develop
+```
+
+### Pull Request Process
+
+**1. Create Pull Request**
+- Feature branches → develop (for new features)
+- Develop → main (for releases)
+
+**2. Review Process**
+- Repository maintainers review all Pull Requests
 - Approval required before merge
 - No direct pushes to main allowed
+
+**3. Maintainers**
+- **Pavle Stefanovic**: Primary maintainer
+- **Ogi**: Development collaborator (can push to develop branch)
+
+**4. Branch Protection Rules**
+- **Main Branch**: Protected - No direct pushes allowed, Pull Request required
+- **Develop Branch**: Protected - No direct pushes allowed, Pull Request required
+- **Feature Branches**: Unprotected - Direct pushes allowed for development
+- **Review Required**: All Pull Requests require maintainer approval
+- **Status Checks**: Must pass before merge (when implemented)
 
 #### ✅ **Requirements**
 - Clear title and description
 - Testing completed
 - Documentation updated if needed
 - No sensitive data in commits
+
 
 ## 📈 Quality Standards
 
