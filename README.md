@@ -51,6 +51,9 @@ Follow the [JIRA Environment Setup Guide](06-documentation/guides/jira_env_setup
 ### 4. Quick Start Guide
 For detailed setup instructions, see the [Quick Start Guide](06-documentation/guides/quick_start_guide.md)
 
+### 5. JIRA Workflow
+For JIRA status definitions and workflow processes, see the [JIRA Workflow Guide](06-documentation/guides/jira_workflow_guide.md)
+
 ## 🖥️ Available Commands
 
 The framework includes cross-platform command-line tools for JIRA integration and QA workflow automation.

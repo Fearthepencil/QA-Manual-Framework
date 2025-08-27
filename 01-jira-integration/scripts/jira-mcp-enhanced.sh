@@ -50,15 +50,102 @@ show_help() {
     echo "  $0 comments AP-20641"
 }
 
-# Function to run ticket reader
-run_reader() {
-    local script_path="$PROJECT_ROOT/01-jira-integration/scripts/jira_ticket_reader.sh"
-    if [ -f "$script_path" ]; then
-        "$script_path" "$@"
-    else
-        echo "Error: Ticket reader script not found at $script_path"
-        exit 1
+# Function to read a single ticket
+read_ticket() {
+    local ticket_id="$1"
+    echo "Reading ticket: $ticket_id"
+    echo "============================================================"
+    
+    local response=$(curl -s -u "$JIRA_MCP_LOGIN:$JIRA_MCP_TOKEN" \
+        "https://compstak.atlassian.net/rest/api/3/issue/$ticket_id?expand=names,schema")
+    
+    if echo "$response" | jq -e '.errorMessages' > /dev/null 2>&1; then
+        echo "Error: $(echo "$response" | jq -r '.errorMessages[0]')"
+        return 1
     fi
+    
+    echo "Ticket: $(echo "$response" | jq -r '.key')"
+    echo "Summary: $(echo "$response" | jq -r '.fields.summary')"
+    echo "Status: $(echo "$response" | jq -r '.fields.status.name')"
+    echo "Priority: $(echo "$response" | jq -r '.fields.priority.name')"
+    echo "Assignee: $(echo "$response" | jq -r '.fields.assignee.displayName // "Unassigned"')"
+    echo "Reporter: $(echo "$response" | jq -r '.fields.reporter.displayName')"
+    echo "Created: $(echo "$response" | jq -r '.fields.created')"
+    echo "Updated: $(echo "$response" | jq -r '.fields.updated')"
+    echo "Description: $(echo "$response" | jq -r '.fields.description // "No description"')"
+}
+
+# Function to search tickets using JQL
+search_tickets() {
+    local jql="$1"
+    local max_results="${2:-50}"
+    
+    echo "Searching tickets with JQL: $jql"
+    echo "============================================================"
+    
+    local response=$(curl -s -u "$JIRA_MCP_LOGIN:$JIRA_MCP_TOKEN" \
+        "https://compstak.atlassian.net/rest/api/3/search" \
+        -H "Content-Type: application/json" \
+        -d "{
+            \"jql\": \"$jql\",
+            \"maxResults\": $max_results,
+            \"fields\": [\"summary\", \"status\", \"priority\", \"assignee\", \"reporter\", \"created\", \"updated\"]
+        }")
+    
+    if echo "$response" | jq -e '.errorMessages' > /dev/null 2>&1; then
+        echo "Error: $(echo "$response" | jq -r '.errorMessages[0]')"
+        return 1
+    fi
+    
+    local total=$(echo "$response" | jq -r '.total')
+    echo "Found $total tickets"
+    echo ""
+    
+    echo "$response" | jq -r '.issues[] | "\(.key) | \(.fields.summary) | \(.fields.status.name) | \(.fields.priority.name) | \(.fields.assignee.displayName // "Unassigned")"'
+}
+
+# Function to get QA workload (tickets assigned to current user as QA)
+get_qa_workload() {
+    local status_filter="$1"
+    local project="$2"
+    
+    local jql="project = $project"
+    if [ -n "$status_filter" ]; then
+        jql="$jql AND status = '$status_filter'"
+    fi
+    
+    # Try QA Assignee field first, fallback to standard assignee
+    local qa_jql="$jql AND assignee = currentUser()"
+    
+    echo "Getting QA workload for project: $project"
+    if [ -n "$status_filter" ]; then
+        echo "Status filter: $status_filter"
+    fi
+    echo "============================================================"
+    
+    search_tickets "$qa_jql"
+}
+
+# Function to get comments for a ticket
+get_comments() {
+    local ticket_id="$1"
+    
+    echo "Getting comments for ticket: $ticket_id"
+    echo "============================================================"
+    
+    local response=$(curl -s -u "$JIRA_MCP_LOGIN:$JIRA_MCP_TOKEN" \
+        "https://compstak.atlassian.net/rest/api/3/issue/$ticket_id/comment")
+    
+    if echo "$response" | jq -e '.errorMessages' > /dev/null 2>&1; then
+        echo "Error: $(echo "$response" | jq -r '.errorMessages[0]')"
+        return 1
+    fi
+    
+    local total=$(echo "$response" | jq -r '.total')
+    echo "Found $total comments"
+    echo ""
+    
+    echo "$response" | jq -r '.comments[] | "---\nAuthor: \(.author.displayName)\nCreated: \(.created)\nBody: \(.body // "No content")\n---"'
 }
 
 # Main script logic
@@ -76,24 +163,24 @@ case "${1:-help}" in
             echo "Usage: $0 read <ticket_id>"
             exit 1
         fi
-        run_reader read "$2"
+        read_ticket "$2"
         ;;
     "search")
         if [ -z "$2" ]; then
             echo "Usage: $0 search \"<jql_query>\" [max_results]"
             exit 1
         fi
-        run_reader search "$2" "$3"
+        search_tickets "$2" "$3"
         ;;
     "workload")
-        run_reader workload "$2" "$3"
+        get_qa_workload "$2" "$3"
         ;;
     "comments")
         if [ -z "$2" ]; then
             echo "Usage: $0 comments <ticket_id>"
             exit 1
         fi
-        run_reader comments "$2"
+        get_comments "$2"
         ;;
     "help"|*)
         show_help

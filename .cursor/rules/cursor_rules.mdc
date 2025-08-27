@@ -1,3 +1,7 @@
+---
+alwaysApply: true
+---
+
 
 # Manual QA Framework - Cursor Rules
 
@@ -7,7 +11,7 @@
 **Status**: Active Development  
 
 ## Current Task
-- **Your local cursor will change this**
+- **See task_tracking.mdc for current tasks and project status**
 
 ## Framework Overview
 - **Manual QA Framework**: Comprehensive testing framework for internal company use
@@ -15,6 +19,10 @@
 - **Standardized Processes**: Consistent bug reporting, test planning, and documentation
 - **Project-Specific Testing**: Dedicated testing for specific projects like OES (Ownership Entity System)
 - **Cross-Platform Support**: Both PowerShell (Windows) and Bash (Mac/Linux) implementations
+
+## Task Management
+- **Current Tasks**: See `task_tracking.mdc` for current tasks and project status
+- **Task Updates**: Update `task_tracking.mdc` for task changes, not this file
 
 ## Key Components
 - **01-jira-integration**: JIRA API integration and field configurations
@@ -104,29 +112,3 @@
 3. Implement bug report generation commands
 4. Add test plan generation functionality
 5. Continue with framework development as needed
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
