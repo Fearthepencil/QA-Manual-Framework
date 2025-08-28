@@ -113,6 +113,14 @@ personal/
 04-projects/*/documentation/bug_*.md
 04-projects/*/documentation/result_*.md
 
+# Exclude detailed technical and testing documents - keep only project overview
+04-projects/*/documentation/Technical_Requirements.md
+04-projects/*/documentation/Testing_Strategy.md
+04-projects/*/documentation/Service_Specification_*.md
+04-projects/*/documentation/*_Requirements.md
+04-projects/*/documentation/*_Strategy.md
+04-projects/*/documentation/*_Specification.md
+
 # Allow final aggregated summary files
 !04-projects/*/project_documentation/*_summary.md
 !04-projects/*/project_documentation/*_aggregated.md

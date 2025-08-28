@@ -43,17 +43,21 @@ QA-Manual-Framework/
 │   │   ├── bug_metrics_reference.md  # Company standards and validation
 │   │   ├── bug_report_template.md    # Enhanced bug report template
 │   │   └── jira-ap-bug-metadata.json # JIRA field configurations
-│   └── reports/                      # Example bug reports (gitignored)
+│   └── reports/                      # Example bug reports
 ├── 03-test-plans/                    # Test planning templates
 │   ├── template/                     # Test plan templates
 │   └── demo/                         # Example test plans
-├── 04-projects/                      # Project-specific testing (mostly gitignored)
+├── 04-projects/                      # Project-specific documentation
 │   ├── harvest/                      # Project Harvest - OM harvesting service
-│   │   └── documentation/            # ✅ ONLY FOLDER PUSHED TO GIT
+│   │   └── documentation/            # Project overview and business context
+│   │       └── Project_Harvest_Overview.md  # High-level project documentation
 │   ├── ownership-entity/             # OES project testing
-│   │   ├── project documentation/    # ✅ ONLY FOLDER PUSHED TO GIT
+│   │   ├── project documentation/    # Project overview documentation
+│   │   │   └── OES_System_Documentation.md  # OES system specifications
 │   │   └── project rules/            # Project testing guidelines
 │   └── folders/                      # General project template
+│       ├── project documentation/    # Template for project docs
+│       └── README.md                 # Folder structure guide
 ├── 05-utilities/                     # Testing utilities and matrices
 ├── 06-documentation/                 # Framework guides and standards
 │   ├── guides/                       # User guides
@@ -189,30 +193,26 @@ bash 01-jira-integration/commands/show_ticket.sh AP-12345
 
 ## 🔒 Security & Git Rules
 
-### **Gitignore Rules**
-```gitignore
-# JIRA Credentials
-.env
+### **What's Included in Repository**
+- ✅ **Framework Structure**: Complete QA framework with templates and guides
+- ✅ **JIRA Integration**: Working PowerShell and Bash scripts for all platforms
+- ✅ **Documentation**: Comprehensive guides and standards
+- ✅ **Project Overview Docs**: High-level project documentation and business context
+- ✅ **Bug Report Templates**: Company-compliant templates and examples
+- ✅ **Test Plan Templates**: Structured testing templates
 
-# Project Testing Files (except documentation)
-04-projects/*/
-!04-projects/*/project documentation/
-!04-projects/*/project rules/
-
-# Bug Reports (examples only)
-02-bug-reports/reports/
-
-# Temporary Files
-temp_*.json
-ai_*.json
-test_*.json
-```
+### **What's Local Only (Not in Git)**
+- 🔒 **JIRA Credentials**: `.env` file with API credentials
+- 🔒 **Task Tracking**: Personal project task management files
+- 🔒 **Detailed Technical Docs**: Requirements, testing strategies, specifications
+- 🔒 **Testing Files**: Bug reports, test results, screenshots
+- 🔒 **Temporary Files**: AI-generated JSON files and drafts
 
 ### **Important Security Notes**
-- ⚠️ **Never commit** `.env` file with JIRA credentials (project root)
-- ⚠️ **Only documentation folders** in projects can be pushed to git
-- ⚠️ **All testing files** (bug reports, test results) are gitignored
-- ⚠️ **Temporary JSON files** are auto-cleaned by scripts
+- ⚠️ **Credentials**: Store JIRA API credentials in `.env` at project root
+- ⚠️ **Project Documentation**: Only high-level overview docs are shared
+- ⚠️ **Local Work**: Detailed technical work stays on your machine
+- ⚠️ **Task Separation**: Framework rules vs current project tasks kept separate
 
 ## 🛠️ Development
 
