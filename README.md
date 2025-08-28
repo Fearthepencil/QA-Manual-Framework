@@ -48,6 +48,8 @@ QA-Manual-Framework/
 │   ├── template/                     # Test plan templates
 │   └── demo/                         # Example test plans
 ├── 04-projects/                      # Project-specific testing (mostly gitignored)
+│   ├── harvest/                      # Project Harvest - OM harvesting service
+│   │   └── documentation/            # ✅ ONLY FOLDER PUSHED TO GIT
 │   ├── ownership-entity/             # OES project testing
 │   │   ├── project documentation/    # ✅ ONLY FOLDER PUSHED TO GIT
 │   │   └── project rules/            # Project testing guidelines
