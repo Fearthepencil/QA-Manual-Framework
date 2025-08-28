@@ -6,8 +6,8 @@
 
 # Load environment variables from .env file
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="$(cd "$SCRIPT_DIR" && while [[ "$PWD" != "/" && ! -f "01-jira-integration/config/.env" ]]; do cd ..; done && pwd)"
-ENV_FILE="$PROJECT_ROOT/01-jira-integration/config/.env"
+PROJECT_ROOT="$(cd "$SCRIPT_DIR" && while [[ "$PWD" != "/" && ! -f ".env" ]]; do cd ..; done && pwd)"
+ENV_FILE="$PROJECT_ROOT/.env"
 
 if [ -f "$ENV_FILE" ]; then
     echo "Loading environment from $ENV_FILE" >&2
