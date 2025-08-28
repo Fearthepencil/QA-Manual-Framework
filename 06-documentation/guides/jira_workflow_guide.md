@@ -70,7 +70,7 @@ The framework automatically ignores sensitive and temporary files:
 
 ```gitignore
 # JIRA Credentials (NEVER COMMIT)
-01-jira-integration/config/.env
+.env
 
 # AI-Generated temporary files
 temp_*.json
@@ -82,23 +82,39 @@ generate_*.json
 # Project Testing Files (except documentation)
 04-projects/*/
 !04-projects/*/project documentation/
+!04-projects/*/documentation/
 !04-projects/*/project rules/
+
+# Exclude detailed technical documents (keep only project overview)
+04-projects/*/documentation/*_Requirements.md
+04-projects/*/documentation/*_Strategy.md
+04-projects/*/documentation/*_Specification.md
+
+# Personal Task Tracking (Local Only)
+.cursor/rules/task_tracking.mdc
+**/task_tracking.mdc
 
 # Bug Reports (examples only)
 02-bug-reports/reports/
 ```
 
 ### **⚠️ Critical Security Notes**
-- **🚨 NEVER COMMIT** `.env` files containing JIRA API credentials
+- **🚨 NEVER COMMIT** `.env` file containing JIRA API credentials (located in project root)
 - **🚨 ONLY documentation folders** in projects should be pushed to git
+- **🚨 ONLY high-level project overview docs** are version-controlled
+- **🚨 DETAILED technical docs** (requirements, testing, specifications) are local only
 - **🚨 ALL testing files** (bug reports, test results, screenshots) are gitignored
+- **🚨 TASK tracking files** are local and never committed
 - **🚨 TEMPORARY JSON files** are auto-cleaned by scripts and gitignored
 
 ### **📋 Project Folder Rules**
-- **✅ CAN BE COMMITTED**: `04-projects/*/project documentation/` folder
+- **✅ CAN BE COMMITTED**: `04-projects/*/project documentation/` folder (overview docs only)
+- **✅ CAN BE COMMITTED**: `04-projects/*/documentation/` folder (overview docs only)
 - **✅ CAN BE COMMITTED**: `04-projects/*/project rules/` folder  
+- **❌ NEVER COMMIT**: Detailed technical documents (*_Requirements.md, *_Strategy.md, *_Specification.md)
 - **❌ NEVER COMMIT**: Individual test files, bug reports, screenshots, test results
 - **❌ NEVER COMMIT**: Personal testing data or sensitive information
+- **❌ NEVER COMMIT**: Task tracking files (task_tracking.mdc)
 
 ## 📋 JIRA Status Definitions
 

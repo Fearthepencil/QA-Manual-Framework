@@ -75,8 +75,9 @@ drafts/
 notes/
 personal/
 
-# Personal Task Tracking
+# Personal Task Tracking (Local Only - Never Commit)
 .cursor/rules/task_tracking.mdc
+**/task_tracking.mdc
 
 # PROJECT FOLDER RULES - ENFORCE STRICTLY
 # Only documentation folder can be pushed from project folders
@@ -111,6 +112,14 @@ personal/
 04-projects/*/documentation/test_*.md
 04-projects/*/documentation/bug_*.md
 04-projects/*/documentation/result_*.md
+
+# Exclude detailed technical and testing documents - keep only project overview
+04-projects/*/documentation/Technical_Requirements.md
+04-projects/*/documentation/Testing_Strategy.md
+04-projects/*/documentation/Service_Specification_*.md
+04-projects/*/documentation/*_Requirements.md
+04-projects/*/documentation/*_Strategy.md
+04-projects/*/documentation/*_Specification.md
 
 # Allow final aggregated summary files
 !04-projects/*/project_documentation/*_summary.md

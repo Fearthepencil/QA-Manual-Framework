@@ -4,9 +4,10 @@
 # Purpose: Show tickets assigned to the current QA Engineer
 # Usage: ./show_my_tickets.sh
 
-# Load environment variables from .env file
+# Load environment variables from .env file in QA-Manual-Framework root
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="$(cd "$SCRIPT_DIR" && while [[ "$PWD" != "/" && ! -f ".env" ]]; do cd ..; done && pwd)"
+# Navigate up to find QA-Manual-Framework directory
+PROJECT_ROOT="$(cd "$SCRIPT_DIR" && while [[ "$PWD" != "/" && "$(basename "$PWD")" != "QA-Manual-Framework" ]]; do cd ..; done && pwd)"
 ENV_FILE="$PROJECT_ROOT/.env"
 
 if [ -f "$ENV_FILE" ]; then

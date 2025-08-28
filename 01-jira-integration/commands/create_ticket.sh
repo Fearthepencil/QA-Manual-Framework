@@ -4,10 +4,11 @@
 # Purpose: Create Bug (t) tickets with proper ADF formatting and company compliance
 # Usage: ./create_ticket.sh [Title] [Description] [Environment]
 
-# Load environment variables from .env file (same approach as working scripts)
+# Load environment variables from .env file in QA-Manual-Framework root
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJECT_ROOT="$(cd "$SCRIPT_DIR" && while [[ "$PWD" != "/" && ! -f "01-jira-integration/config/.env" ]]; do cd ..; done && pwd)"
-ENV_FILE="$PROJECT_ROOT/01-jira-integration/config/.env"
+# Navigate up to find QA-Manual-Framework directory
+PROJECT_ROOT="$(cd "$SCRIPT_DIR" && while [[ "$PWD" != "/" && "$(basename "$PWD")" != "QA-Manual-Framework" ]]; do cd ..; done && pwd)"
+ENV_FILE="$PROJECT_ROOT/.env"
 
 load_env() {
     if [ -f "$ENV_FILE" ]; then
@@ -15,13 +16,13 @@ load_env() {
         export JIRA_MCP_LOGIN=$(grep '^JIRA_MCP_LOGIN=' "$ENV_FILE" | cut -d'=' -f2-)
         export JIRA_MCP_TOKEN=$(grep '^JIRA_MCP_TOKEN=' "$ENV_FILE" | cut -d'=' -f2-)
     else
-        echo "Error: .env file not found at $ENV_FILE" >&2
+        echo "Error: .env file not found at $ENV_FILE - Please create .env file in project root" >&2
         exit 1
     fi
     
     # Check if required credentials are available
     if [ -z "$JIRA_MCP_LOGIN" ] || [ -z "$JIRA_MCP_TOKEN" ]; then
-        echo "Error: JIRA credentials not available (check .env file)" >&2
+        echo "Error: JIRA credentials not available (check project root .env file)" >&2
         exit 1
     fi
 }

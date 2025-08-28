@@ -8,17 +8,24 @@ param(
     [string]$Environment = ""
 )
 
-# Load environment variables
-$envFile = "01-jira-integration/config/.env"
+# Load environment variables from .env file in QA-Manual-Framework root
+$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
+# Navigate up to find QA-Manual-Framework directory
+$currentDir = $scriptDir
+while ($currentDir -and (Split-Path -Leaf $currentDir) -ne "QA-Manual-Framework") {
+    $currentDir = Split-Path -Parent $currentDir
+}
+$projectRoot = $currentDir
+$envFile = Join-Path $projectRoot ".env"
 if (Test-Path $envFile) {
-    Write-Host "Loading environment from $((Get-Location).Path)\$envFile" -ForegroundColor Yellow
+    Write-Host "Loading environment from $envFile" -ForegroundColor Yellow
     Get-Content $envFile | ForEach-Object {
         if ($_ -match '^([^=]+)=(.*)$') {
             [System.Environment]::SetEnvironmentVariable($matches[1], $matches[2], "Process")
         }
     }
 } else {
-    Write-Error "Environment file not found at $envFile"
+    Write-Error "Environment file not found at $envFile - Please create .env file in project root with JIRA_MCP_LOGIN and JIRA_MCP_TOKEN"
     exit 1
 }
 

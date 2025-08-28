@@ -12,8 +12,8 @@ qa-manual-framework/
 ├── 01-jira-integration/
 │   ├── config/                   # JIRA setup & configuration
 │   │   ├── jira-mcp-wrapper.sh
-│   │   ├── jira_field_reference.md
-│   │   └── .env (excluded from git)
+│   │   └── jira_field_reference.md
+├── .env (excluded from git, moved to project root)
 │   ├── templates/                # JIRA ticket templates
 │   │   ├── bug-ticket-template.json
 │   │   ├── task-ticket-template.json
@@ -77,7 +77,9 @@ qa-manual-framework/
 **Config:**
 - jira-mcp-wrapper.sh
 - jira_field_reference.md
-- .env
+
+**Project Root:**
+- .env (JIRA credentials)
 
 **Templates:**
 - Create generalized templates from current examples
@@ -142,4 +144,4 @@ qa-manual-framework/
 2. Move files to appropriate locations
 3. Create generalized templates from current examples
 4. Update .cursor/rules to reference new structure
-5. Add .gitignore for sensitive files (.env)
+5. Add .gitignore for sensitive files (project root .env)

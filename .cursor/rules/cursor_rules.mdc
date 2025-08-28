@@ -2,8 +2,16 @@
 alwaysApply: true
 ---
 
-
 # Manual QA Framework - Cursor Rules
+
+## ⚠️ CRITICAL: TASK TRACKING SEPARATION ⚠️
+**IMMEDIATELY READ THIS BEFORE MAKING ANY CHANGES:**
+- **NEVER** add current tasks, project status, or work items to this file
+- **ALWAYS** use `.cursor/rules/task_tracking.mdc` for current work and tasks
+- **THIS FILE**: Framework rules and guidelines only (version controlled)
+- **TASK FILE**: Current project work and status only (local, gitignored)
+- **NEW PROJECT**: Copy `task_tracking_template.mdc` to `task_tracking.mdc` and customize
+
 
 ## Project Overview
 **Title**: Manual QA Framework  
@@ -17,9 +25,13 @@ alwaysApply: true
 - **Project-Specific Testing**: Dedicated testing for specific projects like OES (Ownership Entity System)
 - **Cross-Platform Support**: Both PowerShell (Windows) and Bash (Mac/Linux) implementations
 
-## Task Management
-- **Current Tasks**: See `task_tracking.mdc` for current tasks and project status
-- **Task Updates**: Update `task_tracking.mdc` for task changes, not this file
+## Task Management - CRITICAL SEPARATION RULES
+- **FORBIDDEN**: Never add current tasks, project status, or work-in-progress items to this file
+- **Current Tasks**: ONLY use local `task_tracking.mdc` for current tasks and project status
+- **Local Task Tracking**: `task_tracking.mdc` is gitignored and project-specific
+- **Task Updates**: Always update `task_tracking.mdc` for task changes, NEVER this file
+- **Version Control**: This file contains framework rules only, no current work status
+- **New Project Setup**: When cloning framework, create new local `task_tracking.mdc` for that project
 
 ## Key Components
 - **01-jira-integration**: JIRA API integration and field configurations
@@ -35,6 +47,41 @@ alwaysApply: true
 - **PRESERVE COMPLETE HISTORY**: Maintain all existing examples, references, and detailed information
 - **APPEND, DON'T REPLACE**: When updating documentation, add new sections rather than replacing existing ones
 - **MAINTAIN BACKWARDS COMPATIBILITY**: Keep all existing field references, examples, and formats
+
+## LOCAL TASK TRACKING RULES - MANDATORY ENFORCEMENT
+- **STRICT SEPARATION**: cursor_rules.mdc = framework rules, task_tracking.mdc = current work
+- **GITIGNORE ENFORCEMENT**: task_tracking.mdc MUST be gitignored (local only)
+- **NO CURRENT TASKS IN FRAMEWORK**: This file contains zero current task information
+- **PROJECT-SPECIFIC TASKS**: Each project clone gets its own task_tracking.mdc
+- **AUTO-GENERATION**: When framework is cloned, automatically create local task_tracking.mdc
+- **TASK UPDATES ONLY**: Use task_tracking.mdc for all current work, status updates, and progress
+- **FRAMEWORK UPDATES**: Only update cursor_rules.mdc for framework improvements, never current tasks
+
+## NEW PROJECT SETUP INSTRUCTIONS
+When this framework is cloned to a new project:
+1. **Automatically create** a local `task_tracking.mdc` file for project-specific tasks
+2. **Never modify** this cursor_rules.mdc file with current project tasks  
+3. **Use template**: Copy `.cursor/rules/task_tracking_template.mdc` to `.cursor/rules/task_tracking.mdc`
+4. **Customize template**: Update project name, tasks, and status in the new local file
+5. **Local tracking only**: All current work stays in the local task_tracking.mdc
+6. **Framework updates**: Only update cursor_rules.mdc for framework improvements, never tasks
+
+## AUTOMATED SETUP COMMAND
+For new projects, run this setup command:
+```bash
+# Copy template to create local task tracking
+cp .cursor/rules/task_tracking_template.mdc .cursor/rules/task_tracking.mdc
+# Edit the new file to add your project details
+```
+
+## TASK TRACKING ENFORCEMENT
+- **FORBIDDEN IN THIS FILE**: Current tasks, project status, work-in-progress items
+- **REQUIRED LOCATION**: All current work must go in local `task_tracking.mdc`
+- **TEMPLATE AVAILABLE**: Use `task_tracking_template.mdc` for new project setup  
+- **VERSION CONTROL**: task_tracking.mdc is gitignored (local only)
+- **AUTOMATION**: When framework is used, automatically create local task tracking from template
+
+## FILE CREATION RULES
 - **FOCUS ON ADDING, NOT REMOVING**: Mostly focus on adding content, not taking away existing information
 - **ONLY REMOVE IF DUPLICATED/OUTDATED**: Only remove content if it's clearly duplicated or outdated, otherwise preserve it
 - **CRITICAL**: CURSOR SHOULD NOT GENERATE ANY NEW FILES IF NOT ABSOLUTELY NECESSARY
@@ -122,6 +169,7 @@ alwaysApply: true
 - ✅ Technical detection working on both platforms
 - ✅ User authentication and JIRA API calls working correctly
 - ✅ Cross-platform ticket creation and commenting fully functional
+- ✅ Updated all scripts to use project root .env file location (standardized)
 
 ## BUG CREATION RULES - MANDATORY COMPLIANCE
 **CRITICAL**: EVERY bug ticket MUST be validated against bug_metrics_reference.md BEFORE publishing.
@@ -184,10 +232,3 @@ When user provides detailed technical information:
 6. Only THEN publish ticket
 
 **CRITICAL**: NO ticket should be published without full bug_metrics_reference.md compliance verification.
-
-## Next Steps
-1. Complete bug documentation alignment with company standards
-2. Continue developing additional JIRA commands (show-ticket, update-status, add-comment)
-3. Implement bug report generation commands
-4. Add test plan generation functionality
-5. Continue with framework development as needed

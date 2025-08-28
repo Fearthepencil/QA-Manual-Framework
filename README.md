@@ -31,9 +31,11 @@ QA-Manual-Framework/
 │   │   ├── show_deployment_tickets.ps1    # Show deployment tickets (PowerShell)
 │   │   ├── show_deployment_tickets.sh     # Show deployment tickets (Bash)
 │   │   ├── show_ready_for_qa_tickets.ps1  # Show ready for QA (PowerShell)
-│   │   └── show_ready_for_qa_tickets.sh   # Show ready for QA (Bash)
-│   ├── config/                       # JIRA configuration and credentials
-│   │   ├── .env                      # JIRA API credentials (gitignored)
+│   │   ├── show_ready_for_qa_tickets.sh   # Show ready for QA (Bash)
+│   │   ├── show_ticket.ps1           # Show detailed ticket info (PowerShell)
+│   │   └── show_ticket.sh            # Show detailed ticket info (Bash)
+│   ├── config/                       # JIRA configuration
+│   │   ├── (moved to project root)   # .env file location changed
 │   │   └── jira_field_reference.md   # JIRA field mappings and ADF guide
 │   └── scripts/                      # Additional automation scripts
 ├── 02-bug-reports/                   # Bug reporting templates and examples
@@ -41,15 +43,21 @@ QA-Manual-Framework/
 │   │   ├── bug_metrics_reference.md  # Company standards and validation
 │   │   ├── bug_report_template.md    # Enhanced bug report template
 │   │   └── jira-ap-bug-metadata.json # JIRA field configurations
-│   └── reports/                      # Example bug reports (gitignored)
+│   └── reports/                      # Example bug reports
 ├── 03-test-plans/                    # Test planning templates
 │   ├── template/                     # Test plan templates
 │   └── demo/                         # Example test plans
-├── 04-projects/                      # Project-specific testing (mostly gitignored)
+├── 04-projects/                      # Project-specific documentation
+│   ├── harvest/                      # Project Harvest - OM harvesting service
+│   │   └── documentation/            # Project overview and business context
+│   │       └── Project_Harvest_Overview.md  # High-level project documentation
 │   ├── ownership-entity/             # OES project testing
-│   │   ├── project documentation/    # ✅ ONLY FOLDER PUSHED TO GIT
+│   │   ├── project documentation/    # Project overview documentation
+│   │   │   └── OES_System_Documentation.md  # OES system specifications
 │   │   └── project rules/            # Project testing guidelines
 │   └── folders/                      # General project template
+│       ├── project documentation/    # Template for project docs
+│       └── README.md                 # Folder structure guide
 ├── 05-utilities/                     # Testing utilities and matrices
 ├── 06-documentation/                 # Framework guides and standards
 │   ├── guides/                       # User guides
@@ -72,11 +80,26 @@ cd QA-Manual-Framework
 ```
 
 ### 2. JIRA Integration Setup
-1. Copy your JIRA credentials to `01-jira-integration/config/.env`
+1. Copy your JIRA credentials to `.env` in project root
 2. Follow [JIRA Environment Setup Guide](06-documentation/guides/jira_env_setup_guide.md)
 3. Test with: `powershell -File 01-jira-integration/commands/show_my_tickets.ps1`
 
-### 3. Available Commands
+### 3. Project Task Tracking Setup
+**⚠️ IMPORTANT**: This framework uses separate task tracking for clean project management:
+
+```bash
+# For new projects, copy the template to create local task tracking
+cp .cursor/rules/task_tracking_template.mdc .cursor/rules/task_tracking.mdc
+# Edit the new file to add your project details
+```
+
+**Key Points:**
+- ✅ **Framework rules** stay in `.cursor/rules/cursor_rules.mdc` (version controlled)
+- ✅ **Current tasks** go in `.cursor/rules/task_tracking.mdc` (local, gitignored)
+- ✅ **Each project** gets its own task tracking file
+- ✅ **No task contamination** in the framework repository
+
+### 4. Available Commands
 
 #### 🎫 **Ticket Creation**
 ```bash
@@ -109,6 +132,10 @@ bash 01-jira-integration/commands/show_deployment_tickets.sh
 # Show ready for QA tickets
 powershell -File 01-jira-integration/commands/show_ready_for_qa_tickets.ps1
 bash 01-jira-integration/commands/show_ready_for_qa_tickets.sh
+
+# Show detailed ticket information with description and comments
+powershell -File 01-jira-integration/commands/show_ticket.ps1 -TicketKey "AP-12345"
+bash 01-jira-integration/commands/show_ticket.sh AP-12345
 ```
 
 ## 🤖 AI-Powered Workflows
@@ -166,30 +193,26 @@ bash 01-jira-integration/commands/show_ready_for_qa_tickets.sh
 
 ## 🔒 Security & Git Rules
 
-### **Gitignore Rules**
-```gitignore
-# JIRA Credentials
-01-jira-integration/config/.env
+### **What's Included in Repository**
+- ✅ **Framework Structure**: Complete QA framework with templates and guides
+- ✅ **JIRA Integration**: Working PowerShell and Bash scripts for all platforms
+- ✅ **Documentation**: Comprehensive guides and standards
+- ✅ **Project Overview Docs**: High-level project documentation and business context
+- ✅ **Bug Report Templates**: Company-compliant templates and examples
+- ✅ **Test Plan Templates**: Structured testing templates
 
-# Project Testing Files (except documentation)
-04-projects/*/
-!04-projects/*/project documentation/
-!04-projects/*/project rules/
-
-# Bug Reports (examples only)
-02-bug-reports/reports/
-
-# Temporary Files
-temp_*.json
-ai_*.json
-test_*.json
-```
+### **What's Local Only (Not in Git)**
+- 🔒 **JIRA Credentials**: `.env` file with API credentials
+- 🔒 **Task Tracking**: Personal project task management files
+- 🔒 **Detailed Technical Docs**: Requirements, testing strategies, specifications
+- 🔒 **Testing Files**: Bug reports, test results, screenshots
+- 🔒 **Temporary Files**: AI-generated JSON files and drafts
 
 ### **Important Security Notes**
-- ⚠️ **Never commit** `.env` files with JIRA credentials
-- ⚠️ **Only documentation folders** in projects can be pushed to git
-- ⚠️ **All testing files** (bug reports, test results) are gitignored
-- ⚠️ **Temporary JSON files** are auto-cleaned by scripts
+- ⚠️ **Credentials**: Store JIRA API credentials in `.env` at project root
+- ⚠️ **Project Documentation**: Only high-level overview docs are shared
+- ⚠️ **Local Work**: Detailed technical work stays on your machine
+- ⚠️ **Task Separation**: Framework rules vs current project tasks kept separate
 
 ## 🛠️ Development
 

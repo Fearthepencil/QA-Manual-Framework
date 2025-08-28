@@ -6,8 +6,11 @@
 TICKET_KEY="$1"
 JSON_FILE="$2"
 
-# Load environment
-ENV_FILE="01-jira-integration/config/.env"
+# Load environment variables from .env file in QA-Manual-Framework root
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+# Navigate up to find QA-Manual-Framework directory
+PROJECT_ROOT="$(cd "$SCRIPT_DIR" && while [[ "$PWD" != "/" && "$(basename "$PWD")" != "QA-Manual-Framework" ]]; do cd ..; done && pwd)"
+ENV_FILE="$PROJECT_ROOT/.env"
 export JIRA_MCP_LOGIN=$(grep '^JIRA_MCP_LOGIN=' "$ENV_FILE" | cut -d'=' -f2-)
 export JIRA_MCP_TOKEN=$(grep '^JIRA_MCP_TOKEN=' "$ENV_FILE" | cut -d'=' -f2-)
 

@@ -1,0 +1,45 @@
+# Task Tracking - Manual QA Framework [NEW PROJECT]
+
+## INSTRUCTIONS
+This file is for LOCAL project tasks only. It is gitignored and should never be committed.
+When starting a new project with this framework:
+1. Copy this template to `.cursor/rules/task_tracking.mdc`
+2. Update the project name and current tasks
+3. Keep all framework updates in `cursor_rules.mdc`
+4. Keep all current work tracking in this file
+
+## Current Project
+- **Project Name**: [UPDATE WITH YOUR PROJECT NAME]
+- **Status**: [NEW/IN_PROGRESS/ON_HOLD/COMPLETED]
+- **Latest**: [DESCRIBE CURRENT STATE]
+
+## Current Tasks
+- **[Task 1]**: [Description] - [Status: pending/in_progress/completed]
+- **[Task 2]**: [Description] - [Status: pending/in_progress/completed]
+- **[Task 3]**: [Description] - [Status: pending/in_progress/completed]
+
+## Recent Completed Tasks
+- **[Completed Task 1]**: [Description] - ✅ Complete
+- **[Completed Task 2]**: [Description] - ✅ Complete
+
+## Upcoming Tasks
+- **[Future Task 1]**: [Description] 
+- **[Future Task 2]**: [Description]
+
+## Project Status Overview
+- **Framework Status**: [Status]
+- **JIRA Integration**: [Status]
+- **Documentation**: [Status]  
+- **Templates**: [Status]
+
+## Notes
+- [Add any project-specific notes here]
+- [This file is local to your project and won't be shared]
+- [Update this file regularly with task progress]
+
+## Project History
+### [Date] - [Milestone/Update]
+- [Description of what was accomplished]
+
+### [Date] - [Milestone/Update]  
+- [Description of what was accomplished]
