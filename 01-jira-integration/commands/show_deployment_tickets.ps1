@@ -2,9 +2,15 @@
 # Purpose: Show tickets assigned to the current QA Engineer that are ready for deployment (status "To Deploy")
 # Usage: .\show_deployment_tickets.ps1
 
-# Load environment variables from .env file
+# Load environment variables from .env file in QA-Manual-Framework root
 $scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
-$envFile = Join-Path (Split-Path -Parent (Split-Path -Parent $scriptDir)) "01-jira-integration\config\.env"
+# Navigate up to find QA-Manual-Framework directory
+$currentDir = $scriptDir
+while ($currentDir -and (Split-Path -Leaf $currentDir) -ne "QA-Manual-Framework") {
+    $currentDir = Split-Path -Parent $currentDir
+}
+$projectRoot = $currentDir
+$envFile = Join-Path $projectRoot ".env"
 
 if (Test-Path $envFile) {
     Write-Host "Loading environment from $envFile" -ForegroundColor Yellow
@@ -15,7 +21,7 @@ if (Test-Path $envFile) {
     }
 } else {
     Write-Host "Warning: .env file not found at $envFile" -ForegroundColor Red
-    Write-Host "Please create .env file with JIRA_MCP_LOGIN and JIRA_MCP_TOKEN" -ForegroundColor Red
+    Write-Host "Please create .env file in project root with JIRA_MCP_LOGIN and JIRA_MCP_TOKEN" -ForegroundColor Red
     exit 1
 }
 
@@ -27,13 +33,13 @@ $API_TOKEN = $env:JIRA_MCP_TOKEN
 # Validate environment variables
 if (-not $EMAIL) {
     Write-Host "Error: JIRA_MCP_LOGIN not found in environment variables" -ForegroundColor Red
-    Write-Host "Please set JIRA_MCP_LOGIN in your .env file" -ForegroundColor Red
+    Write-Host "Please set JIRA_MCP_LOGIN in your project root .env file" -ForegroundColor Red
     exit 1
 }
 
 if (-not $API_TOKEN) {
     Write-Host "Error: JIRA_MCP_TOKEN not found in environment variables" -ForegroundColor Red
-    Write-Host "Please set JIRA_MCP_TOKEN in your .env file" -ForegroundColor Red
+    Write-Host "Please set JIRA_MCP_TOKEN in your project root .env file" -ForegroundColor Red
     exit 1
 }
 

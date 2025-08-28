@@ -24,14 +24,13 @@
 
 ## 📁 Step 2: Create Environment File
 
-### **Important**: Create `.env` file in the exact location shown below
+### **Important**: Create `.env` file in the project root
 
 **File Structure:**
 ```
 QA-Manual-Framework/
+├── .env  ← Place your .env file here (project root)
 ├── 01-jira-integration/
-│   ├── config/
-│   │   └── .env  ← Place your .env file here (NOT in project root)
 │   ├── commands/
 │   └── scripts/
 └── ...
@@ -44,7 +43,7 @@ QA-Manual-Framework/
    cd 01-jira-integration/config/
    ```
 
-2. **Create the .env file:**
+2. **Create the .env file in project root:**
    ```bash
    # Windows (PowerShell)
    New-Item -Path ".env" -ItemType File
@@ -66,7 +65,7 @@ JIRA_MCP_LOGIN=pavle.stefanovic@compstak.com
 JIRA_MCP_TOKEN=ATATT3xFfGF0...your_actual_token_here
 ```
 
-**Note**: All scripts are configured to look for the .env file in `01-jira-integration/config/` directory. Placing it anywhere else will cause the scripts to fail.
+**Note**: All scripts are configured to look for the .env file in the project root directory. Placing it anywhere else will cause the scripts to fail.
 
 ---
 
@@ -110,7 +109,7 @@ curl -u "your.email@compstak.com:your_api_token" \
 ## 🛡️ Security Best Practices
 
 ### ✅ Do's:
-- Store `.env` file in `01-jira-integration/config/` directory
+- Store `.env` file in project root directory
 - Use descriptive token names
 - Rotate tokens regularly
 - Add `.env` to `.gitignore`
@@ -138,7 +137,7 @@ curl -u "your.email@compstak.com:your_api_token" \
 - Restart Cursor after config changes
 
 **"Token Split Across Lines"**
-- Ensure token is on single line in `.env`
+- Ensure token is on single line in project root `.env`
 - No line breaks or spaces in token
 
 ---
@@ -149,6 +148,30 @@ curl -u "your.email@compstak.com:your_api_token" \
 |----------|-------------|---------|
 | `JIRA_MCP_LOGIN` | Your JIRA email | `user@compstak.com` |
 | `JIRA_MCP_TOKEN` | API token | `ATATT3xFfGF0...` |
+
+---
+
+## 🗂️ Step 4: Project Task Tracking Setup
+
+### **Important**: Separate Task Tracking for Clean Projects
+
+When using this framework in a new project:
+
+```bash
+# Copy the template to create local task tracking
+cp .cursor/rules/task_tracking_template.mdc .cursor/rules/task_tracking.mdc
+# Edit the new file to add your project details
+```
+
+### **Key Points:**
+- ✅ **Framework rules** stay in `.cursor/rules/cursor_rules.mdc` (version controlled)
+- ✅ **Current tasks** go in `.cursor/rules/task_tracking.mdc` (local, gitignored)  
+- ✅ **Each project** gets its own task tracking file
+- ✅ **No contamination** of the framework repository with project-specific tasks
+
+### **What Goes Where:**
+- **cursor_rules.mdc**: Framework rules, guidelines, standards (version controlled)
+- **task_tracking.mdc**: Current work, project status, active tasks (local only)
 
 ---
 
@@ -165,6 +188,17 @@ echo "JIRA_MCP_TOKEN=your_token_here" >> .env
 source .env
 curl -u "$JIRA_MCP_LOGIN:$JIRA_MCP_TOKEN" \
   https://compstak.atlassian.net/rest/api/3/myself
+```
+
+### Test JIRA commands:
+```bash
+# Show your assigned tickets
+powershell -File 01-jira-integration/commands/show_my_tickets.ps1
+bash 01-jira-integration/commands/show_my_tickets.sh
+
+# Show detailed ticket information
+powershell -File 01-jira-integration/commands/show_ticket.ps1 -TicketKey "AP-12345"
+bash 01-jira-integration/commands/show_ticket.sh AP-12345
 ```
 
 ---

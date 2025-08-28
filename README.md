@@ -31,9 +31,11 @@ QA-Manual-Framework/
 │   │   ├── show_deployment_tickets.ps1    # Show deployment tickets (PowerShell)
 │   │   ├── show_deployment_tickets.sh     # Show deployment tickets (Bash)
 │   │   ├── show_ready_for_qa_tickets.ps1  # Show ready for QA (PowerShell)
-│   │   └── show_ready_for_qa_tickets.sh   # Show ready for QA (Bash)
-│   ├── config/                       # JIRA configuration and credentials
-│   │   ├── .env                      # JIRA API credentials (gitignored)
+│   │   ├── show_ready_for_qa_tickets.sh   # Show ready for QA (Bash)
+│   │   ├── show_ticket.ps1           # Show detailed ticket info (PowerShell)
+│   │   └── show_ticket.sh            # Show detailed ticket info (Bash)
+│   ├── config/                       # JIRA configuration
+│   │   ├── (moved to project root)   # .env file location changed
 │   │   └── jira_field_reference.md   # JIRA field mappings and ADF guide
 │   └── scripts/                      # Additional automation scripts
 ├── 02-bug-reports/                   # Bug reporting templates and examples
@@ -72,11 +74,26 @@ cd QA-Manual-Framework
 ```
 
 ### 2. JIRA Integration Setup
-1. Copy your JIRA credentials to `01-jira-integration/config/.env`
+1. Copy your JIRA credentials to `.env` in project root
 2. Follow [JIRA Environment Setup Guide](06-documentation/guides/jira_env_setup_guide.md)
 3. Test with: `powershell -File 01-jira-integration/commands/show_my_tickets.ps1`
 
-### 3. Available Commands
+### 3. Project Task Tracking Setup
+**⚠️ IMPORTANT**: This framework uses separate task tracking for clean project management:
+
+```bash
+# For new projects, copy the template to create local task tracking
+cp .cursor/rules/task_tracking_template.mdc .cursor/rules/task_tracking.mdc
+# Edit the new file to add your project details
+```
+
+**Key Points:**
+- ✅ **Framework rules** stay in `.cursor/rules/cursor_rules.mdc` (version controlled)
+- ✅ **Current tasks** go in `.cursor/rules/task_tracking.mdc` (local, gitignored)
+- ✅ **Each project** gets its own task tracking file
+- ✅ **No task contamination** in the framework repository
+
+### 4. Available Commands
 
 #### 🎫 **Ticket Creation**
 ```bash
@@ -109,6 +126,10 @@ bash 01-jira-integration/commands/show_deployment_tickets.sh
 # Show ready for QA tickets
 powershell -File 01-jira-integration/commands/show_ready_for_qa_tickets.ps1
 bash 01-jira-integration/commands/show_ready_for_qa_tickets.sh
+
+# Show detailed ticket information with description and comments
+powershell -File 01-jira-integration/commands/show_ticket.ps1 -TicketKey "AP-12345"
+bash 01-jira-integration/commands/show_ticket.sh AP-12345
 ```
 
 ## 🤖 AI-Powered Workflows
@@ -169,7 +190,7 @@ bash 01-jira-integration/commands/show_ready_for_qa_tickets.sh
 ### **Gitignore Rules**
 ```gitignore
 # JIRA Credentials
-01-jira-integration/config/.env
+.env
 
 # Project Testing Files (except documentation)
 04-projects/*/
@@ -186,7 +207,7 @@ test_*.json
 ```
 
 ### **Important Security Notes**
-- ⚠️ **Never commit** `.env` files with JIRA credentials
+- ⚠️ **Never commit** `.env` file with JIRA credentials (project root)
 - ⚠️ **Only documentation folders** in projects can be pushed to git
 - ⚠️ **All testing files** (bug reports, test results) are gitignored
 - ⚠️ **Temporary JSON files** are auto-cleaned by scripts

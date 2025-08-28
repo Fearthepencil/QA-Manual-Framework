@@ -70,7 +70,7 @@ The framework automatically ignores sensitive and temporary files:
 
 ```gitignore
 # JIRA Credentials (NEVER COMMIT)
-01-jira-integration/config/.env
+.env
 
 # AI-Generated temporary files
 temp_*.json
@@ -89,7 +89,7 @@ generate_*.json
 ```
 
 ### **⚠️ Critical Security Notes**
-- **🚨 NEVER COMMIT** `.env` files containing JIRA API credentials
+- **🚨 NEVER COMMIT** `.env` file containing JIRA API credentials (located in project root)
 - **🚨 ONLY documentation folders** in projects should be pushed to git
 - **🚨 ALL testing files** (bug reports, test results, screenshots) are gitignored
 - **🚨 TEMPORARY JSON files** are auto-cleaned by scripts and gitignored

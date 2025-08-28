@@ -6,8 +6,15 @@ param(
     [string]$JsonFile
 )
 
-# Load environment
-$envFile = "01-jira-integration/config/.env"
+# Load environment variables from .env file in QA-Manual-Framework root
+$scriptDir = Split-Path -Parent $MyInvocation.MyCommand.Definition
+# Navigate up to find QA-Manual-Framework directory
+$currentDir = $scriptDir
+while ($currentDir -and (Split-Path -Leaf $currentDir) -ne "QA-Manual-Framework") {
+    $currentDir = Split-Path -Parent $currentDir
+}
+$projectRoot = $currentDir
+$envFile = Join-Path $projectRoot ".env"
 Get-Content $envFile | ForEach-Object {
     if ($_ -match '^([^=]+)=(.*)$') {
         [System.Environment]::SetEnvironmentVariable($matches[1], $matches[2], "Process")

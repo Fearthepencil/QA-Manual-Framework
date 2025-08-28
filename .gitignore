@@ -75,8 +75,9 @@ drafts/
 notes/
 personal/
 
-# Personal Task Tracking
+# Personal Task Tracking (Local Only - Never Commit)
 .cursor/rules/task_tracking.mdc
+**/task_tracking.mdc
 
 # PROJECT FOLDER RULES - ENFORCE STRICTLY
 # Only documentation folder can be pushed from project folders

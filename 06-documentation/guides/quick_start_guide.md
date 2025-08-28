@@ -40,13 +40,13 @@ cd QA-Manual-Framework
 Create a `.env` file in the project root:
 
 ```bash
-# Create the .env file
+# Create the .env file in project root
 touch .env
 ```
 
 ### **2.3: Add Your Jira Credentials**
 
-Open the `.env` file and add your Jira credentials:
+Open the project root `.env` file and add your Jira credentials:
 
 ```env
 JIRA_MCP_LOGIN=your-email@compstak.com
@@ -59,7 +59,33 @@ JIRA_MCP_TOKEN=your-api-token-here
 
 ---
 
-## 🎯 **Step 3: Choose Your Workflow**
+## 🗂️ **Step 3: Set Up Project Task Tracking**
+
+### **Important**: Separate Task Tracking for Clean Projects
+
+This framework uses a clean separation between framework rules and current project work:
+
+```bash
+# Copy the template to create local task tracking for your project
+cp .cursor/rules/task_tracking_template.mdc .cursor/rules/task_tracking.mdc
+# Edit the new file to add your project details
+```
+
+### **Understanding the Separation:**
+- ✅ **`.cursor/rules/cursor_rules.mdc`**: Framework rules and guidelines (version controlled)
+- ✅ **`.cursor/rules/task_tracking.mdc`**: Your current project tasks and status (local, gitignored)
+
+### **Why This Matters:**
+- 🔒 **Clean Repository**: No project-specific tasks contaminate the framework
+- 🎯 **Project Focus**: Each project gets its own task tracking
+- 🔄 **Reusability**: Framework stays clean for reuse across projects
+- 🤖 **AI Clarity**: Clear separation helps AI understand what to update where
+
+**⚠️ Important**: Always update your current work in `task_tracking.mdc`, never in `cursor_rules.mdc`!
+
+---
+
+## 🎯 **Step 4: Choose Your Workflow**
 
 ### **Option A: Bug Reporting**
 1. Use templates in `02-bug-reports/templates/`
@@ -78,7 +104,7 @@ JIRA_MCP_TOKEN=your-api-token-here
 
 ---
 
-## 🤖 **Step 4: Using the AI Assistant**
+## 🤖 **Step 5: Using the AI Assistant**
 
 ### **With Cursor IDE (Recommended)**
 1. Open the project in Cursor IDE
@@ -99,7 +125,7 @@ JIRA_MCP_TOKEN=your-api-token-here
 
 ---
 
-## 📁 **Step 5: Project Structure Overview**
+## 📁 **Step 6: Project Structure Overview**
 
 ```
 QA-Manual-Framework/
@@ -114,7 +140,7 @@ QA-Manual-Framework/
 
 ---
 
-## 🔧 **Step 6: JIRA Integration Setup**
+## 🔧 **Step 7: JIRA Integration Setup**
 
 ### **Test JIRA Connection**
 ```bash
@@ -130,7 +156,7 @@ QA-Manual-Framework/
 
 ---
 
-## 📚 **Step 7: Documentation & Resources**
+## 📚 **Step 8: Documentation & Resources**
 
 ### **Essential Guides**
 - [JIRA Environment Setup](06-documentation/guides/jira_env_setup_guide.md)
@@ -148,12 +174,20 @@ QA-Manual-Framework/
 
 ---
 
-## 🚀 **Step 8: Quick Commands**
+## 🚀 **Step 9: Quick Commands**
 
 ### **JIRA Integration**
 ```bash
 # Test JIRA connection
 ./01-jira-integration/config/jira-mcp-wrapper.sh
+
+# Show your assigned tickets
+powershell -File 01-jira-integration/commands/show_my_tickets.ps1
+bash 01-jira-integration/commands/show_my_tickets.sh
+
+# Show detailed ticket information with description and comments
+powershell -File 01-jira-integration/commands/show_ticket.ps1 -TicketKey "AP-12345"
+bash 01-jira-integration/commands/show_ticket.sh AP-12345
 
 # View JIRA field reference
 cat 01-jira-integration/config/jira_field_reference.md
