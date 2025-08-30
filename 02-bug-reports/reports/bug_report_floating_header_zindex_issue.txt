@@ -20,11 +20,11 @@ Steps to Reproduce
 2. Scroll down to the press release section of the page
 3. Attempt to click the floating header "REQUEST DEMO" button
 4. Observe that instead of triggering demo request, user is navigated to press release link
-5. Example redirect: https://compstak.com/blog/century21-commercial-and-compstak-partnership
+5. Example redirect: https://example.com/blog/sample-partnership-announcement
 
 Evidence
 - URL with issue: Page with source_page=floating-header-press/guides
-- Incorrect navigation example: https://compstak.com/blog/century21-commercial-and-compstak-partnership
+- Incorrect navigation example: https://example.com/blog/sample-partnership-announcement
 - Issue occurs when floating header overlaps press release content
 - Visual inspection shows button appears present but click events don't register
 

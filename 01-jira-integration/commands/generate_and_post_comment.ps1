@@ -21,7 +21,7 @@ Get-Content $envFile | ForEach-Object {
     }
 }
 
-$JIRA_URL = "https://compstak.atlassian.net"
+$JIRA_URL = "https://your-domain.atlassian.net"
 $EMAIL = $env:JIRA_MCP_LOGIN
 $API_TOKEN = $env:JIRA_MCP_TOKEN
 

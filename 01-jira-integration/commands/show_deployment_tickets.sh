@@ -26,7 +26,7 @@ if [ -z "$JIRA_MCP_LOGIN" ] || [ -z "$JIRA_MCP_TOKEN" ]; then
 fi
 
 # Configuration from environment variables
-JIRA_URL="https://compstak.atlassian.net"
+JIRA_URL="https://your-domain.atlassian.net"
 EMAIL="$JIRA_MCP_LOGIN"
 API_TOKEN="$JIRA_MCP_TOKEN"
 
@@ -54,9 +54,9 @@ echo ""
 echo -e "${YELLOW}Searching for tickets ready for deployment...${NC}"
 
 # JQL query to find tickets where current user is QA Assignee and status is "To Deploy"
-JQL_QUERY="cf[11207] = \"$ACCOUNT_ID\" AND project = AP AND status = \"To Deploy\" ORDER BY updated DESC"
+JQL_QUERY="cf[11207] = \"$ACCOUNT_ID\" AND project = YOUR_PROJECT AND status = \"To Deploy\" ORDER BY updated DESC"
 # Use the exact encoding that works (same as PowerShell)
-ENCODED_JQL="cf%5B11207%5D%20%3D%20%22$ACCOUNT_ID%22%20AND%20project%20%3D%20AP%20AND%20status%20%3D%20%22To%20Deploy%22%20ORDER%20BY%20updated%20DESC"
+ENCODED_JQL="cf%5B11207%5D%20%3D%20%22$ACCOUNT_ID%22%20AND%20project%20%3D%20YOUR_PROJECT%20AND%20status%20%3D%20%22To%20Deploy%22%20ORDER%20BY%20updated%20DESC"
 SEARCH_URL="$JIRA_URL/rest/api/3/search?jql=$ENCODED_JQL&maxResults=50&fields=key,summary,status,priority,assignee,updated,customfield_11332"
 
 RESPONSE=$(curl -s -u "$EMAIL:$API_TOKEN" "$SEARCH_URL")
@@ -88,7 +88,7 @@ echo "Ticket Key  | Summary                                                     
 echo "==============================================================================================================="
 
 # Parse the JSON response properly using a more robust approach
-echo "$RESPONSE" | sed 's/},{/}\n{/g' | grep '"key":"AP-' | while read -r line; do
+echo "$RESPONSE" | sed 's/},{/}\n{/g' | grep '"key":"YOUR_PROJECT-' | while read -r line; do
     # Extract key
     KEY=$(echo "$line" | grep -o '"key":"[^"]*"' | cut -d'"' -f4)
     

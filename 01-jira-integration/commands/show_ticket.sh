@@ -1,12 +1,12 @@
 #!/bin/bash
 # Show Ticket Details - QA Engineer Command
 # Purpose: Show detailed information for a specific JIRA ticket
-# Usage: ./show_ticket.sh AP-12345
+# Usage: ./show_ticket.sh YOUR_PROJECT-12345
 
 # Check if ticket key is provided
 if [ $# -eq 0 ]; then
     echo "Usage: $0 <TICKET_KEY>"
-    echo "Example: $0 AP-12345"
+    echo "Example: $0 YOUR_PROJECT-12345"
     exit 1
 fi
 
@@ -34,7 +34,7 @@ if [ -z "$JIRA_MCP_LOGIN" ] || [ -z "$JIRA_MCP_TOKEN" ]; then
 fi
 
 # Configuration
-JIRA_URL="https://compstak.atlassian.net"
+JIRA_URL="https://your-domain.atlassian.net"
 
 # Function to extract text from JSON using basic tools
 get_json_value() {

@@ -14,7 +14,7 @@ ENV_FILE="$PROJECT_ROOT/.env"
 export JIRA_MCP_LOGIN=$(grep '^JIRA_MCP_LOGIN=' "$ENV_FILE" | cut -d'=' -f2-)
 export JIRA_MCP_TOKEN=$(grep '^JIRA_MCP_TOKEN=' "$ENV_FILE" | cut -d'=' -f2-)
 
-JIRA_URL="https://compstak.atlassian.net"
+JIRA_URL="https://your-domain.atlassian.net"
 EMAIL="$JIRA_MCP_LOGIN"
 API_TOKEN="$JIRA_MCP_TOKEN"
 

@@ -19,7 +19,7 @@ qa-manual-framework/
 │   │   ├── task-ticket-template.json
 │   │   └── update-ticket-template.json
 │   └── examples/                 # Real ticket examples
-│       ├── ap-*.json files
+│       ├── example-*.json files
 │       ├── bt-ticket.json
 │       ├── test-*.json files
 │       └── update-*.json files
@@ -53,12 +53,11 @@ qa-manual-framework/
 │       ├── test_plan_build2.md
 │       └── summary_test_report_build1_build2.md
 │
-├── 04-projects/                  # Project-specific testing
-│   └── ownership-entity/         # Ownership Entity System (OES)
-│       ├── project documentation/ # OES system documentation
-│       │   └── OES_System_Documentation.md
-│       └── project rules/        # OES testing guidelines
-│           └── .rules
+├── 04-projects/                  # Project examples and templates
+│   ├── template/                 # Generic project template
+│   ├── example-ecommerce/        # E-commerce testing example
+│   ├── example-api/              # API testing example
+│   └── README.md                 # Project usage guide
 │
 ├── 05-utilities/
 │   ├── traceability_matrix.txt
@@ -85,8 +84,8 @@ qa-manual-framework/
 - Create generalized templates from current examples
 
 **Examples:**
-- ap-final-test.json, ap-object-test.json, ap-simple-test.json
-- ap-test-ticket.json, ap-working-test.json
+- example-ticket-1.json, example-ticket-2.json, example-ticket-3.json
+- example-ticket-4.json, example-ticket-5.json
 - bt-ticket.json, test-ticket-bt.json, test-ticket.json
 - simple-ticket.json, test-comment.json
 - update-description.json, update-ticket-*.json files

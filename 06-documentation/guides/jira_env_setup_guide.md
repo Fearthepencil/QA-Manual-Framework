@@ -95,8 +95,8 @@ JIRA_MCP_TOKEN=ATATT3xFfGF0...your_actual_token_here
 ### Test JIRA Connection:
 ```bash
 # Test basic connectivity
-curl -u "your.email@compstak.com:your_api_token" \
-  https://compstak.atlassian.net/rest/api/3/myself
+curl -u "your.email@your-domain.com:your_api_token" \
+  https://your-domain.atlassian.net/rest/api/3/myself
 ```
 
 ### Test MCP Server:
@@ -146,7 +146,7 @@ curl -u "your.email@compstak.com:your_api_token" \
 
 | Variable | Description | Example |
 |----------|-------------|---------|
-| `JIRA_MCP_LOGIN` | Your JIRA email | `user@compstak.com` |
+| `JIRA_MCP_LOGIN` | Your JIRA email | `user@your-domain.com` |
 | `JIRA_MCP_TOKEN` | API token | `ATATT3xFfGF0...` |
 
 ---
@@ -179,7 +179,7 @@ cp .cursor/rules/task_tracking_template.mdc .cursor/rules/task_tracking.mdc
 
 ### Create .env file:
 ```bash
-echo "JIRA_MCP_LOGIN=your.email@compstak.com" > .env
+echo "JIRA_MCP_LOGIN=your.email@your-domain.com" > .env
 echo "JIRA_MCP_TOKEN=your_token_here" >> .env
 ```
 
@@ -187,7 +187,7 @@ echo "JIRA_MCP_TOKEN=your_token_here" >> .env
 ```bash
 source .env
 curl -u "$JIRA_MCP_LOGIN:$JIRA_MCP_TOKEN" \
-  https://compstak.atlassian.net/rest/api/3/myself
+  https://your-domain.atlassian.net/rest/api/3/myself
 ```
 
 ### Test JIRA commands:

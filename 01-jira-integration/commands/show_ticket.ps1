@@ -1,6 +1,6 @@
 # Show Ticket Details - QA Engineer Command
 # Purpose: Show detailed information for a specific JIRA ticket
-# Usage: .\show_ticket.ps1 -TicketKey "AP-12345"
+# Usage: .\show_ticket.ps1 -TicketKey "YOUR_PROJECT-12345"
 
 param(
     [Parameter(Mandatory=$true)]
@@ -31,7 +31,7 @@ if (Test-Path $envFile) {
 }
 
 # Configuration from environment variables
-$JIRA_URL = "https://compstak.atlassian.net"
+$JIRA_URL = "https://your-domain.atlassian.net"
 $EMAIL = $env:JIRA_MCP_LOGIN
 $API_TOKEN = $env:JIRA_MCP_TOKEN
 

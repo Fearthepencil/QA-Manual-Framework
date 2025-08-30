@@ -26,7 +26,7 @@ if (Test-Path $envFile) {
 }
 
 # Configuration from environment variables
-$JIRA_URL = "https://compstak.atlassian.net"
+$JIRA_URL = "https://your-domain.atlassian.net"
 $EMAIL = $env:JIRA_MCP_LOGIN
 $API_TOKEN = $env:JIRA_MCP_TOKEN
 
@@ -63,7 +63,7 @@ Write-Host ""
 Write-Host "Searching for tickets ready for deployment..." -ForegroundColor Yellow
 
 # JQL query to find tickets where current user is QA Assignee and status is "To Deploy"
-$jqlQuery = "cf[11207] = `"$accountId`" AND project = AP AND status = `"To Deploy`" ORDER BY updated DESC"
+$jqlQuery = "cf[11207] = `"$accountId`" AND project = YOUR_PROJECT AND status = `"To Deploy`" ORDER BY updated DESC"
 $searchUrl = "$JIRA_URL/rest/api/3/search?jql=$([System.Web.HttpUtility]::UrlEncode($jqlQuery))`&maxResults=50`&fields=key,summary,status,priority,assignee,updated,customfield_11332"
 
 try {

@@ -99,7 +99,7 @@ cp .cursor/rules/task_tracking_template.mdc .cursor/rules/task_tracking.mdc
 - **PROJECT DOCUMENTATION ONLY**: Documentation folder should contain project rules, requirements, specifications, and final summary
 
 ## Repository Setup Plan
-- ✅ Company GitHub repository: https://github.com/compstak/QA-Manual-Framework
+- ✅ Open Source GitHub repository: https://github.com/Fearthepencil/QA-Manual-Framework
 - ✅ Pushed initial framework to company repository
 - ✅ Created develop branch for active development
 - ✅ Added comprehensive branching strategy to README
@@ -123,14 +123,14 @@ cp .cursor/rules/task_tracking_template.mdc .cursor/rules/task_tracking.mdc
 
 ## JIRA Field Discovery
 - ✅ Retrieved all JIRA fields via API
-- ✅ Identified QA Assignee fields: customfield_11207 (single), customfield_11313/11308 (multi)
+- ✅ Identified QA Assignee fields: customfield_11207 (single), customfield_11313/11308 (multi) - Update with your JIRA field IDs
 - ✅ Found standard user fields: assignee, reporter, creator
 - ✅ Discovered additional assignee fields: Data Assignee, Research Assignee
 - ✅ Added new field information while preserving existing documentation
 
 ## Show My Tickets Command - Cross-Platform Testing
 - ✅ Successfully executed PowerShell version (show_my_tickets.ps1)
-- ✅ Found 26 tickets assigned to user as QA Assignee (customfield_11207)
+- ✅ Found tickets assigned to user as QA Assignee (customfield_11207) - Update with your JIRA field IDs
 - ✅ Fixed PowerShell syntax issues (ampersand escaping, special characters)
 - ✅ Improved table formatting for better readability
 - ✅ Successfully tested shell script version (show_my_tickets.sh)

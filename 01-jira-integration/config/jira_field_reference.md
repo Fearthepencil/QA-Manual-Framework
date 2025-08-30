@@ -1,4 +1,4 @@
-# JIRA Field Reference - All Tech Projects (AP) Bug(t) Creation
+# JIRA Field Reference - Generic JIRA Bug(t) Creation
 
 ## 🆕 NEW: User-Related Fields (Discovered via JIRA API)
 
@@ -29,7 +29,7 @@
 ```json
 {
   "fields": {
-    "project": {"key": "AP"},
+    "project": {"key": "YOUR_PROJECT"},
     "issuetype": {"name": "Bug"},
     "summary": "Login button not working on mobile",
     "customfield_11332": {"value": "Production"},
@@ -46,7 +46,7 @@
 ```json
 {
   "fields": {
-    "project": {"key": "AP"},
+    "project": {"key": "YOUR_PROJECT"},
     "issuetype": {"name": "Bug"},
     "summary": "Database connection timeout",
     "customfield_11332": {"value": "Staging"},
@@ -70,7 +70,7 @@
 ---
 
 ## Project Information
-- **Project Key**: AP
+- **Project Key**: YOUR_PROJECT
 - **Project Name**: All Tech Projects  
 - **Issue Type**: Bug (t)
 - **Issue Type ID**: 1
@@ -80,7 +80,7 @@ These fields MUST be included in every Bug(t) ticket:
   
 | Field | Field Name | Type | Format |
 |-------|------------|------|--------|
-| `project` | Project | project | `{"key": "AP"}` |
+| `project` | Project | project | `{"key": "YOUR_PROJECT"}` |
 | `issuetype` | Issue Type | issuetype | `{"id": "1"}` |
 | `summary` | Summary | string | `"Your ticket title"` |
 | `customfield_11332` | Environment | option | `{"value": "Dev"}` |
@@ -102,12 +102,12 @@ These fields MUST be included in every Bug(t) ticket:
 "customfield_11287": {"value": "TEAM"}
 ```
 **Options:**
-- `"Polaris"` (ID: 10370)
-- `"Vega"` (ID: 10371)
-- `"Sirius"` (ID: 10443)
-- `"Helios"` (ID: 10583)
-- `"Hydrus"` (ID: 10584)
-- `"Compstak"` (ID: 10437)
+- `"Team Alpha"` (ID: 10370)
+- `"Team Beta"` (ID: 10371)
+- `"Team Gamma"` (ID: 10443)
+- `"Team Delta"` (ID: 10583)
+- `"Team Epsilon"` (ID: 10584)
+- `"Your Company"` (ID: 10437)
 
 ### Stack (customfield_11330)
 ```json
@@ -157,10 +157,10 @@ These fields MUST be included in every Bug(t) ticket:
 - ChurnZero (ID: 11684)
 - CI/CD (ID: 11644)
 - Columns (ID: 11716)
-- COMPSTAK-SERVICES Authentication (ID: 11677)
-- COMPSTAK-SERVICES Comp-processing (ID: 11688)
-- COMPSTAK-SERVICES Exchange (ID: 11638)
-- COMPSTAK-SERVICES Search & Bulk Indexer (ID: 11640)
+- Authentication Services (ID: 11677)
+- Data Processing Services (ID: 11688)
+- Exchange Services (ID: 11638)
+- Search & Indexing Services (ID: 11640)
 - CoreLogic (ID: 11689)
 - Costs (ID: 11724)
 - Credits (ID: 11725)
@@ -168,7 +168,7 @@ These fields MUST be included in every Bug(t) ticket:
 - Elastic Search (ID: 11681)
 - Exchange Dashboard (ID: 11692)
 - Export (ID: 11717)
-- External/CompStak API (ID: 11633)
+- External/Public API (ID: 11633)
 - Filters (ID: 11715)
 - First American (ID: 11694)
 - Gateway (ID: 11714)
@@ -284,7 +284,7 @@ These fields MUST be included in every Bug(t) ticket:
 ```json
 {
   "fields": {
-    "project": {"key": "AP"},
+    "project": {"key": "YOUR_PROJECT"},
     "issuetype": {"id": "1"},
     "summary": "Bug title here",
     "customfield_11332": {"value": "Dev"}
@@ -296,9 +296,9 @@ These fields MUST be included in every Bug(t) ticket:
 ```json
 {
   "fields": {
-    "project": {"key": "AP"},
+    "project": {"key": "YOUR_PROJECT"},
     "issuetype": {"id": "1"},
-    "summary": "sales-comps-refresh-versions Job Not Updating Owner Attributes",
+    "summary": "Example Bug Title",
     "description": {
       "type": "doc",
       "version": 1,
@@ -315,7 +315,7 @@ These fields MUST be included in every Bug(t) ticket:
           "content": [
             {
               "type": "text",
-              "text": "The sales-comps-refresh-versions job fails to update owner attributes in participant_groups from the owner-v020 Elasticsearch index."
+              "text": "The example job fails to update attributes in the database from the Elasticsearch index."
             }
           ]
         },
@@ -335,7 +335,7 @@ These fields MUST be included in every Bug(t) ticket:
                 {
                   "type": "paragraph",
                   "content": [
-                    {"type": "text", "text": "Run sales-comps-refresh-versions job"}
+                    {"type": "text", "text": "Run the example job"}
                   ]
                 }
               ]
@@ -346,7 +346,7 @@ These fields MUST be included in every Bug(t) ticket:
                 {
                   "type": "paragraph",
                   "content": [
-                    {"type": "text", "text": "Check participant_groups data"}
+                    {"type": "text", "text": "Check the database data"}
                   ]
                 }
               ]
@@ -356,7 +356,7 @@ These fields MUST be included in every Bug(t) ticket:
       ]
     },
     "customfield_11332": {"value": "Dev"},
-    "customfield_11287": {"value": "Polaris"},
+    "customfield_11287": {"value": "Team Alpha"},
     "customfield_11330": [{"value": "api"}, {"value": "data"}],
     "customfield_11311": {"value": "P2 - Broken Functionality With No Work Around"},
     "priority": {"id": "3"},
@@ -378,7 +378,7 @@ Content-Type: application/json
 
 ### Create Ticket
 ```bash
-POST https://compstak.atlassian.net/rest/api/3/issue
+POST https://your-domain.atlassian.net/rest/api/3/issue
 ```
 
 ## Notes

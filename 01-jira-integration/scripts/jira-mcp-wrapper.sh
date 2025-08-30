@@ -32,6 +32,6 @@ fi
 
 # Run the Jira MCP server with credentials
 npx @timbreeding/jira-mcp-server@latest \
-    --jira-base-url=https://compstak.atlassian.net \
+    --jira-base-url=https://your-domain.atlassian.net \
     --jira-username="$JIRA_MCP_LOGIN" \
     --jira-api-token="$JIRA_MCP_TOKEN"

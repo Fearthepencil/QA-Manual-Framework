@@ -59,8 +59,8 @@
 
 | JIRA Ticket | Component | Feature Area | Test Cases | Bug Reports | Status | QA Assignee |
 |-------------|-----------|--------------|------------|-------------|---------|-------------|
-| AP-XXXXX | [Component] | [Feature Area] | TC-001, TC-002 | BUG-001 | In Progress | [QA Name] |
-| AP-XXXXX | [Component] | [Feature Area] | TC-003 | None | To Do | [QA Name] |
+| YOUR_PROJECT-XXXXX | [Component] | [Feature Area] | TC-001, TC-002 | BUG-001 | In Progress | [QA Name] |
+| YOUR_PROJECT-XXXXX | [Component] | [Feature Area] | TC-003 | None | To Do | [QA Name] |
 
 **Legend:**
 - **Component:** Frontend/Backend/API/Database/Infrastructure

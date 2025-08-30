@@ -2,7 +2,7 @@
 
 ## Standard Bug Creation Format
 
-When creating JIRA tickets in All Tech Projects (AP), always use:
+When creating JIRA tickets in your project, always use:
 
 ### Required Fields
 ```json
@@ -44,12 +44,12 @@ When creating JIRA tickets in All Tech Projects (AP), always use:
 **Common Components:**
 - sales-comps: `{"id": "11718"}`
 - Elastic Search: `{"id": "11681"}`
-- External/CompStak API: `{"id": "11633"}`
+- External/Public API: `{"id": "11633"}`
 - Gateway: `{"id": "11714"}`
 
 ### API Endpoint
 ```
-POST https://compstak.atlassian.net/rest/api/3/issue
+POST https://your-domain.atlassian.net/rest/api/3/issue
 ```
 
 ### Authentication Format

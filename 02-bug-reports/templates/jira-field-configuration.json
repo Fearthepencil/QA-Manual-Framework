@@ -11,10 +11,10 @@
     "operations": [],
     "allowedValues": [
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/issuetype/1",
+        "self": "https://your-domain.atlassian.net/rest/api/3/issuetype/1",
         "id": "1",
         "description": "A problem which impairs or prevents the functions of the product.",
-        "iconUrl": "https://compstak.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/11703?size=medium",
+        "iconUrl": "https://your-domain.atlassian.net/rest/api/2/universal_avatar/view/type/issuetype/avatar/11703?size=medium",
         "name": "Bug (t)",
         "subtask": false,
         "avatarId": 11703,
@@ -52,217 +52,217 @@
     ],
     "allowedValues": [
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11635",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11635",
         "id": "11635",
         "name": "Admin",
-        "description": "Internal tool to manage CompStak users, authorizations, etc."
+        "description": "Internal tool to manage users, authorizations, etc."
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11683",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11683",
         "id": "11683",
         "name": "Apps Build System",
         "description": "Apps build system for enterprise and exchange consisting of managing webpack/babel/typescript dependencies & configuration. These technologies are used for creating local development environment and production builds."
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11678",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11678",
         "id": "11678",
         "name": "Apps Enterprise"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11682",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11682",
         "id": "11682",
         "name": "Apps Exchange",
         "description": "Frontend apps and components (AttributeValues, Filters, Loader, Map, etc.)."
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11675",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11675",
         "id": "11675",
         "name": "Belaz + Client Data Feed",
         "description": "Scheduled data dumps."
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11695",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11695",
         "id": "11695",
         "name": "Bottleneck 2nd gen"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11719",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11719",
         "id": "11719",
         "name": "ChartBuilder"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11684",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11684",
         "id": "11684",
         "name": "ChurnZero",
         "description": "Bunch of services, executed once a day that push data to ChurnZero. They use snowflake and MongoDB as data sources"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11644",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11644",
         "id": "11644",
         "name": "CI/CD"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11716",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11716",
         "id": "11716",
         "name": "Columns"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11677",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11677",
         "id": "11677",
-        "name": "COMPSTAK-SERVICES Authentication",
+        "name": "AUTHENTICATION-SERVICES",
         "description": "API endpoints to support the OAuth flow (+ some templates)"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11688",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11688",
         "id": "11688",
-        "name": "COMPSTAK-SERVICES Comp-processing",
+        "name": "DATA-PROCESSING-SERVICES",
         "description": "API that supports date processing primarily through SpecialK"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11638",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11638",
         "id": "11638",
-        "name": "COMPSTAK-SERVICES Exchange",
+        "name": "EXCHANGE-SERVICES",
         "description": "APIs for the Exchange and Enterprise UIs"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11640",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11640",
         "id": "11640",
-        "name": "COMPSTAK-SERVICES Search & Bulk Indexer",
+        "name": "SEARCH-SERVICES",
         "description": "Batch jobs to reindex a list of changes or the whole dataset from MySQL to ElasticSearch. Indexes CompMaster, SalesMaster, RealProperty, Submarket, ExternalProperty, ExternalCompMaster"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11689",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11689",
         "id": "11689",
         "name": "CoreLogic",
         "description": "Parcel ingestion, geocoding API, and other services."
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11724",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11724",
         "id": "11724",
         "name": "Costs"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11725",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11725",
         "id": "11725",
         "name": "Credits"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11727",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11727",
         "id": "11727",
         "name": "Design"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11681",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11681",
         "id": "11681",
         "name": "Elastic Search",
         "description": "Primary search engine"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11692",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11692",
         "id": "11692",
         "name": "Exchange Dashboard",
         "description": "System component that allows Exchange users to get insights about CRE trends, as well as their user/team stats"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11717",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11717",
         "id": "11717",
         "name": "Export"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11633",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11633",
         "id": "11633",
-        "name": "External/CompStak API",
-        "description": "Known to the outside world as CompStak API, this is a collection of endpoints that allows some of the CompStak Enterprise users to work with our data directly."
+        "name": "External/Public API",
+        "description": "Public API endpoints that allow enterprise users to work with data directly."
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11715",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11715",
         "id": "11715",
         "name": "Filters"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11694",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11694",
         "id": "11694",
         "name": "First American",
         "description": "Integration with First American, the provider of sales comps data"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11714",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11714",
         "id": "11714",
         "name": "Gateway"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11722",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11722",
         "id": "11722",
         "name": "lease-comp-pipeline",
         "description": "Lease comp processing pipeline"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11691",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11691",
         "id": "11691",
         "name": "Map analytics"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11699",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11699",
         "id": "11699",
         "name": "NewAuthentication"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11686",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11686",
         "id": "11686",
         "name": "PDF-generator"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11690",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11690",
         "id": "11690",
         "name": "Portfolio Analytics"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11672",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11672",
         "id": "11672",
         "name": "ppm"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11718",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11718",
         "id": "11718",
         "name": "sales-comps"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11679",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11679",
         "id": "11679",
         "name": "Salesforce DataSync",
-        "description": "Integration service that allows syncing data between CompStak DBs (backed to Snowflake) and Salesforce account."
+        "description": "Integration service that allows syncing data between databases (backed to Snowflake) and Salesforce account."
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11632",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11632",
         "id": "11632",
         "name": "specialk",
         "description": "Internal tool to handle certain stages of the comps processing. Essential part of the data flow."
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11723",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11723",
         "id": "11723",
         "name": "spk-lease-comps",
         "description": "Lease comp workflows and views within SpecialK"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11720",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11720",
         "id": "11720",
         "name": "spk-sales-comps",
         "description": "Sales comp workflows and views within SpecialK"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11721",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11721",
         "id": "11721",
         "name": "spk-submissions-and-tasks",
         "description": "Submission & task entities in SpecialK, as well as related views and workflows."
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11713",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11713",
         "id": "11713",
         "name": "SSO"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/component/11760",
+        "self": "https://your-domain.atlassian.net/rest/api/3/component/11760",
         "id": "11760",
         "name": "Stytch Integration"
       }
@@ -295,17 +295,17 @@
     ],
     "allowedValues": [
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/project/12327",
+        "self": "https://your-domain.atlassian.net/rest/api/3/project/12327",
         "id": "12327",
         "key": "AP",
         "name": "All Tech Projects",
         "projectTypeKey": "software",
         "simplified": false,
         "avatarUrls": {
-          "48x48": "https://compstak.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/11904",
-          "24x24": "https://compstak.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/11904?size=small",
-          "16x16": "https://compstak.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/11904?size=xsmall",
-          "32x32": "https://compstak.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/11904?size=medium"
+          "48x48": "https://your-domain.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/11904",
+          "24x24": "https://your-domain.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/11904?size=small",
+          "16x16": "https://your-domain.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/11904?size=xsmall",
+          "32x32": "https://your-domain.atlassian.net/rest/api/3/universal_avatar/view/type/project/avatar/11904?size=medium"
         }
       }
     ]
@@ -325,33 +325,33 @@
     ],
     "allowedValues": [
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/customFieldOption/10370",
+        "self": "https://your-domain.atlassian.net/rest/api/3/customFieldOption/10370",
         "value": "Polaris",
         "id": "10370"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/customFieldOption/10371",
+        "self": "https://your-domain.atlassian.net/rest/api/3/customFieldOption/10371",
         "value": "Vega",
         "id": "10371"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/customFieldOption/10443",
+        "self": "https://your-domain.atlassian.net/rest/api/3/customFieldOption/10443",
         "value": "Sirius",
         "id": "10443"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/customFieldOption/10583",
+        "self": "https://your-domain.atlassian.net/rest/api/3/customFieldOption/10583",
         "value": "Helios",
         "id": "10583"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/customFieldOption/10584",
+        "self": "https://your-domain.atlassian.net/rest/api/3/customFieldOption/10584",
         "value": "Hydrus",
         "id": "10584"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/customFieldOption/10437",
-        "value": "Compstak",
+        "self": "https://your-domain.atlassian.net/rest/api/3/customFieldOption/10437",
+        "value": "Your Company",
         "id": "10437"
       }
     ]
@@ -380,7 +380,7 @@
     },
     "name": "FlagsDisplay",
     "key": "customfield_11358",
-    "autoCompleteUrl": "https://compstak.atlassian.net/rest/api/1.0/labels/suggest?customFieldId=11358&query=",
+    "autoCompleteUrl": "https://your-domain.atlassian.net/rest/api/1.0/labels/suggest?customFieldId=11358&query=",
     "hasDefaultValue": false,
     "operations": [
       "add",
@@ -456,7 +456,7 @@
     },
     "name": "Product feature",
     "key": "customfield_11331",
-    "autoCompleteUrl": "https://compstak.atlassian.net/rest/api/1.0/labels/suggest?customFieldId=11331&query=",
+    "autoCompleteUrl": "https://your-domain.atlassian.net/rest/api/1.0/labels/suggest?customFieldId=11331&query=",
     "hasDefaultValue": false,
     "operations": [
       "add",
@@ -483,22 +483,22 @@
     ],
     "allowedValues": [
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/customFieldOption/10516",
+        "self": "https://your-domain.atlassian.net/rest/api/3/customFieldOption/10516",
         "value": "api",
         "id": "10516"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/customFieldOption/10517",
+        "self": "https://your-domain.atlassian.net/rest/api/3/customFieldOption/10517",
         "value": "apps",
         "id": "10517"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/customFieldOption/10518",
+        "self": "https://your-domain.atlassian.net/rest/api/3/customFieldOption/10518",
         "value": "data",
         "id": "10518"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/customFieldOption/10519",
+        "self": "https://your-domain.atlassian.net/rest/api/3/customFieldOption/10519",
         "value": "devops",
         "id": "10519"
       }
@@ -518,38 +518,38 @@
     ],
     "allowedValues": [
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/priority/1",
-        "iconUrl": "https://compstak.atlassian.net/images/icons/priorities/blocker_new.svg",
+        "self": "https://your-domain.atlassian.net/rest/api/3/priority/1",
+        "iconUrl": "https://your-domain.atlassian.net/images/icons/priorities/blocker_new.svg",
         "name": "Blocker",
         "id": "1"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/priority/2",
-        "iconUrl": "https://compstak.atlassian.net/images/icons/priorities/critical_new.svg",
+        "self": "https://your-domain.atlassian.net/rest/api/3/priority/2",
+        "iconUrl": "https://your-domain.atlassian.net/images/icons/priorities/critical_new.svg",
         "name": "Critical",
         "id": "2"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/priority/3",
-        "iconUrl": "https://compstak.atlassian.net/images/icons/priorities/major_new.svg",
+        "self": "https://your-domain.atlassian.net/rest/api/3/priority/3",
+        "iconUrl": "https://your-domain.atlassian.net/images/icons/priorities/major_new.svg",
         "name": "Major",
         "id": "3"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/priority/4",
-        "iconUrl": "https://compstak.atlassian.net/images/icons/priorities/minor_new.svg",
+        "self": "https://your-domain.atlassian.net/rest/api/3/priority/4",
+        "iconUrl": "https://your-domain.atlassian.net/images/icons/priorities/minor_new.svg",
         "name": "Minor",
         "id": "4"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/priority/10000",
+        "self": "https://your-domain.atlassian.net/rest/api/3/priority/10000",
         "iconUrl": "https://i.imgur.com/o5iPCxI.png",
         "name": "Normal",
         "id": "10000"
       }
     ],
     "defaultValue": {
-      "self": "https://compstak.atlassian.net/rest/api/3/priority/10000",
+      "self": "https://your-domain.atlassian.net/rest/api/3/priority/10000",
       "iconUrl": "https://i.imgur.com/o5iPCxI.png",
       "name": "Normal",
       "id": "10000"
@@ -598,22 +598,22 @@
     ],
     "allowedValues": [
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/customFieldOption/10520",
+        "self": "https://your-domain.atlassian.net/rest/api/3/customFieldOption/10520",
         "value": "Preview",
         "id": "10520"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/customFieldOption/10521",
+        "self": "https://your-domain.atlassian.net/rest/api/3/customFieldOption/10521",
         "value": "Dev",
         "id": "10521"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/customFieldOption/10522",
+        "self": "https://your-domain.atlassian.net/rest/api/3/customFieldOption/10522",
         "value": "Stage",
         "id": "10522"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/customFieldOption/10523",
+        "self": "https://your-domain.atlassian.net/rest/api/3/customFieldOption/10523",
         "value": "Prod",
         "id": "10523"
       }
@@ -634,32 +634,32 @@
     ],
     "allowedValues": [
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/customFieldOption/10489",
+        "self": "https://your-domain.atlassian.net/rest/api/3/customFieldOption/10489",
         "value": "P0 - Site Outage",
         "id": "10489"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/customFieldOption/10490",
+        "self": "https://your-domain.atlassian.net/rest/api/3/customFieldOption/10490",
         "value": "P1 - Trust/Data/Datafeed/API Issue",
         "id": "10490"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/customFieldOption/10491",
+        "self": "https://your-domain.atlassian.net/rest/api/3/customFieldOption/10491",
         "value": "P2 - Broken Functionality With No Work Around",
         "id": "10491"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/customFieldOption/10492",
+        "self": "https://your-domain.atlassian.net/rest/api/3/customFieldOption/10492",
         "value": "P3 - Broken Functionality With Work Around",
         "id": "10492"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/customFieldOption/10493",
+        "self": "https://your-domain.atlassian.net/rest/api/3/customFieldOption/10493",
         "value": "P4 - Usability Concern",
         "id": "10493"
       },
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/customFieldOption/10494",
+        "self": "https://your-domain.atlassian.net/rest/api/3/customFieldOption/10494",
         "value": "FMF - Five Minute Fix",
         "id": "10494"
       }
@@ -688,7 +688,7 @@
     },
     "name": "Labels",
     "key": "labels",
-    "autoCompleteUrl": "https://compstak.atlassian.net/rest/api/1.0/labels/suggest?query=",
+    "autoCompleteUrl": "https://your-domain.atlassian.net/rest/api/1.0/labels/suggest?query=",
     "hasDefaultValue": false,
     "operations": [
       "add",
@@ -721,7 +721,7 @@
     },
     "name": "Clients",
     "key": "customfield_11305",
-    "autoCompleteUrl": "https://compstak.atlassian.net/rest/api/1.0/labels/suggest?customFieldId=11305&query=",
+    "autoCompleteUrl": "https://your-domain.atlassian.net/rest/api/1.0/labels/suggest?customFieldId=11305&query=",
     "hasDefaultValue": false,
     "operations": [
       "add",
@@ -753,7 +753,7 @@
     },
     "name": "QA Assignee",
     "key": "customfield_11207",
-    "autoCompleteUrl": "https://compstak.atlassian.net/rest/api/1.0/users/picker?fieldName=customfield_11207&fieldConfigId=13053&projectId=12327&showAvatar=true&query=",
+    "autoCompleteUrl": "https://your-domain.atlassian.net/rest/api/1.0/users/picker?fieldName=customfield_11207&fieldConfigId=13053&projectId=12327&showAvatar=true&query=",
     "hasDefaultValue": false,
     "operations": [
       "set"
@@ -791,7 +791,7 @@
     ],
     "allowedValues": [
       {
-        "self": "https://compstak.atlassian.net/rest/api/3/customFieldOption/10461",
+        "self": "https://your-domain.atlassian.net/rest/api/3/customFieldOption/10461",
         "value": "Yes",
         "id": "10461"
       }
@@ -820,7 +820,7 @@
     },
     "name": "Linked Issues",
     "key": "issuelinks",
-    "autoCompleteUrl": "https://compstak.atlassian.net/rest/api/3/issue/picker?currentProjectId=&showSubTaskParent=true&showSubTasks=true&currentIssueKey=null&query=",
+    "autoCompleteUrl": "https://your-domain.atlassian.net/rest/api/3/issue/picker?currentProjectId=&showSubTaskParent=true&showSubTasks=true&currentIssueKey=null&query=",
     "hasDefaultValue": false,
     "operations": [
       "add",

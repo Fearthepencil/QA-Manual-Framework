@@ -68,7 +68,7 @@ ENVIRONMENT="$3"
 load_env
 
 # Configuration from environment variables  
-JIRA_URL="https://compstak.atlassian.net"
+JIRA_URL="https://your-domain.atlassian.net"
 EMAIL="$JIRA_MCP_LOGIN"
 API_TOKEN="$JIRA_MCP_TOKEN"
 
@@ -148,7 +148,7 @@ if [ "$IS_TECHNICAL" = true ]; then
     TICKET_JSON=$(cat <<EOF
 {
   "fields": {
-    "project": { "key": "AP" },
+    "project": { "key": "YOUR_PROJECT" },
     "issuetype": { "id": "1" },
     "summary": "$TITLE",
     "priority": { "id": "$PRIORITY_ID" },
@@ -504,7 +504,7 @@ else
     TICKET_JSON=$(cat <<EOF
 {
   "fields": {
-    "project": { "key": "AP" },
+    "project": { "key": "YOUR_PROJECT" },
     "issuetype": { "id": "1" },
     "summary": "$TITLE",
     "priority": { "id": "$PRIORITY_ID" },

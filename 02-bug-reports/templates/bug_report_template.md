@@ -23,7 +23,7 @@ When creating this bug in JIRA, use the following field mappings based on compan
 }
 ```
 
-**Note**: Replace `[QA_ASSIGNEE_ACCOUNT_ID]` with the actual JIRA account ID of the QA assignee. The QA Assignee field ID is `customfield_11207` for single user assignment.
+**Note**: Replace `[QA_ASSIGNEE_ACCOUNT_ID]` with the actual JIRA account ID of the QA assignee. The QA Assignee field ID is `customfield_11207` for single user assignment. **Update this field ID to match your JIRA configuration.**
 
 ## 🆕 PRE-REPORTING CHECKLIST
 Before creating this bug report, ensure you have completed all of these tasks:

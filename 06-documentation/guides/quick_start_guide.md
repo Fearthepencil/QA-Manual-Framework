@@ -186,8 +186,8 @@ powershell -File 01-jira-integration/commands/show_my_tickets.ps1
 bash 01-jira-integration/commands/show_my_tickets.sh
 
 # Show detailed ticket information with description and comments
-powershell -File 01-jira-integration/commands/show_ticket.ps1 -TicketKey "AP-12345"
-bash 01-jira-integration/commands/show_ticket.sh AP-12345
+powershell -File 01-jira-integration/commands/show_ticket.ps1 -TicketKey "YOUR_PROJECT-12345"
+bash 01-jira-integration/commands/show_ticket.sh YOUR_PROJECT-12345
 
 # View JIRA field reference
 cat 01-jira-integration/config/jira_field_reference.md

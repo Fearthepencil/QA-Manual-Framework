@@ -1,4 +1,4 @@
-# JIRA Bug Report Metrics & Structure (Company Standards)
+# JIRA Bug Report Metrics & Structure (Framework Standards)
 
 ## Pre-Reporting Quality Checklist (Mandatory)
 Before creating any bug report, verify ALL of these:
@@ -12,7 +12,7 @@ Before creating any bug report, verify ALL of these:
 
 ## Key Metrics for Effective Bug Reports
 
-### 1. **Summary Format (Company Standard)**
+### 1. **Summary Format (Framework Standard)**
 **Pattern**: `[Feature / Functionality Name] Title`
 
 **Examples**:
@@ -28,7 +28,7 @@ Before creating any bug report, verify ALL of these:
 ### 2. **Mandatory JIRA Fields**
 Ensure these fields are properly filled:
 
-- **Project**: "All Tech Projects (AP)" must be selected
+- **Project**: "Your Project Key" must be selected
 - **Issue Type**: "Bug" must be selected
 - **Environment**: Specify highest affected environment (dev, stage, prod)
 - **User**: User login/email and link to secret value stored in Vault
@@ -85,14 +85,14 @@ Actual Result:
 - Only Recorded Buyer/Seller fields visible
 ```
 
-### 6. **Visual Proof Requirements (Company Standard)**
+### 6. **Visual Proof Requirements (Framework Standard)**
 Screenshots MUST include:
 - Page URL visible in browser
 - Opened developer console with captured JavaScript errors
 - Videos, logs, and full-story documentation
 - System information: OS version, browser version
 
-### 7. **Severity Classification (Company Standard)**
+### 7. **Severity Classification (Framework Standard)**
 Use these specific levels:
 - **P0**: Site Outage
 - **P1**: Trust/Data Issues & Data Feed/API issues
@@ -151,7 +151,7 @@ What actually happens
 - Investigation notes
 ```
 
-## Quality Checklist (Company Standards)
+## Quality Checklist (Framework Standards)
 
 ### Pre-Reporting Verification
 - [ ] Bug reproduced 2-3 times
@@ -167,7 +167,7 @@ What actually happens
 - [ ] Specific enough to differentiate from similar issues
 
 ### Mandatory Fields Quality
-- [ ] Project set to "All Tech Projects (AP)"
+- [ ] Project set to "Your Project Key"
 - [ ] Issue Type set to "Bug"
 - [ ] Environment specified (highest affected)
 - [ ] User credentials and Vault link provided

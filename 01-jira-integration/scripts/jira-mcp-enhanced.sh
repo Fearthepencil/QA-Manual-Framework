@@ -44,10 +44,10 @@ show_help() {
     echo ""
     echo "Examples:"
     echo "  $0 server"
-    echo "  $0 read AP-20641"
-    echo "  $0 search \"project = AP AND status = 'In Progress'\""
-    echo "  $0 workload \"To Do\" AP"
-    echo "  $0 comments AP-20641"
+    echo "  $0 read YOUR_PROJECT-12345"
+    echo "  $0 search \"project = YOUR_PROJECT AND status = 'In Progress'\""
+    echo "  $0 workload \"To Do\" YOUR_PROJECT"
+    echo "  $0 comments YOUR_PROJECT-12345"
 }
 
 # Function to run ticket reader
@@ -67,7 +67,7 @@ case "${1:-help}" in
         echo "Starting JIRA MCP Server for ticket creation..."
         echo "============================================================"
         npx @timbreeding/jira-mcp-server@latest \
-            --jira-base-url=https://compstak.atlassian.net \
+            --jira-base-url=https://your-domain.atlassian.net \
             --jira-username="$JIRA_MCP_LOGIN" \
             --jira-api-token="$JIRA_MCP_TOKEN"
         ;;

@@ -30,7 +30,7 @@ if (Test-Path $envFile) {
 }
 
 # JIRA Configuration
-$JIRA_URL = "https://compstak.atlassian.net"
+$JIRA_URL = "https://your-domain.atlassian.net"
 $EMAIL = $env:JIRA_MCP_LOGIN
 $API_TOKEN = $env:JIRA_MCP_TOKEN
 
@@ -119,7 +119,7 @@ if ($isTechnicalReport) {
 # Create comprehensive bug ticket with proper ADF structure
 $ticketData = @{
     fields = @{
-        project = @{ key = "AP" }
+        project = @{ key = "YOUR_PROJECT" }
         issuetype = @{ id = "1" }  # Bug (t)
         summary = $Title
         priority = $priority
@@ -241,7 +241,7 @@ $ticketData = @{
         }
         customfield_11207 = @{ accountId = $accountId }  # QA Assignee
         customfield_11332 = @{ value = $Environment }    # Environment  
-        customfield_10007 = 375                          # Sprint (Active Sprint)
+        customfield_10007 = 375                          # Sprint (Active Sprint) - Update with your sprint ID
     }
 }
 
