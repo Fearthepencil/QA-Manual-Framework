@@ -39,10 +39,10 @@ Always include standardized environment details:
 - **Exchange+:** Broker environment with minor improvements
 - **Enterprise:** Enterprise client environment - users limited to markets (US states), access to all comps within market
 - **Test Users:**
-  - `qa_admin@compstak.com` - Admin account
-  - `helios_kraken@compstak.com` - Exchange account (Helios team)
-  - `helios_hydra@compstak.com` - Enterprise account (Helios team)
-  - `sirius_exchange_plus@compstak.com` - Exchange+ account (all testers)
+  - `qa_admin@your-domain.com` - Admin account
+  - `test_user1@your-domain.com` - Standard user account
+  - `test_user2@your-domain.com` - Premium user account
+  - `test_admin@your-domain.com` - Administrator account
 
 ### Bug Report Writing
 - Always include: Title, Environment, Steps to Reproduce, Expected Result, Actual Result, Severity/Priority

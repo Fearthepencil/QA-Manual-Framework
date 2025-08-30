@@ -86,8 +86,8 @@ try {
     $reporter = $response.fields.reporter.displayName
     $assignee = if ($response.fields.assignee) { $response.fields.assignee.displayName } else { "Unassigned" }
     $description = if ($response.fields.description) { $response.fields.description } else { "No description" }
-    $environment = if ($response.fields.customfield_11332) { $response.fields.customfield_11332.value } else { "N/A" }
-    $qaAssignee = if ($response.fields.customfield_11207) { $response.fields.customfield_11207.displayName } else { "N/A" }
+    $environment = if ($response.fields.customfield_YOUR_ENVIRONMENT_FIELD_ID) { $response.fields.customfield_YOUR_ENVIRONMENT_FIELD_ID.value } else { "N/A" }
+$qaAssignee = if ($response.fields.customfield_YOUR_QA_ASSIGNEE_FIELD_ID) { $response.fields.customfield_YOUR_QA_ASSIGNEE_FIELD_ID.displayName } else { "N/A" }
     
     # Format dates
     try {

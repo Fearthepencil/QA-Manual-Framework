@@ -55,14 +55,14 @@ QA-Manual-Framework/
 3. **Add your credentials to the .env file:**
    ```env
    # JIRA MCP Integration Credentials
-   JIRA_MCP_LOGIN=your.email@compstak.com
-   JIRA_MCP_TOKEN=ATATT3xFfGF0...your_long_token_here
+   JIRA_MCP_LOGIN=your.email@your-domain.com
+   JIRA_MCP_TOKEN=your_api_token_here
    ```
 
 ### **Example .env file content:**
 ```env
-JIRA_MCP_LOGIN=pavle.stefanovic@compstak.com
-JIRA_MCP_TOKEN=ATATT3xFfGF0...your_actual_token_here
+JIRA_MCP_LOGIN=your.email@your-domain.com
+JIRA_MCP_TOKEN=your_api_token_here
 ```
 
 **Note**: All scripts are configured to look for the .env file in the project root directory. Placing it anywhere else will cause the scripts to fail.
@@ -147,7 +147,7 @@ curl -u "your.email@your-domain.com:your_api_token" \
 | Variable | Description | Example |
 |----------|-------------|---------|
 | `JIRA_MCP_LOGIN` | Your JIRA email | `user@your-domain.com` |
-| `JIRA_MCP_TOKEN` | API token | `ATATT3xFfGF0...` |
+| `JIRA_MCP_TOKEN` | API token | `your_api_token_here` |
 
 ---
 
@@ -197,8 +197,8 @@ powershell -File 01-jira-integration/commands/show_my_tickets.ps1
 bash 01-jira-integration/commands/show_my_tickets.sh
 
 # Show detailed ticket information
-powershell -File 01-jira-integration/commands/show_ticket.ps1 -TicketKey "AP-12345"
-bash 01-jira-integration/commands/show_ticket.sh AP-12345
+powershell -File 01-jira-integration/commands/show_ticket.ps1 -TicketKey "YOUR_PROJECT-12345"
+bash 01-jira-integration/commands/show_ticket.sh YOUR_PROJECT-12345
 ```
 
 ---

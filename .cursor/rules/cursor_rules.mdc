@@ -123,14 +123,14 @@ cp .cursor/rules/task_tracking_template.mdc .cursor/rules/task_tracking.mdc
 
 ## JIRA Field Discovery
 - ✅ Retrieved all JIRA fields via API
-- ✅ Identified QA Assignee fields: customfield_11207 (single), customfield_11313/11308 (multi) - Update with your JIRA field IDs
+- ✅ Identified QA Assignee fields: customfield_YOUR_QA_ASSIGNEE_FIELD_ID (single), customfield_YOUR_MULTI_QA_FIELD_ID (multi) - Update with your JIRA field IDs
 - ✅ Found standard user fields: assignee, reporter, creator
 - ✅ Discovered additional assignee fields: Data Assignee, Research Assignee
 - ✅ Added new field information while preserving existing documentation
 
 ## Show My Tickets Command - Cross-Platform Testing
 - ✅ Successfully executed PowerShell version (show_my_tickets.ps1)
-- ✅ Found tickets assigned to user as QA Assignee (customfield_11207) - Update with your JIRA field IDs
+- ✅ Found tickets assigned to user as QA Assignee (customfield_YOUR_QA_ASSIGNEE_FIELD_ID) - Update with your JIRA field IDs
 - ✅ Fixed PowerShell syntax issues (ampersand escaping, special characters)
 - ✅ Improved table formatting for better readability
 - ✅ Successfully tested shell script version (show_my_tickets.sh)

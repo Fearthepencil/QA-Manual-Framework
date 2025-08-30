@@ -49,12 +49,12 @@ touch .env
 Open the project root `.env` file and add your Jira credentials:
 
 ```env
-JIRA_MCP_LOGIN=your-email@compstak.com
+JIRA_MCP_LOGIN=your-email@your-domain.com
 JIRA_MCP_TOKEN=your-api-token-here
 ```
 
 **Replace with your actual values:**
-- `your-email@compstak.com` → Your CompStak Jira email address
+- `your-email@your-domain.com` → Your Jira email address
 - `your-api-token-here` → The API token you created in step 2.1
 
 ---

@@ -11,7 +11,7 @@ When creating JIRA tickets in your project, always use:
     "project": {"key": "AP"},
     "issuetype": {"id": "1"},
     "summary": "Clear, descriptive title",
-    "customfield_11332": {"value": "Dev"}
+    "customfield_YOUR_ENVIRONMENT_FIELD_ID": {"value": "Dev"}
   }
 }
 ```

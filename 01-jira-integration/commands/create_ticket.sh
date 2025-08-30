@@ -493,9 +493,9 @@ EOF
         }
       ]
     },
-    \"customfield_11207\": { \"accountId\": \"$ACCOUNT_ID\" },
-    \"customfield_11332\": { \"value\": \"$ENVIRONMENT\" },
-    \"customfield_10007\": 375
+    \"customfield_YOUR_QA_ASSIGNEE_FIELD_ID\": { \"accountId\": \"$ACCOUNT_ID\" },
+\"customfield_YOUR_ENVIRONMENT_FIELD_ID\": { \"value\": \"$ENVIRONMENT\" },
+    \"customfield_YOUR_SPRINT_FIELD_ID\": \"YOUR_SPRINT_ID\"
   }
 }"
 
@@ -624,9 +624,9 @@ else
         }
       ]
     },
-    "customfield_11207": { "accountId": "$ACCOUNT_ID" },
-    "customfield_11332": { "value": "$ENVIRONMENT" },
-    "customfield_10007": 375
+    "customfield_YOUR_QA_ASSIGNEE_FIELD_ID": { "accountId": "$ACCOUNT_ID" },
+"customfield_YOUR_ENVIRONMENT_FIELD_ID": { "value": "$ENVIRONMENT" },
+    "customfield_YOUR_SPRINT_FIELD_ID": "YOUR_SPRINT_ID"
   }
 }
 EOF
@@ -645,7 +645,7 @@ echo "Issue Type: Bug (t) (ID: 1)"
 echo "Priority: $PRIORITY_DISPLAY"
 echo "Environment: $ENVIRONMENT"
 echo "QA Assignee: $DISPLAY_NAME ($ACCOUNT_ID)"
-echo "Sprint: Active Sprint (375)"
+echo "Sprint: Active Sprint (YOUR_SPRINT_ID)"
 
 if [ "$IS_TECHNICAL" = true ]; then
     echo "Type: Technical Bug Report with comprehensive analysis"

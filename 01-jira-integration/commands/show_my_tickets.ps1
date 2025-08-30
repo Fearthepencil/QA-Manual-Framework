@@ -63,8 +63,8 @@ Write-Host ""
 Write-Host "Searching for tickets assigned to you as QA Assignee..." -ForegroundColor Yellow
 
 # JQL query to find tickets where current user is QA Assignee
-$jqlQuery = "cf[11207] = `"$accountId`" AND project = YOUR_PROJECT ORDER BY updated DESC"
-$searchUrl = "$JIRA_URL/rest/api/3/search?jql=$([System.Web.HttpUtility]::UrlEncode($jqlQuery))`&maxResults=50`&fields=key,summary,status,priority,assignee,updated,customfield_11332"
+$jqlQuery = "cf[YOUR_QA_ASSIGNEE_FIELD_ID] = `"$accountId`" AND project = YOUR_PROJECT ORDER BY updated DESC"
+$searchUrl = "$JIRA_URL/rest/api/3/search?jql=$([System.Web.HttpUtility]::UrlEncode($jqlQuery))`&maxResults=50`&fields=key,summary,status,priority,assignee,updated,customfield_YOUR_ENVIRONMENT_FIELD_ID"
 
 try {
     $response = Invoke-RestMethod -Uri $searchUrl -Headers $headers -Method Get
@@ -89,7 +89,7 @@ try {
         $status = $issue.fields.status.name
         $priority = $issue.fields.priority.name
         $updated = $issue.fields.updated
-        $environment = $issue.fields.customfield_11332.value
+        $environment = $issue.fields.customfield_YOUR_ENVIRONMENT_FIELD_ID.value
         
         # Format date - handle different date formats
         try {

@@ -54,10 +54,10 @@ echo ""
 echo -e "${YELLOW}Searching for tickets ready for deployment...${NC}"
 
 # JQL query to find tickets where current user is QA Assignee and status is "To Deploy"
-JQL_QUERY="cf[11207] = \"$ACCOUNT_ID\" AND project = YOUR_PROJECT AND status = \"To Deploy\" ORDER BY updated DESC"
+JQL_QUERY="cf[YOUR_QA_ASSIGNEE_FIELD_ID] = \"$ACCOUNT_ID\" AND project = YOUR_PROJECT AND status = \"To Deploy\" ORDER BY updated DESC"
 # Use the exact encoding that works (same as PowerShell)
-ENCODED_JQL="cf%5B11207%5D%20%3D%20%22$ACCOUNT_ID%22%20AND%20project%20%3D%20YOUR_PROJECT%20AND%20status%20%3D%20%22To%20Deploy%22%20ORDER%20BY%20updated%20DESC"
-SEARCH_URL="$JIRA_URL/rest/api/3/search?jql=$ENCODED_JQL&maxResults=50&fields=key,summary,status,priority,assignee,updated,customfield_11332"
+ENCODED_JQL="cf%5BYOUR_QA_ASSIGNEE_FIELD_ID%5D%20%3D%20%22$ACCOUNT_ID%22%20AND%20project%20%3D%20YOUR_PROJECT%20AND%20status%20%3D%20%22To%20Deploy%22%20ORDER%20BY%20updated%20DESC"
+SEARCH_URL="$JIRA_URL/rest/api/3/search?jql=$ENCODED_JQL&maxResults=50&fields=key,summary,status,priority,assignee,updated,customfield_YOUR_ENVIRONMENT_FIELD_ID"
 
 RESPONSE=$(curl -s -u "$EMAIL:$API_TOKEN" "$SEARCH_URL")
 

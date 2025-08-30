@@ -63,8 +63,8 @@ Write-Host ""
 Write-Host "Searching for tickets ready for QA testing..." -ForegroundColor Yellow
 
 # JQL query to find tickets where current user is QA Assignee and status is "Ready for QA"
-$jqlQuery = "cf[11207] = `"$accountId`" AND project = YOUR_PROJECT AND status = `"Ready for QA`" ORDER BY updated DESC"
-$searchUrl = "$JIRA_URL/rest/api/3/search?jql=$([System.Web.HttpUtility]::UrlEncode($jqlQuery))`&maxResults=50`&fields=key,summary,status,priority,assignee,updated,customfield_11332"
+$jqlQuery = "cf[YOUR_QA_ASSIGNEE_FIELD_ID] = `"$accountId`" AND project = YOUR_PROJECT AND status = `"Ready for QA`" ORDER BY updated DESC"
+$searchUrl = "$JIRA_URL/rest/api/3/search?jql=$([System.Web.HttpUtility]::UrlEncode($jqlQuery))`&maxResults=50`&fields=key,summary,status,priority,assignee,updated,customfield_YOUR_ENVIRONMENT_FIELD_ID"
 
 try {
     $response = Invoke-RestMethod -Uri $searchUrl -Headers $headers -Method Get
@@ -90,7 +90,7 @@ try {
         $status = $issue.fields.status.name
         $priority = $issue.fields.priority.name
         $updated = $issue.fields.updated
-        $environment = if ($issue.fields.customfield_11332) { $issue.fields.customfield_11332.value } else { "N/A" }
+        $environment = if ($issue.fields.customfield_YOUR_ENVIRONMENT_FIELD_ID) { $issue.fields.customfield_YOUR_ENVIRONMENT_FIELD_ID.value } else { "N/A" }
         
         # Format the date
         try {

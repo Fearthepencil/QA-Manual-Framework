@@ -168,8 +168,8 @@ CREATED=$(get_json_value "$TICKET_RESPONSE" "fields.created")
 UPDATED=$(get_json_value "$TICKET_RESPONSE" "fields.updated")
 REPORTER=$(get_json_value "$TICKET_RESPONSE" "fields.reporter.displayName")
 ASSIGNEE=$(get_json_value "$TICKET_RESPONSE" "fields.assignee.displayName")
-ENVIRONMENT=$(get_json_value "$TICKET_RESPONSE" "fields.customfield_11332.value")
-QA_ASSIGNEE=$(get_json_value "$TICKET_RESPONSE" "fields.customfield_11207.displayName")
+ENVIRONMENT=$(get_json_value "$TICKET_RESPONSE" "fields.customfield_YOUR_ENVIRONMENT_FIELD_ID.value")
+QA_ASSIGNEE=$(get_json_value "$TICKET_RESPONSE" "fields.customfield_YOUR_QA_ASSIGNEE_FIELD_ID.displayName")
 
 # Get description as JSON for ADF parsing
 DESCRIPTION=$(echo "$TICKET_RESPONSE" | python3 -c "

@@ -11,7 +11,7 @@ This document defines the rules and criteria for identifying tickets that are re
 A ticket is considered ready for deployment when **ALL** of the following criteria are met:
 
 1. **Status**: Ticket status is `"To Deploy"`
-2. **QA Assignment**: Current user is assigned as QA Assignee (customfield_11207) - Update with your JIRA field ID
+2. **QA Assignment**: Current user is assigned as QA Assignee (customfield_YOUR_QA_ASSIGNEE_FIELD_ID) - Update with your JIRA field ID
 3. **Project**: Ticket belongs to the AP project
 4. **Testing Complete**: All QA testing has been completed on development environment
 5. **Test Results**: All test cases have passed

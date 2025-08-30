@@ -239,9 +239,9 @@ $ticketData = @{
                 }
             )
         }
-        customfield_11207 = @{ accountId = $accountId }  # QA Assignee
-        customfield_11332 = @{ value = $Environment }    # Environment  
-        customfield_10007 = 375                          # Sprint (Active Sprint) - Update with your sprint ID
+        customfield_YOUR_QA_ASSIGNEE_FIELD_ID = @{ accountId = $accountId }  # QA Assignee
+customfield_YOUR_ENVIRONMENT_FIELD_ID = @{ value = $Environment }    # Environment  
+        customfield_YOUR_SPRINT_FIELD_ID = "YOUR_SPRINT_ID"                          # Sprint (Active Sprint) - Update with your sprint ID
     }
 }
 
@@ -504,7 +504,7 @@ Write-Host "Issue Type: Bug (t) (ID: 1)" -ForegroundColor Yellow
 Write-Host "Priority: $priorityDisplay" -ForegroundColor Yellow
 Write-Host "Environment: $Environment" -ForegroundColor White
 Write-Host "QA Assignee: $displayName ($accountId)" -ForegroundColor White
-Write-Host "Sprint: Active Sprint (375)" -ForegroundColor White
+Write-Host "Sprint: Active Sprint (YOUR_SPRINT_ID)" -ForegroundColor White
 
 if ($isTechnicalReport) {
     Write-Host "Type: Technical Bug Report with comprehensive analysis" -ForegroundColor Yellow

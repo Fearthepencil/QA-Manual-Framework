@@ -10,8 +10,8 @@ When creating this bug in JIRA, use the following field mappings based on compan
     "issuetype": {"name": "Bug"},
     "summary": "[Feature / Functionality Name] Title",
     "description": "[See detailed description sections below]",
-    "customfield_11332": {"value": "[Environment]"},
-    "customfield_11207": {"accountId": "[QA_ASSIGNEE_ACCOUNT_ID]"},
+    "customfield_YOUR_ENVIRONMENT_FIELD_ID": {"value": "[Environment]"},
+"customfield_YOUR_QA_ASSIGNEE_FIELD_ID": {"accountId": "[QA_ASSIGNEE_ACCOUNT_ID]"},
     "assignee": {"accountId": "[ASSIGNEE_ACCOUNT_ID]"},
     "reporter": {"accountId": "[REPORTER_ACCOUNT_ID]"},
     "priority": {"name": "Normal"},
@@ -23,7 +23,7 @@ When creating this bug in JIRA, use the following field mappings based on compan
 }
 ```
 
-**Note**: Replace `[QA_ASSIGNEE_ACCOUNT_ID]` with the actual JIRA account ID of the QA assignee. The QA Assignee field ID is `customfield_11207` for single user assignment. **Update this field ID to match your JIRA configuration.**
+**Note**: Replace `[QA_ASSIGNEE_ACCOUNT_ID]` with the actual JIRA account ID of the QA assignee. The QA Assignee field ID is `customfield_YOUR_QA_ASSIGNEE_FIELD_ID` for single user assignment. **Update this field ID to match your JIRA configuration.**
 
 ## 🆕 PRE-REPORTING CHECKLIST
 Before creating this bug report, ensure you have completed all of these tasks:

@@ -5,9 +5,9 @@
 ### QA Assignee Fields
 | Field | Field ID | Type | Description | Format |
 |-------|----------|------|-------------|--------|
-| QA Assignee (Single) | `customfield_11207` | User Picker | Primary QA assignee (single user) | `{"accountId": "USER_ACCOUNT_ID"}` |
-| QA Assignee (Multi - Project 12382) | `customfield_11313` | People Picker | QA assignees (multiple users) | `[{"accountId": "USER1"}, {"accountId": "USER2"}]` |
-| QA Assignee (Multi - Project 12366) | `customfield_11308` | People Picker | QA assignees (multiple users) | `[{"accountId": "USER1"}, {"accountId": "USER2"}]` |
+| QA Assignee (Single) | `customfield_YOUR_QA_ASSIGNEE_FIELD_ID` | User Picker | Primary QA assignee (single user) | `{"accountId": "USER_ACCOUNT_ID"}` |
+| QA Assignee (Multi - Project YOUR_PROJECT_1) | `customfield_YOUR_MULTI_QA_FIELD_ID_1` | People Picker | QA assignees (multiple users) | `[{"accountId": "USER1"}, {"accountId": "USER2"}]` |
+| QA Assignee (Multi - Project YOUR_PROJECT_2) | `customfield_YOUR_MULTI_QA_FIELD_ID_2` | People Picker | QA assignees (multiple users) | `[{"accountId": "USER1"}, {"accountId": "USER2"}]` |
 
 ### Standard User Fields
 | Field | Field ID | Type | Description | Format |
@@ -32,8 +32,8 @@
     "project": {"key": "YOUR_PROJECT"},
     "issuetype": {"name": "Bug"},
     "summary": "Login button not working on mobile",
-    "customfield_11332": {"value": "Production"},
-    "customfield_11207": {"accountId": "5f7b5c8d9e0f1a2b3c4d5e6f"},
+    "customfield_YOUR_ENVIRONMENT_FIELD_ID": {"value": "Production"},
+"customfield_YOUR_QA_ASSIGNEE_FIELD_ID": {"accountId": "5f7b5c8d9e0f1a2b3c4d5e6f"},
     "assignee": {"accountId": "5f7b5c8d9e0f1a2b3c4d5e6f"},
     "reporter": {"accountId": "5f7b5c8d9e0f1a2b3c4d5e6f"},
     "priority": {"name": "High"},
@@ -49,8 +49,8 @@
     "project": {"key": "YOUR_PROJECT"},
     "issuetype": {"name": "Bug"},
     "summary": "Database connection timeout",
-    "customfield_11332": {"value": "Staging"},
-    "customfield_11313": [
+    "customfield_YOUR_ENVIRONMENT_FIELD_ID": {"value": "Staging"},
+"customfield_YOUR_MULTI_QA_FIELD_ID_1": [
       {"accountId": "5f7b5c8d9e0f1a2b3c4d5e6f"},
       {"accountId": "6f8c6d9e0f1a2b3c4d5e6f7g"}
     ],
@@ -61,11 +61,11 @@
 ```
 
 ### Field Discovery Notes
-- **Primary QA Assignee**: Use `customfield_11207` for single QA assignee
-- **Multi QA Assignee**: Use `customfield_11313` or `customfield_11308` based on project
+- **Primary QA Assignee**: Use `customfield_YOUR_QA_ASSIGNEE_FIELD_ID` for single QA assignee
+- **Multi QA Assignee**: Use `customfield_YOUR_MULTI_QA_FIELD_ID_1` or `customfield_YOUR_MULTI_QA_FIELD_ID_2` based on project
 - **User Account IDs**: Required format is `{"accountId": "USER_ACCOUNT_ID"}`
 - **Multi-user Fields**: Use array format for people picker fields
-- **Project Scope**: Some fields are project-specific (e.g., customfield_11313 for project 12382)
+- **Project Scope**: Some fields are project-specific (e.g., customfield_YOUR_MULTI_QA_FIELD_ID_1 for project YOUR_PROJECT_1)
 
 ---
 
@@ -83,13 +83,13 @@ These fields MUST be included in every Bug(t) ticket:
 | `project` | Project | project | `{"key": "YOUR_PROJECT"}` |
 | `issuetype` | Issue Type | issuetype | `{"id": "1"}` |
 | `summary` | Summary | string | `"Your ticket title"` |
-| `customfield_11332` | Environment | option | `{"value": "Dev"}` |
+| `customfield_YOUR_ENVIRONMENT_FIELD_ID` | Environment | option | `{"value": "Dev"}` |
 
 ## Optional Fields with Predefined Values
 
-### Environment (customfield_11332) - REQUIRED
+### Environment (customfield_YOUR_ENVIRONMENT_FIELD_ID) - REQUIRED
 ```json
-"customfield_11332": {"value": "OPTION"}
+"customfield_YOUR_ENVIRONMENT_FIELD_ID": {"value": "OPTION"}
 ```
 **Options:**
 - `"Preview"` (ID: 10520)
@@ -147,45 +147,7 @@ These fields MUST be included in every Bug(t) ticket:
 "components": [{"id": "ID1"}, {"id": "ID2"}]
 ```
 **Available Components:**
-- Admin (ID: 11635)
-- Apps Build System (ID: 11683)
-- Apps Enterprise (ID: 11678)
-- Apps Exchange (ID: 11682)
-- Belaz + Client Data Feed (ID: 11675)
-- Bottleneck 2nd gen (ID: 11695)
-- ChartBuilder (ID: 11719)
-- ChurnZero (ID: 11684)
-- CI/CD (ID: 11644)
-- Columns (ID: 11716)
-- Authentication Services (ID: 11677)
-- Data Processing Services (ID: 11688)
-- Exchange Services (ID: 11638)
-- Search & Indexing Services (ID: 11640)
-- CoreLogic (ID: 11689)
-- Costs (ID: 11724)
-- Credits (ID: 11725)
-- Design (ID: 11727)
-- Elastic Search (ID: 11681)
-- Exchange Dashboard (ID: 11692)
-- Export (ID: 11717)
-- External/Public API (ID: 11633)
-- Filters (ID: 11715)
-- First American (ID: 11694)
-- Gateway (ID: 11714)
-- lease-comp-pipeline (ID: 11722)
-- Map analytics (ID: 11691)
-- NewAuthentication (ID: 11699)
-- PDF-generator (ID: 11686)
-- Portfolio Analytics (ID: 11690)
-- ppm (ID: 11672)
-- sales-comps (ID: 11718)
-- Salesforce DataSync (ID: 11679)
-- specialk (ID: 11632)
-- spk-lease-comps (ID: 11723)
-- spk-sales-comps (ID: 11720)
-- spk-submissions-and-tasks (ID: 11721)
-- SSO (ID: 11713)
-- Stytch Integration (ID: 11760)
+- 
 
 ### Pass Product UAT (customfield_11307)
 ```json
@@ -287,7 +249,7 @@ These fields MUST be included in every Bug(t) ticket:
     "project": {"key": "YOUR_PROJECT"},
     "issuetype": {"id": "1"},
     "summary": "Bug title here",
-    "customfield_11332": {"value": "Dev"}
+    "customfield_YOUR_ENVIRONMENT_FIELD_ID": {"value": "Dev"}
   }
 }
 ```
@@ -355,7 +317,7 @@ These fields MUST be included in every Bug(t) ticket:
         }
       ]
     },
-    "customfield_11332": {"value": "Dev"},
+    "customfield_YOUR_ENVIRONMENT_FIELD_ID": {"value": "Dev"},
     "customfield_11287": {"value": "Team Alpha"},
     "customfield_11330": [{"value": "api"}, {"value": "data"}],
     "customfield_11311": {"value": "P2 - Broken Functionality With No Work Around"},
